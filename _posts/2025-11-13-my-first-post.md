@@ -1,14 +1,12 @@
 ---
-layout: post
 title: "Welcome to My Blog"
-date: 2025-11-13 10:00:00 +0000
-author: "GDFLIXs"
-categories: [Welcome, Getting Started]
-tags: [jekyll, github-pages, blog]
-image: "/assets/images/posts/welcome.jpg"
-image_alt: "Welcome banner"
-excerpt: "This is my first blog post. Learn about what this blog is all about and what you can expect to find here."
-reading_time: 3
+date: 2025-11-13 21:28:58 +0000
+layout: post
+status: published
+tags:
+  - jekyll
+  - github-pages
+  - blog
 ---
 
 ## Welcome! 👋
@@ -32,22 +30,6 @@ To create a new blog post, simply:
 3. Add the front matter (YAML) at the top
 4. Write your content in Markdown
 
-### Front Matter Example
-
-```yaml
----
-layout: post
-title: "Your Post Title"
-date: 2025-11-13 10:00:00 +0000
-author: "GDFLIXs"
-categories: [Category1, Category2]
-tags: [tag1, tag2, tag3]
-image: "/assets/images/posts/image.jpg"
-excerpt: "Brief description for search results"
-reading_time: 5
----
-```
-
 ### Why Jekyll?
 
 Jekyll is perfect for:
@@ -58,4 +40,3 @@ Jekyll is perfect for:
 - **Free Hosting**: Deploy to GitHub Pages at no cost
 
 Stay tuned for more posts! 🚀
-
