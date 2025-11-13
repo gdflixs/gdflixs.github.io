@@ -1,8 +1,10 @@
 ---
 title: Activate Google Adsense Account
-date: 2025-11-13 23:13:06 +0000
+date: 2025-11-13 23:18:23 +0000
 layout: post
 status: published
+categories:
+  - How To
 tags:
   - Google AdSense
   - AdSense Activation
