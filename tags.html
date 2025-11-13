@@ -40,7 +40,7 @@ permalink: /tags/
                         </div>
 
                         {% assign tag_posts = site.posts | where_exp: "post", "post.tags contains tag" | sort: 'date' | reverse | limit: 5 %}
-                        {% include post-list.html posts=tag_posts %}
+                        {% include post-list.html posts=tag_posts limit=5 %}
                     </section>
                     {% endif %}
                     {% endfor %}

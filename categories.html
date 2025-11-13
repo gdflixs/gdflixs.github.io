@@ -40,7 +40,7 @@ permalink: /categories/
                         </div>
 
                         {% assign category_posts = site.posts | where_exp: "post", "post.categories contains category" | sort: 'date' | reverse | limit: 5 %}
-                        {% include post-list.html posts=category_posts %}
+                        {% include post-list.html posts=category_posts limit=5 %}
                     </section>
                     {% endif %}
                     {% endfor %}
