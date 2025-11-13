@@ -22,9 +22,15 @@ permalink: /tags/
             {% for tag in tags %}
                 {% if tag != "" %}
                 <section class="mb-16 pb-12 border-b border-gray-200 last:border-b-0" id="{{ tag | slugify }}">
-                    <div class="flex items-center gap-3 mb-8">
-                        <i data-lucide="tag" class="text-purple-600" style="width: 32px; height: 32px;"></i>
-                        <h2 class="text-3xl font-bold text-purple-600">{{ tag }}</h2>
+                    <div class="flex items-center justify-between mb-8">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="tag" class="text-purple-600" style="width: 32px; height: 32px;"></i>
+                            <a href="{{ '/tags/' | relative_url }}{{ tag | slugify }}/" class="text-3xl font-bold text-purple-600 hover:text-purple-800 transition">{{ tag }}</a>
+                        </div>
+                        <a href="{{ '/tags/' | relative_url }}{{ tag | slugify }}/" class="inline-flex items-center gap-2 text-purple-600 hover:text-purple-800 font-semibold transition">
+                            View All
+                            <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+                        </a>
                     </div>
 
                     <ul class="space-y-4">
