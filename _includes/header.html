@@ -1,26 +1,37 @@
-<header class="bg-white shadow-md" role="banner">
+<header class="bg-white shadow-md sticky top-0 z-50" role="banner">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
+            <!-- Logo -->
             <div class="flex-shrink-0">
-                <a href="{{ '/' | relative_url }}" class="text-2xl font-bold text-blue-600">
+                <a href="{{ '/' | relative_url }}" class="text-2xl font-bold" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
                     {{ site.title }}
                 </a>
-                <p class="text-sm text-gray-600">{{ site.description }}</p>
             </div>
 
-            <button class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none" id="navbar-toggle" aria-label="Toggle navigation">
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-white hover:bg-purple-600 focus:outline-none transition" id="navbar-toggle" aria-label="Toggle navigation">
                 <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
 
-            <ul class="hidden md:flex space-x-8" id="navbar-menu">
-                <li><a href="{{ '/' | relative_url }}" class="text-gray-700 hover:text-blue-600 font-medium transition">Home</a></li>
-                <li><a href="{{ '/blog/' | relative_url }}" class="text-gray-700 hover:text-blue-600 font-medium transition">Blog</a></li>
-                <li><a href="{{ '/about.html' | relative_url }}" class="text-gray-700 hover:text-blue-600 font-medium transition">About</a></li>
-                <li><a href="{{ '/contact.html' | relative_url }}" class="text-gray-700 hover:text-blue-600 font-medium transition">Contact</a></li>
-                <li><a href="{{ '/feed.xml' | relative_url }}" class="text-gray-700 hover:text-blue-600 font-medium transition" title="RSS Feed">RSS</a></li>
+            <!-- Desktop Menu -->
+            <ul class="hidden md:flex space-x-8 items-center" id="navbar-menu">
+                <li><a href="{{ '/' | relative_url }}" class="text-gray-700 hover:text-purple-600 font-medium transition">Home</a></li>
+                <li><a href="{{ '/blog/' | relative_url }}" class="text-gray-700 hover:text-purple-600 font-medium transition">Blog</a></li>
+                <li><a href="{{ '/about' | relative_url }}" class="text-gray-700 hover:text-purple-600 font-medium transition">About</a></li>
+                <li><a href="{{ '/contact' | relative_url }}" class="text-gray-700 hover:text-purple-600 font-medium transition">Contact</a></li>
+                <li><a href="{{ '/feed.xml' | relative_url }}" class="text-gray-700 hover:text-purple-600 font-medium transition" title="RSS Feed">RSS</a></li>
             </ul>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="navbar-menu" class="md:hidden border-t border-gray-200">
+            <a href="{{ '/' | relative_url }}" class="block px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition">Home</a>
+            <a href="{{ '/blog/' | relative_url }}" class="block px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition">Blog</a>
+            <a href="{{ '/about' | relative_url }}" class="block px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition">About</a>
+            <a href="{{ '/contact' | relative_url }}" class="block px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition">Contact</a>
+            <a href="{{ '/feed.xml' | relative_url }}" class="block px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition" title="RSS Feed">RSS Feed</a>
         </div>
     </nav>
 </header>

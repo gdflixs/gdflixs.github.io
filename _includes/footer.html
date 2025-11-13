@@ -1,38 +1,49 @@
 <footer class="bg-gray-900 text-white" role="contentinfo">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <!-- About Section -->
             <div>
-                <h3 class="text-lg font-bold mb-4">About</h3>
-                <p class="text-gray-400">{{ site.description }}</p>
+                <h3 class="text-lg font-bold mb-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{{ site.title }}</h3>
+                <p class="text-gray-400 text-sm">{{ site.description }}</p>
             </div>
 
+            <!-- Quick Links -->
             <div>
-                <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                <h3 class="text-lg font-bold mb-4 text-white">Quick Links</h3>
                 <ul class="space-y-2">
-                    <li><a href="{{ '/' | relative_url }}" class="text-gray-400 hover:text-white transition">Home</a></li>
-                    <li><a href="{{ '/blog/' | relative_url }}" class="text-gray-400 hover:text-white transition">Blog</a></li>
-                    <li><a href="{{ '/about.html' | relative_url }}" class="text-gray-400 hover:text-white transition">About</a></li>
-                    <li><a href="{{ '/contact.html' | relative_url }}" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    <li><a href="{{ '/' | relative_url }}" class="text-gray-400 hover:text-purple-400 transition text-sm">Home</a></li>
+                    <li><a href="{{ '/blog/' | relative_url }}" class="text-gray-400 hover:text-purple-400 transition text-sm">Blog</a></li>
+                    <li><a href="{{ '/about' | relative_url }}" class="text-gray-400 hover:text-purple-400 transition text-sm">About</a></li>
+                    <li><a href="{{ '/contact' | relative_url }}" class="text-gray-400 hover:text-purple-400 transition text-sm">Contact</a></li>
                 </ul>
             </div>
 
+            <!-- Categories -->
             <div>
-                <h3 class="text-lg font-bold mb-4">Follow</h3>
+                <h3 class="text-lg font-bold mb-4 text-white">Categories</h3>
+                <ul class="space-y-2">
+                    <li><a href="{{ '/tags/' | relative_url }}" class="text-gray-400 hover:text-purple-400 transition text-sm">Tags</a></li>
+                    <li><a href="{{ '/categories/' | relative_url }}" class="text-gray-400 hover:text-purple-400 transition text-sm">Categories</a></li>
+                    <li><a href="{{ '/feed.xml' | relative_url }}" class="text-gray-400 hover:text-purple-400 transition text-sm">RSS Feed</a></li>
+                </ul>
+            </div>
+
+            <!-- Follow -->
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-white">Follow</h3>
                 <ul class="space-y-2">
                     {% if site.twitter_username %}
-                    <li><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition">Twitter</a></li>
+                    <li><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-purple-400 transition text-sm">Twitter</a></li>
                     {% endif %}
                     {% if site.github_username %}
-                    <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition">GitHub</a></li>
+                    <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-purple-400 transition text-sm">GitHub</a></li>
                     {% endif %}
-                    <li><a href="{{ '/feed.xml' | relative_url }}" class="text-gray-400 hover:text-white transition">RSS Feed</a></li>
                 </ul>
             </div>
         </div>
 
-        <div class="border-t border-gray-800 pt-8">
-            <p class="text-gray-400 text-center">&copy; {{ site.time | date: "%Y" }} {{ site.author }}. All rights reserved.</p>
-            <p class="text-gray-400 text-center text-sm mt-2">Powered by <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">GitHub Pages</a></p>
+        <div class="border-t border-gray-700 pt-8 text-center text-gray-400 text-sm">
+            <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}. All rights reserved. Powered by GitHub Pages.</p>
         </div>
     </div>
 </footer>
