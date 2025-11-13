@@ -125,6 +125,21 @@
                 });
             }
 
+            // Set active menu item based on current page
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('nav a');
+
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                // Check if the link matches the current page
+                if (href === currentPath || (href === '/' && currentPath === '/') ||
+                    (href !== '/' && currentPath.includes(href))) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
             // Image placeholder for missing images
             const images = document.querySelectorAll('img[data-check-image="true"]');
             images.forEach(img => {
