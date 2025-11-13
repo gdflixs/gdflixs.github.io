@@ -3,7 +3,7 @@ layout: post
 title: "SEO Best Practices for Jekyll Blogs"
 date: 2025-11-14 14:30:00 +0000
 author: "Your Name"
-categories: [SEO, Tutorial]
+categories: [SEO, Tutorial,News]
 tags: [seo, jekyll, optimization, search-engines]
 image: "/assets/images/posts/seo.jpg"
 image_alt: "SEO optimization illustration"

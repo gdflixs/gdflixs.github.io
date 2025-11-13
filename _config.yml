@@ -32,9 +32,6 @@ collections:
   posts:
     output: true
     permalink: /:title/
-  pages:
-    output: true
-    permalink: /:collection/:name/
 
 # Plugins
 plugins:
@@ -42,6 +39,10 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-paginate
+
+# Include directories
+include:
+  - _pages
 
 # Exclude from processing
 exclude:
