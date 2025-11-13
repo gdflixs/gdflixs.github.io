@@ -2,79 +2,86 @@
 layout: default
 ---
 
-<article style="padding: 40px 30px; width: 100%;" itemscope itemtype="https://schema.org/BlogPosting">
-    <header style="margin-bottom: 40px; padding-bottom: 30px; border-bottom: 2px solid #f0f0f0;">
-        <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 20px; color: #333;" itemprop="headline">{{ page.title }}</h1>
-
-        <div style="display: flex; flex-wrap: wrap; gap: 25px; color: #666; font-size: 0.95rem; margin-bottom: 20px;">
-            <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished" style="display: flex; align-items: center; gap: 8px;">
+<!-- Page Header -->
+<div class="bg-gradient-to-r from-purple-600 to-purple-800 text-white py-12 w-full">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-5xl font-bold mb-4" itemprop="headline">{{ page.title }}</h1>
+        <div class="flex flex-wrap gap-6 text-gray-100 text-sm">
+            <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished" class="flex items-center gap-2">
                 📅 {{ page.date | date: "%B %d, %Y" }}
             </time>
-
             {% if page.author %}
-            <span itemprop="author" itemscope itemtype="https://schema.org/Person" style="display: flex; align-items: center; gap: 8px;">
+            <span itemprop="author" itemscope itemtype="https://schema.org/Person" class="flex items-center gap-2">
                 👤 <span itemprop="name">{{ page.author }}</span>
             </span>
             {% endif %}
-
             {% if page.reading_time %}
-            <span style="display: flex; align-items: center; gap: 8px;">
+            <span class="flex items-center gap-2">
                 ⏱️ {{ page.reading_time }} min read
             </span>
             {% endif %}
         </div>
-
-        {% if page.tags %}
-        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-            {% for tag in page.tags %}
-            <a href="{{ '/tags' | relative_url }}#{{ tag | slugify }}" style="display: inline-block; background: #f0f0f0; color: #667eea; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='#667eea'; this.style.color='white';" onmouseout="this.style.background='#f0f0f0'; this.style.color='#667eea';">{{ tag }}</a>
-            {% endfor %}
-        </div>
-        {% endif %}
-    </header>
-
-    <figure style="margin-bottom: 40px;">
-        {% if page.image %}
-        <img src="{{ page.image }}" alt="{{ page.title }}" itemprop="image" style="width: 100%; max-height: 500px; object-fit: cover; border-radius: 12px; box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);" data-check-image="true">
-        {% else %}
-        <img src="{{ '/assets/images/placeholder.svg' | relative_url }}" alt="No image available" style="width: 100%; max-height: 500px; object-fit: cover; border-radius: 12px; box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);">
-        {% endif %}
-        {% if page.image_alt %}
-        <figcaption style="text-align: center; color: #666; font-size: 0.9rem; margin-top: 12px;">{{ page.image_alt }}</figcaption>
-        {% endif %}
-    </figure>
-
-    <div style="font-size: 1.05rem; line-height: 1.8; color: #333; margin-bottom: 40px;" itemprop="articleBody">
-        {{ content }}
     </div>
+</div>
 
-    {% if page.categories %}
-    <footer style="border-top: 2px solid #f0f0f0; padding-top: 20px; margin-bottom: 40px;">
-        <div style="color: #333;">
-            <strong>Categories:</strong>
-            {% for category in page.categories %}
-            <a href="{{ '/categories' | relative_url }}#{{ category | slugify }}" style="color: #667eea; text-decoration: none; transition: color 0.3s ease; margin-left: 8px;" onmouseover="this.style.color='#764ba2';" onmouseout="this.style.color='#667eea';">{{ category }}</a>
-            {% unless forloop.last %}<span style="color: #999;">,</span>{% endunless %}
+<!-- Article Content -->
+<article class="py-12 w-full" itemscope itemtype="https://schema.org/BlogPosting">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+        <!-- Tags -->
+        {% if page.tags %}
+        <div class="flex flex-wrap gap-3 mb-8">
+            {% for tag in page.tags %}
+            <a href="{{ '/tags' | relative_url }}#{{ tag | slugify }}" class="inline-block bg-gray-100 text-purple-600 px-4 py-2 rounded-full text-sm hover:bg-purple-600 hover:text-white transition-all">{{ tag }}</a>
             {% endfor %}
         </div>
-    </footer>
-    {% endif %}
+        {% endif %}
 
-    <!-- Related Posts -->
-    {% if site.posts.size > 1 %}
-    <section style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%); padding: 35px; border-radius: 12px; margin-bottom: 40px; border-left: 5px solid #667eea;">
-        <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 25px; color: #333;">Related Posts</h3>
-        <ul style="list-style: none;">
-            {% assign current_post = page %}
-            {% for post in site.posts limit: 3 %}
-                {% unless post.url == current_post.url %}
-                <li style="margin-bottom: 15px;">
-                    <a href="{{ post.url | relative_url }}" style="color: #667eea; text-decoration: none; font-weight: 500; font-size: 1rem; transition: all 0.3s ease;" onmouseover="this.style.color='#764ba2'; this.style.textDecoration='underline';" onmouseout="this.style.color='#667eea'; this.style.textDecoration='none';">{{ post.title }}</a>
-                </li>
-                {% endunless %}
-            {% endfor %}
-        </ul>
-    </section>
-    {% endif %}
+        <!-- Featured Image -->
+        <figure class="mb-12">
+            {% if page.image %}
+            <img src="{{ page.image }}" alt="{{ page.title }}" itemprop="image" class="w-full max-h-96 object-cover rounded-lg shadow-lg" data-check-image="true">
+            {% else %}
+            <img src="{{ '/assets/images/placeholder.svg' | relative_url }}" alt="No image available" class="w-full max-h-96 object-cover rounded-lg shadow-lg">
+            {% endif %}
+            {% if page.image_alt %}
+            <figcaption class="text-center text-gray-600 text-sm mt-4">{{ page.image_alt }}</figcaption>
+            {% endif %}
+        </figure>
+
+        <!-- Article Body -->
+        <div class="prose prose-lg max-w-none mb-12 text-gray-700 leading-relaxed" itemprop="articleBody">
+            {{ content }}
+        </div>
+
+        <!-- Categories -->
+        {% if page.categories %}
+        <footer class="border-t-2 border-gray-200 pt-6 mb-12">
+            <div class="text-gray-700">
+                <strong class="text-gray-900">Categories:</strong>
+                {% for category in page.categories %}
+                <a href="{{ '/categories' | relative_url }}#{{ category | slugify }}" class="text-purple-600 hover:text-purple-800 transition-colors ml-2">{{ category }}</a>
+                {% unless forloop.last %}<span class="text-gray-400">,</span>{% endunless %}
+                {% endfor %}
+            </div>
+        </footer>
+        {% endif %}
+
+        <!-- Related Posts -->
+        {% if site.posts.size > 1 %}
+        <section class="bg-gradient-to-r from-purple-50 to-purple-100 p-8 rounded-lg mb-12 border-l-4 border-purple-600">
+            <h3 class="text-2xl font-bold mb-6 text-gray-900">Related Posts</h3>
+            <ul class="space-y-4">
+                {% assign current_post = page %}
+                {% for post in site.posts limit: 3 %}
+                    {% unless post.url == current_post.url %}
+                    <li>
+                        <a href="{{ post.url | relative_url }}" class="text-purple-600 hover:text-purple-800 font-semibold transition-colors hover:underline">{{ post.title }}</a>
+                    </li>
+                    {% endunless %}
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+    </div>
 </article>
 
