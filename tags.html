@@ -17,7 +17,7 @@ permalink: /tags/
 <!-- Tags Content Section -->
 <section class="py-16 w-full" aria-label="Tags listing" itemscope itemtype="https://schema.org/CollectionPage">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex gap-8 flex-wrap lg:flex-row flex-col">
+        <div class="flex gap-8 flex-wrap md:flex-row flex-col">
             <div class="flex-1 min-w-0">
                 <div class="tags-page">
                     {% assign tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
