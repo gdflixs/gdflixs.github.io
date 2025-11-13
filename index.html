@@ -6,68 +6,62 @@ description: Welcome to GDFLIXs
 
 <!-- Hero Section -->
 <section class="hero-section">
-    <div class="max-w-7xl mx-auto">
-        <h1>{{ site.title }}</h1>
-        <p>{{ site.description }}</p>
-        <a href="{{ '/blog/' | relative_url }}" class="btn btn-primary">Explore Blog</a>
-    </div>
+    <h1>{{ site.title }}</h1>
+    <p>{{ site.description }}</p>
+    <a href="{{ '/blog' | relative_url }}" class="btn btn-primary">Explore Blog</a>
 </section>
 
 <!-- Featured Posts Section -->
-<section style="padding: 60px 20px; background: #f8f9fa;">
-    <div class="max-w-7xl mx-auto">
-        <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 40px; text-align: center; color: #333;">Latest Posts</h2>
+<section style="padding: 80px 30px; background: #f8f9fa; width: 100%;">
+    <h2 style="font-size: 2.8rem; font-weight: 700; margin-bottom: 50px; text-align: center; color: #333;">Latest Posts</h2>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px;">
-            {% for post in site.posts limit: 6 %}
-            <article class="card">
-                <div style="width: 100%; height: 200px; overflow: hidden;">
-                    {% if post.image %}
-                    <img src="{{ post.image }}" alt="{{ post.title }}" class="card-image" loading="lazy">
-                    {% else %}
-                    <img src="{{ '/assets/images/placeholder.svg' | relative_url }}" alt="No image available" class="card-image">
-                    {% endif %}
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 35px; width: 100%;">
+        {% for post in site.posts limit: 6 %}
+        <article class="card">
+            <div style="width: 100%; height: 250px; overflow: hidden;">
+                {% if post.image %}
+                <img src="{{ post.image }}" alt="{{ post.title }}" class="card-image" loading="lazy" data-check-image="true">
+                {% else %}
+                <img src="{{ '/assets/images/placeholder.svg' | relative_url }}" alt="No image available" class="card-image">
+                {% endif %}
+            </div>
+
+            <div class="card-body">
+                <h3 class="card-title"><a href="{{ post.url | relative_url }}" style="color: #333; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#333';">{{ post.title }}</a></h3>
+
+                <div class="card-meta">
+                    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
+                    {% if post.reading_time %}<span style="margin-left: 15px;">{{ post.reading_time }} min read</span>{% endif %}
                 </div>
 
-                <div class="card-body">
-                    <h3 class="card-title"><a href="{{ post.url | relative_url }}" style="color: #333; text-decoration: none;">{{ post.title }}</a></h3>
+                <p class="card-text">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
 
-                    <div class="card-meta">
-                        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
-                        {% if post.reading_time %}<span style="margin-left: 15px;">{{ post.reading_time }} min read</span>{% endif %}
-                    </div>
-
-                    <p class="card-text">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-
-                    {% if post.tags %}
-                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px;">
-                        {% for tag in post.tags limit: 3 %}
-                        <span style="display: inline-block; background: #f0f0f0; color: #667eea; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem;">{{ tag }}</span>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-
-                    <a href="{{ post.url | relative_url }}" style="color: #667eea; text-decoration: none; font-weight: 600; font-size: 0.9rem;">Read More →</a>
+                {% if post.tags %}
+                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px;">
+                    {% for tag in post.tags limit: 3 %}
+                    <span style="display: inline-block; background: #f0f0f0; color: #667eea; padding: 5px 10px; border-radius: 4px; font-size: 0.8rem;">{{ tag }}</span>
+                    {% endfor %}
                 </div>
-            </article>
-            {% endfor %}
-        </div>
+                {% endif %}
 
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="{{ '/blog/' | relative_url }}" class="btn btn-primary">View All Posts</a>
-        </div>
+                <a href="{{ post.url | relative_url }}" style="color: #667eea; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#764ba2';" onmouseout="this.style.color='#667eea';">Read More →</a>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+
+    <div style="text-align: center; margin-top: 50px;">
+        <a href="{{ '/blog' | relative_url }}" class="btn btn-primary">View All Posts</a>
     </div>
 </section>
 
 <!-- CTA Section -->
-<section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 60px 20px; text-align: center;">
-    <div class="max-w-3xl mx-auto">
-        <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px;">Stay Updated</h2>
-        <p style="font-size: 1.1rem; margin-bottom: 30px; opacity: 0.95;">Subscribe to get the latest posts delivered to your inbox</p>
-        <form style="display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 0 auto;">
-            <input type="email" placeholder="Enter your email" style="padding: 12px 16px; border: none; border-radius: 6px; font-size: 1rem; outline: none;" required>
-            <button type="submit" class="btn btn-primary" style="background: white; color: #667eea; border: none;">Subscribe Now</button>
-        </form>
-    </div>
+<section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 80px 30px; text-align: center; width: 100%;">
+    <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;">Stay Updated</h2>
+    <p style="font-size: 1.2rem; margin-bottom: 40px; opacity: 0.95;">Subscribe to get the latest posts delivered to your inbox</p>
+    <form style="display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 450px; margin: 0 auto;">
+        <input type="email" placeholder="Enter your email" style="padding: 14px 18px; border: none; border-radius: 8px; font-size: 1rem; outline: none; background: white; color: #333;" required>
+        <button type="submit" class="btn btn-primary" style="background: white; color: #667eea; border: none; font-weight: 700;">Subscribe Now</button>
+    </form>
 </section>
 

@@ -33,8 +33,8 @@
     <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
     <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <!-- Custom Styles -->
     <style>
@@ -42,6 +42,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
         }
 
         body {
@@ -52,15 +57,29 @@
         }
 
         /* Mobile Menu */
-        #navbar-menu {
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            z-index: 999;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
         }
 
-        #navbar-menu.active {
+        .mobile-menu.active {
             max-height: 500px;
             transition: max-height 0.3s ease-in;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
         }
 
         /* Image Placeholder */
@@ -86,52 +105,53 @@
         .hero-section {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 60px 20px;
+            padding: 80px 40px;
             text-align: center;
+            width: 100%;
         }
 
         .hero-section h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 20px;
             line-height: 1.2;
         }
 
         .hero-section p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+            font-size: 1.3rem;
+            margin-bottom: 40px;
             opacity: 0.95;
         }
 
         /* Cards */
         .card {
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
             overflow: hidden;
             transition: all 0.3s ease;
         }
 
         .card:hover {
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
+            transform: translateY(-8px);
         }
 
         .card-image {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
-            background: #f0f0f0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
         .card-body {
-            padding: 20px;
+            padding: 25px;
         }
 
         .card-title {
-            font-size: 1.25rem;
+            font-size: 1.35rem;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             color: #333;
         }
 
@@ -151,13 +171,14 @@
         /* Buttons */
         .btn {
             display: inline-block;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 500;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
             text-decoration: none;
             cursor: pointer;
             border: none;
             transition: all 0.3s ease;
+            font-size: 1rem;
         }
 
         .btn-primary {
@@ -166,8 +187,8 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
         }
 
         .btn-secondary {
@@ -177,6 +198,7 @@
 
         .btn-secondary:hover {
             background: #e0e0e0;
+            transform: translateY(-2px);
         }
 
         /* Animated Background Shapes */
@@ -225,12 +247,16 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .hero-section {
+                padding: 50px 20px;
+            }
+
             .hero-section h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .hero-section p {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
 
             .card {
@@ -240,6 +266,10 @@
             .btn {
                 width: 100%;
                 text-align: center;
+            }
+
+            .card-image {
+                height: 200px;
             }
         }
     </style>
@@ -271,7 +301,7 @@
 <body>
     {% include header.html %}
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main style="width: 100%; padding: 40px 20px;">
         {{ content }}
     </main>
 
@@ -293,41 +323,43 @@
     <!-- Mobile Menu Toggle Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const navbarToggle = document.getElementById('navbar-toggle');
-            const navbarMenu = document.getElementById('navbar-menu');
+            // Mobile Menu Toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
 
-            if (navbarToggle && navbarMenu) {
-                navbarToggle.addEventListener('click', function() {
-                    navbarMenu.classList.toggle('active');
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    mobileMenu.classList.toggle('active');
                 });
 
                 // Close menu when a link is clicked
-                const navLinks = navbarMenu.querySelectorAll('a');
-                navLinks.forEach(link => {
+                const menuLinks = mobileMenu.querySelectorAll('a');
+                menuLinks.forEach(link => {
                     link.addEventListener('click', function() {
-                        navbarMenu.classList.remove('active');
+                        mobileMenu.classList.remove('active');
                     });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                        mobileMenu.classList.remove('active');
+                    }
                 });
             }
 
             // Image placeholder for missing images
-            const images = document.querySelectorAll('img');
+            const images = document.querySelectorAll('img[data-check-image="true"]');
             images.forEach(img => {
-                // Check if image exists
                 const checkImage = new Image();
                 checkImage.onload = function() {
-                    // Image exists, do nothing
+                    // Image exists
                 };
                 checkImage.onerror = function() {
-                    // Image doesn't exist, replace with placeholder
-                    const placeholder = document.createElement('img');
-                    placeholder.src = '{{ "/assets/images/placeholder.svg" | relative_url }}';
-                    placeholder.alt = 'No image available';
-                    placeholder.style.width = '100%';
-                    placeholder.style.height = '100%';
-                    placeholder.style.objectFit = 'cover';
-                    placeholder.className = 'card-image';
-                    img.parentNode.replaceChild(placeholder, img);
+                    // Replace with placeholder
+                    img.src = '{{ "/assets/images/placeholder.svg" | relative_url }}';
+                    img.alt = 'No image available';
                 };
                 checkImage.src = img.src;
             });

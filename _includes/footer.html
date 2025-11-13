@@ -1,50 +1,48 @@
-<footer class="bg-gray-900 text-white" role="contentinfo">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <!-- About Section -->
-            <div>
-                <h3 class="text-lg font-bold mb-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{{ site.title }}</h3>
-                <p class="text-gray-400 text-sm">{{ site.description }}</p>
-            </div>
-
-            <!-- Quick Links -->
-            <div>
-                <h3 class="text-lg font-bold mb-4 text-white">Quick Links</h3>
-                <ul class="space-y-2">
-                    <li><a href="{{ '/' | relative_url }}" class="text-gray-400 hover:text-purple-400 transition text-sm">Home</a></li>
-                    <li><a href="{{ '/blog/' | relative_url }}" class="text-gray-400 hover:text-purple-400 transition text-sm">Blog</a></li>
-                    <li><a href="{{ '/about' | relative_url }}" class="text-gray-400 hover:text-purple-400 transition text-sm">About</a></li>
-                    <li><a href="{{ '/contact' | relative_url }}" class="text-gray-400 hover:text-purple-400 transition text-sm">Contact</a></li>
-                </ul>
-            </div>
-
-            <!-- Categories -->
-            <div>
-                <h3 class="text-lg font-bold mb-4 text-white">Categories</h3>
-                <ul class="space-y-2">
-                    <li><a href="{{ '/tags/' | relative_url }}" class="text-gray-400 hover:text-purple-400 transition text-sm">Tags</a></li>
-                    <li><a href="{{ '/categories/' | relative_url }}" class="text-gray-400 hover:text-purple-400 transition text-sm">Categories</a></li>
-                    <li><a href="{{ '/feed.xml' | relative_url }}" class="text-gray-400 hover:text-purple-400 transition text-sm">RSS Feed</a></li>
-                </ul>
-            </div>
-
-            <!-- Follow -->
-            <div>
-                <h3 class="text-lg font-bold mb-4 text-white">Follow</h3>
-                <ul class="space-y-2">
-                    {% if site.twitter_username %}
-                    <li><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-purple-400 transition text-sm">Twitter</a></li>
-                    {% endif %}
-                    {% if site.github_username %}
-                    <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-purple-400 transition text-sm">GitHub</a></li>
-                    {% endif %}
-                </ul>
-            </div>
+<footer style="background: #1a1a1a; color: white; width: 100%; padding: 50px 30px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; width: 100%;">
+        <!-- About Section -->
+        <div>
+            <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{{ site.title }}</h3>
+            <p style="color: #aaa; font-size: 0.95rem; line-height: 1.6;">{{ site.description }}</p>
         </div>
 
-        <div class="border-t border-gray-700 pt-8 text-center text-gray-400 text-sm">
-            <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}. All rights reserved. Powered by GitHub Pages.</p>
+        <!-- Quick Links -->
+        <div>
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; color: white;">Quick Links</h3>
+            <ul style="list-style: none;">
+                <li style="margin-bottom: 10px;"><a href="{{ '/' | relative_url }}" style="color: #aaa; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#aaa';">Home</a></li>
+                <li style="margin-bottom: 10px;"><a href="{{ '/blog' | relative_url }}" style="color: #aaa; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#aaa';">Blog</a></li>
+                <li style="margin-bottom: 10px;"><a href="{{ '/about' | relative_url }}" style="color: #aaa; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#aaa';">About</a></li>
+                <li style="margin-bottom: 10px;"><a href="{{ '/contact' | relative_url }}" style="color: #aaa; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#aaa';">Contact</a></li>
+            </ul>
         </div>
+
+        <!-- Categories -->
+        <div>
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; color: white;">Categories</h3>
+            <ul style="list-style: none;">
+                <li style="margin-bottom: 10px;"><a href="{{ '/tags' | relative_url }}" style="color: #aaa; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#aaa';">Tags</a></li>
+                <li style="margin-bottom: 10px;"><a href="{{ '/categories' | relative_url }}" style="color: #aaa; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#aaa';">Categories</a></li>
+                <li style="margin-bottom: 10px;"><a href="{{ '/feed.xml' | relative_url }}" style="color: #aaa; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#aaa';">RSS Feed</a></li>
+            </ul>
+        </div>
+
+        <!-- Follow -->
+        <div>
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; color: white;">Follow</h3>
+            <ul style="list-style: none;">
+                {% if site.twitter_username %}
+                <li style="margin-bottom: 10px;"><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener noreferrer" style="color: #aaa; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#aaa';">Twitter</a></li>
+                {% endif %}
+                {% if site.github_username %}
+                <li style="margin-bottom: 10px;"><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer" style="color: #aaa; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#aaa';">GitHub</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+    <div style="border-top: 1px solid #333; padding-top: 30px; text-align: center; color: #aaa; font-size: 0.9rem;">
+        <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
     </div>
 </footer>
 

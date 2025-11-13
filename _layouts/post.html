@@ -2,62 +2,59 @@
 layout: default
 ---
 
-<article class="max-w-3xl mx-auto" itemscope itemtype="https://schema.org/BlogPosting">
-    <header class="mb-8">
-        <h1 class="text-4xl font-bold mb-4" itemprop="headline">{{ page.title }}</h1>
+<article style="padding: 40px 30px; width: 100%;" itemscope itemtype="https://schema.org/BlogPosting">
+    <header style="margin-bottom: 40px; padding-bottom: 30px; border-bottom: 2px solid #f0f0f0;">
+        <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 20px; color: #333;" itemprop="headline">{{ page.title }}</h1>
 
-        <div class="flex flex-wrap gap-4 text-gray-600 text-sm mb-4">
-            <time class="flex items-center" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v2h16V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h12a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
-                {{ page.date | date: "%B %d, %Y" }}
+        <div style="display: flex; flex-wrap: wrap; gap: 25px; color: #666; font-size: 0.95rem; margin-bottom: 20px;">
+            <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished" style="display: flex; align-items: center; gap: 8px;">
+                📅 {{ page.date | date: "%B %d, %Y" }}
             </time>
 
             {% if page.author %}
-            <span class="flex items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
-                <span itemprop="name">{{ page.author }}</span>
+            <span itemprop="author" itemscope itemtype="https://schema.org/Person" style="display: flex; align-items: center; gap: 8px;">
+                👤 <span itemprop="name">{{ page.author }}</span>
             </span>
             {% endif %}
 
             {% if page.reading_time %}
-            <span class="flex items-center">
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5.951-1.488 5.951 1.488a1 1 0 001.169-1.409l-7-14z"></path></svg>
-                {{ page.reading_time }} min read
+            <span style="display: flex; align-items: center; gap: 8px;">
+                ⏱️ {{ page.reading_time }} min read
             </span>
             {% endif %}
         </div>
 
         {% if page.tags %}
-        <div class="flex flex-wrap gap-2">
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
             {% for tag in page.tags %}
-            <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" style="display: inline-block; background: #f0f0f0; color: #667eea; padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='#667eea'; this.style.color='white';" onmouseout="this.style.background='#f0f0f0'; this.style.color='#667eea';">{{ tag }}</a>
+            <a href="{{ '/tags' | relative_url }}#{{ tag | slugify }}" style="display: inline-block; background: #f0f0f0; color: #667eea; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='#667eea'; this.style.color='white';" onmouseout="this.style.background='#f0f0f0'; this.style.color='#667eea';">{{ tag }}</a>
             {% endfor %}
         </div>
         {% endif %}
     </header>
 
-    <figure class="mb-8">
+    <figure style="margin-bottom: 40px;">
         {% if page.image %}
-        <img src="{{ page.image }}" alt="{{ page.title }}" class="w-full rounded-lg shadow-lg" itemprop="image" style="max-height: 400px; object-fit: cover;">
+        <img src="{{ page.image }}" alt="{{ page.title }}" itemprop="image" style="width: 100%; max-height: 500px; object-fit: cover; border-radius: 12px; box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);" data-check-image="true">
         {% else %}
-        <img src="{{ '/assets/images/placeholder.svg' | relative_url }}" alt="No image available" class="w-full rounded-lg shadow-lg" style="max-height: 400px; object-fit: cover;">
+        <img src="{{ '/assets/images/placeholder.svg' | relative_url }}" alt="No image available" style="width: 100%; max-height: 500px; object-fit: cover; border-radius: 12px; box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);">
         {% endif %}
         {% if page.image_alt %}
-        <figcaption class="text-center text-gray-600 text-sm mt-2">{{ page.image_alt }}</figcaption>
+        <figcaption style="text-align: center; color: #666; font-size: 0.9rem; margin-top: 12px;">{{ page.image_alt }}</figcaption>
         {% endif %}
     </figure>
 
-    <div class="prose prose-lg max-w-none mb-8" itemprop="articleBody">
+    <div style="font-size: 1.05rem; line-height: 1.8; color: #333; margin-bottom: 40px;" itemprop="articleBody">
         {{ content }}
     </div>
 
     {% if page.categories %}
-    <footer class="border-t border-gray-200 pt-6 mb-8">
-        <div class="text-gray-700">
+    <footer style="border-top: 2px solid #f0f0f0; padding-top: 20px; margin-bottom: 40px;">
+        <div style="color: #333;">
             <strong>Categories:</strong>
             {% for category in page.categories %}
-            <a href="{{ '/categories/' | relative_url }}#{{ category | slugify }}" class="text-blue-600 hover:text-blue-800 transition">{{ category }}</a>
-            {% unless forloop.last %}, {% endunless %}
+            <a href="{{ '/categories' | relative_url }}#{{ category | slugify }}" style="color: #667eea; text-decoration: none; transition: color 0.3s ease; margin-left: 8px;" onmouseover="this.style.color='#764ba2';" onmouseout="this.style.color='#667eea';">{{ category }}</a>
+            {% unless forloop.last %}<span style="color: #999;">,</span>{% endunless %}
             {% endfor %}
         </div>
     </footer>
@@ -65,14 +62,14 @@ layout: default
 
     <!-- Related Posts -->
     {% if site.posts.size > 1 %}
-    <section style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%); padding: 30px; border-radius: 8px; margin-bottom: 30px; border-left: 4px solid #667eea;">
-        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 20px; color: #333;">Related Posts</h3>
+    <section style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%); padding: 35px; border-radius: 12px; margin-bottom: 40px; border-left: 5px solid #667eea;">
+        <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 25px; color: #333;">Related Posts</h3>
         <ul style="list-style: none;">
             {% assign current_post = page %}
             {% for post in site.posts limit: 3 %}
                 {% unless post.url == current_post.url %}
-                <li style="margin-bottom: 12px;">
-                    <a href="{{ post.url | relative_url }}" style="color: #667eea; text-decoration: none; font-weight: 500; transition: all 0.3s ease;" onmouseover="this.style.color='#764ba2'; this.style.textDecoration='underline';" onmouseout="this.style.color='#667eea'; this.style.textDecoration='none';">{{ post.title }}</a>
+                <li style="margin-bottom: 15px;">
+                    <a href="{{ post.url | relative_url }}" style="color: #667eea; text-decoration: none; font-weight: 500; font-size: 1rem; transition: all 0.3s ease;" onmouseover="this.style.color='#764ba2'; this.style.textDecoration='underline';" onmouseout="this.style.color='#667eea'; this.style.textDecoration='none';">{{ post.title }}</a>
                 </li>
                 {% endunless %}
             {% endfor %}
@@ -80,10 +77,4 @@ layout: default
     </section>
     {% endif %}
 </article>
-
-<!-- Comments Section (optional) -->
-<section class="max-w-3xl mx-auto mt-12 pt-8 border-t border-gray-200">
-    <h3 class="text-2xl font-bold mb-6">Comments</h3>
-    <!-- Add Disqus, Utterances, or other comment system here -->
-</section>
 
