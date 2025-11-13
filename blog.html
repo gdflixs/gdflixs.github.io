@@ -18,45 +18,46 @@ permalink: /blog/
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <main class="w-full">
             {% if site.posts.size > 0 %}
-                <div class="space-y-8">
+                <ul class="space-y-4">
                 {% for post in site.posts %}
-                <article class="card overflow-hidden hover:shadow-2xl transition-all">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
-                        <div class="md:col-span-1 h-64 md:h-auto overflow-hidden">
-                            {% if post.image %}
-                            <img src="{{ post.image }}" alt="{{ post.title }}" class="card-image w-full h-full object-cover" loading="lazy" data-check-image="true">
-                            {% else %}
-                            <img src="{{ '/assets/images/placeholder.svg' | relative_url }}" alt="No image available" class="card-image w-full h-full object-cover">
+                <li class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 p-5 bg-gray-50 rounded-lg hover:bg-purple-50 hover:shadow-md transition border-l-4 border-purple-600">
+                    <div class="flex-1">
+                        <a href="{{ post.url | relative_url }}" class="text-lg font-semibold text-gray-900 hover:text-purple-600 transition">{{ post.title }}</a>
+                        <p class="text-gray-600 text-sm mt-2">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+                        <div class="flex flex-wrap gap-4 mt-3 text-sm">
+                            <time datetime="{{ post.date | date_to_xmlschema }}" class="text-gray-600 flex items-center gap-1">
+                                <i data-lucide="calendar" style="width: 14px; height: 14px;"></i>
+                                {{ post.date | date: "%b %d, %Y" }}
+                            </time>
+                            {% if post.author %}
+                            <span class="text-gray-600 flex items-center gap-1">
+                                <i data-lucide="user" style="width: 14px; height: 14px;"></i>
+                                {{ post.author }}
+                            </span>
+                            {% endif %}
+                            {% if post.reading_time %}
+                            <span class="text-gray-600 flex items-center gap-1">
+                                <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+                                {{ post.reading_time }} min read
+                            </span>
                             {% endif %}
                         </div>
-                        <div class="md:col-span-2 card-body flex flex-col justify-between">
-                            <div>
-                                <h2 class="text-2xl font-bold mb-3"><a href="{{ post.url | relative_url }}" class="text-gray-900 hover:text-purple-600 transition-colors">{{ post.title }}</a></h2>
-                                <div class="card-meta mb-4 flex flex-wrap gap-4 text-gray-600">
-                                    <time datetime="{{ post.date | date_to_xmlschema }}" class="flex items-center gap-2">
-                                        <i data-lucide="calendar" style="width: 16px; height: 16px;"></i>
-                                        {{ post.date | date: "%B %d, %Y" }}
-                                    </time>
-                                    {% if post.author %}<span class="flex items-center gap-2"><i data-lucide="user" style="width: 16px; height: 16px;"></i> by {{ post.author }}</span>{% endif %}
-                                    {% if post.reading_time %}<span class="flex items-center gap-2"><i data-lucide="clock" style="width: 16px; height: 16px;"></i> {{ post.reading_time }} min read</span>{% endif %}
-                                </div>
-                                <p class="card-text mb-4">{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
-                                {% if post.tags %}
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    {% for tag in post.tags limit: 5 %}
-                                    <a href="{{ '/tags' | relative_url }}#{{ tag | slugify }}" class="inline-block bg-gray-100 text-purple-600 px-3 py-1 rounded text-sm hover:bg-purple-600 hover:text-white transition-all">{{ tag }}</a>
-                                    {% endfor %}
-                                </div>
-                                {% endif %}
-                            </div>
-                            <a href="{{ post.url | relative_url }}" class="text-purple-600 hover:text-purple-800 font-semibold transition-colors inline-block">Read Full Post →</a>
+                        {% if post.tags %}
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            {% for tag in post.tags limit: 3 %}
+                            <a href="{{ '/tags' | relative_url }}#{{ tag | slugify }}" class="inline-block bg-purple-100 text-purple-600 px-2 py-1 rounded text-xs hover:bg-purple-200 transition">{{ tag }}</a>
+                            {% endfor %}
                         </div>
+                        {% endif %}
                     </div>
-                </article>
+                </li>
                 {% endfor %}
-                </div>
+                </ul>
             {% else %}
-                <p class="text-center text-gray-600 py-16 text-lg">No posts yet. Check back soon!</p>
+                <div class="text-center py-16">
+                    <i data-lucide="inbox" class="text-gray-400 mx-auto mb-4" style="width: 64px; height: 64px;"></i>
+                    <p class="text-gray-600 text-lg">No posts yet. Check back soon!</p>
+                </div>
             {% endif %}
         </main>
     </div>

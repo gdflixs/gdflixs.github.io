@@ -23,7 +23,7 @@ social:
 # Build Settings
 markdown: kramdown
 highlighter: rouge
-permalink: /:year/:month/:day/:title/
+permalink: /:title/
 paginate: 10
 paginate_path: "/blog/page:num/"
 
@@ -31,7 +31,10 @@ paginate_path: "/blog/page:num/"
 collections:
   posts:
     output: true
-    permalink: /:collection/:year/:month/:day/:title/
+    permalink: /:title/
+  pages:
+    output: true
+    permalink: /:collection/:name/
 
 # Plugins
 plugins:
@@ -48,6 +51,7 @@ exclude:
   - Gemfile.lock
   - node_modules
   - vendor
+  - CATEGORY_TAG_PAGES_GUIDE.md
 
 # Timezone
 timezone: UTC
