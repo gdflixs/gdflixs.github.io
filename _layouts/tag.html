@@ -2,19 +2,19 @@
 layout: default
 ---
 
-<!-- Page Header -->
-<div class="bg-gradient-to-r from-purple-600 to-purple-800 text-white py-16 w-full">
+<!-- Page Header / Hero Section -->
+<header class="bg-gradient-to-r from-purple-600 to-purple-800 text-white py-16 w-full" role="banner" aria-label="Tag page header">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center gap-3 mb-4">
             <i data-lucide="tag" style="width: 40px; height: 40px;"></i>
-            <h1 class="text-5xl font-bold">{{ page.title }}</h1>
+            <h1 class="text-5xl font-bold" itemprop="name">{{ page.title }}</h1>
         </div>
         <p class="text-xl opacity-95">Posts tagged with this topic</p>
     </div>
-</div>
+</header>
 
-<!-- Tag Content -->
-<div class="py-16 w-full">
+<!-- Tag Content Section -->
+<section class="py-16 w-full" aria-label="Tag posts listing" itemscope itemtype="https://schema.org/CollectionPage">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Posts List -->
         <ul class="space-y-4">
@@ -73,5 +73,5 @@ layout: default
             </a>
         </div>
     </div>
-</div>
+</section>
 

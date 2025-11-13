@@ -179,6 +179,17 @@
 /* ============================================
    Sidebar Styles
    ============================================ */
+.sidebar-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.sidebar-container > div:first-child {
+    flex: 1;
+    min-width: 0;
+}
+
 .sidebar {
     width: 300px;
     flex-shrink: 0;
@@ -258,6 +269,10 @@
 
 /* Responsive sidebar */
 @media (max-width: 1024px) {
+    .sidebar-container {
+        flex-direction: column;
+    }
+
     .sidebar {
         width: 100%;
         flex-shrink: 0;

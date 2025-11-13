@@ -5,16 +5,16 @@ description: Welcome to GDFLIXs
 ---
 
 <!-- Hero Section -->
-<section class="hero-section">
-    <h1>{{ site.title }}</h1>
-    <p>{{ site.description }}</p>
-    <a href="{{ '/blog' | relative_url }}" class="btn btn-secondary">Explore Blog</a>
+<section class="hero-section" role="banner" aria-label="Welcome to GDFLIXs">
+    <h1 itemprop="headline">{{ site.title }}</h1>
+    <p itemprop="description">{{ site.description }}</p>
+    <a href="{{ '/blog' | relative_url }}" class="btn btn-secondary" aria-label="Explore our blog">Explore Blog</a>
 </section>
 
-<!-- Featured Posts Section with Sidebar -->
-<section class="py-20 bg-gray-50 w-full">
+<!-- Featured Posts Section -->
+<section class="py-20 bg-gray-50 w-full" aria-label="Latest blog posts">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex gap-8">
+        <div class="sidebar-container">
             <!-- Main Content -->
             <div class="flex-1">
                 <h2 class="text-4xl font-bold mb-12 text-center text-gray-900">Latest Posts</h2>
