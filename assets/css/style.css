@@ -9,7 +9,8 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
 }
@@ -21,13 +22,17 @@ body {
     background-color: #f8f9fa;
 }
 
+.main {
+    margin-top: 75px;
+}
+
 /* ============================================
    Mobile Menu Styles
    ============================================ */
 .mobile-menu {
     display: none;
     position: fixed;
-    top: 60px;
+    top: 75px;
     left: 0;
     right: 0;
     background: white;
@@ -40,6 +45,7 @@ body {
 
 .mobile-menu.active {
     max-height: 500px;
+    overflow-y: auto;
     transition: max-height 0.3s ease-in;
 }
 
@@ -68,13 +74,21 @@ body {
 /* ============================================
    Transitions & Animations
    ============================================ */
-a, button {
+a,
+button {
     transition: all 0.3s ease;
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(180deg); }
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+    }
 }
 
 /* ============================================
@@ -107,7 +121,7 @@ a, button {
 .card {
     background: white;
     border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     transition: all 0.3s ease;
 }
@@ -218,8 +232,15 @@ a:hover {
 
 /* Icon animations */
 @keyframes icon-bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
 }
 
 a:hover [data-lucide],
@@ -230,7 +251,9 @@ button:hover [data-lucide] {
 /* ============================================
    Form Styling
    ============================================ */
-input, textarea, select {
+input,
+textarea,
+select {
     border: 1px solid #e0e0e0;
     border-radius: 6px;
     padding: 10px 12px;
@@ -238,7 +261,9 @@ input, textarea, select {
     transition: all 0.3s ease;
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
     outline: none;
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
@@ -273,4 +298,3 @@ input:focus, textarea:focus, select:focus {
         height: 200px;
     }
 }
-
