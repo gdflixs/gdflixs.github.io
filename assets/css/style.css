@@ -179,10 +179,7 @@
 /* ============================================
    Sidebar Styles
    ============================================ */
-.sidebar-sticky {
-    position: sticky;
-    top: 90px;
-    height: fit-content;
+.sidebar {
     width: 300px;
     flex-shrink: 0;
 }
@@ -261,20 +258,10 @@
 
 /* Responsive sidebar */
 @media (max-width: 1024px) {
-    .sidebar-sticky {
-        display: none;
+    .sidebar {
+        width: 100%;
+        flex-shrink: 0;
     }
-
-    main {
-        flex-direction: column;
-    }
-}
-
-/* Main content wrapper */
-main {
-    display: flex;
-    gap: 2rem;
-    padding: 0 1rem;
 }
 
 html,

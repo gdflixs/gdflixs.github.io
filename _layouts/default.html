@@ -88,11 +88,8 @@
 <body>
     {% include header.html %}
 
-    <main class="flex gap-8">
-        <div class="flex-1">
-            {{ content }}
-        </div>
-        {% include sidebar.html %}
+    <main>
+        {{ content }}
     </main>
 
     {% include footer.html %}
