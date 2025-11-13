@@ -22,16 +22,31 @@ permalink: /tags/
             {% for tag in tags %}
                 {% if tag != "" %}
                 <section class="mb-16 pb-12 border-b border-gray-200 last:border-b-0" id="{{ tag | slugify }}">
-                    <h2 class="text-3xl font-bold mb-8 text-purple-600">{{ tag }}</h2>
+                    <div class="flex items-center gap-3 mb-8">
+                        <i data-lucide="tag" class="text-purple-600" style="width: 32px; height: 32px;"></i>
+                        <h2 class="text-3xl font-bold text-purple-600">{{ tag }}</h2>
+                    </div>
 
                     <ul class="space-y-4">
                         {% for post in site.posts %}
                             {% if post.tags contains tag %}
-                            <li class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 p-5 bg-gray-50 rounded-lg hover:bg-purple-50 hover:shadow-md transition">
-                                <a href="{{ post.url | relative_url }}" class="text-gray-900 font-semibold hover:text-purple-600 transition">{{ post.title }}</a>
-                                <time datetime="{{ post.date | date_to_xmlschema }}" class="text-gray-600 text-sm whitespace-nowrap">
-                                    {{ post.date | date: "%b %d, %Y" }}
-                                </time>
+                            <li class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 p-5 bg-gray-50 rounded-lg hover:bg-purple-50 hover:shadow-md transition border-l-4 border-purple-600">
+                                <div class="flex-1">
+                                    <a href="{{ post.url | relative_url }}" class="text-lg font-semibold text-gray-900 hover:text-purple-600 transition">{{ post.title }}</a>
+                                    <p class="text-gray-600 text-sm mt-2">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+                                    <div class="flex flex-wrap gap-4 mt-3 text-sm">
+                                        <time datetime="{{ post.date | date_to_xmlschema }}" class="text-gray-600 flex items-center gap-1">
+                                            <i data-lucide="calendar" style="width: 14px; height: 14px;"></i>
+                                            {{ post.date | date: "%b %d, %Y" }}
+                                        </time>
+                                        {% if post.reading_time %}
+                                        <span class="text-gray-600 flex items-center gap-1">
+                                            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+                                            {{ post.reading_time }} min read
+                                        </span>
+                                        {% endif %}
+                                    </div>
+                                </div>
                             </li>
                             {% endif %}
                         {% endfor %}

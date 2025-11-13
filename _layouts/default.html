@@ -6,10 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="google-site-verification" content="pZHT1msYeOAsxzz_y9SZW31R9PMhCgpc-1vq3Zt1IMw" />
     <!-- SEO Meta Tags -->
-    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | truncatewords: 20 }}{% else %}{{ site.description }}{% endif %}">
-    <meta name="keywords" content="{% if page.tags %}{{ page.tags | join: ', ' }}{% else %}{{ site.keywords }}{% endif %}">
+    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} - {{ site.description }}{% endif %}</title>
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | truncatewords: 25 }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="keywords" content="{% if page.tags %}{{ page.tags | join: ', ' }}, {% endif %}{% if page.categories %}{{ page.categories | join: ', ' }}, {% endif %}{{ site.keywords }}">
     <meta name="author" content="{% if page.author %}{{ page.author }}{% else %}{{ site.author }}{% endif %}">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     
     <!-- Open Graph Tags (Social Media) -->
     <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
@@ -53,15 +57,27 @@
         "name": "{{ site.title }}",
         "description": "{{ site.description }}",
         "url": "{{ site.url }}",
+        "image": "{{ '/assets/images/og-image.png' | absolute_url }}",
         "author": {
             "@type": "Person",
             "name": "{{ site.author }}",
             "email": "{{ site.email }}"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "{{ site.title }}",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{{ '/assets/images/favicon.png' | absolute_url }}"
+            }
         }
         {% if page.layout == 'post' %},
         "headline": "{{ page.title }}",
         "datePublished": "{{ page.date | date_to_xmlschema }}",
-        "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}"
+        "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+        "image": "{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ '/assets/images/og-image.png' | absolute_url }}{% endif %}",
+        "articleBody": "{{ page.content | strip_html | truncatewords: 100 }}",
+        "keywords": "{% if page.tags %}{{ page.tags | join: ', ' }}{% endif %}"
         {% endif %}
     }
     </script>

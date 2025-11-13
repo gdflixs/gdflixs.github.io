@@ -22,46 +22,35 @@ permalink: /categories/
             {% for category in categories %}
                 {% if category != "" %}
                 <section class="mb-16 pb-12 border-b border-gray-200 last:border-b-0" id="{{ category | slugify }}">
-                    <h2 class="text-4xl font-bold mb-10 text-purple-600">{{ category }}</h2>
+                    <div class="flex items-center gap-3 mb-8">
+                        <i data-lucide="folder" class="text-purple-600" style="width: 32px; height: 32px;"></i>
+                        <h2 class="text-3xl font-bold text-purple-600">{{ category }}</h2>
+                    </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <ul class="space-y-4">
                         {% for post in site.posts %}
                             {% if post.categories contains category %}
-                            <article class="card">
-                                {% if post.image %}
-                                <div class="h-48 overflow-hidden">
-                                    <img src="{{ post.image }}" alt="{{ post.title }}" class="w-full h-full object-cover" loading="lazy" data-check-image="true">
-                                </div>
-                                {% else %}
-                                <div class="h-48 overflow-hidden">
-                                    <img src="{{ '/assets/images/placeholder.svg' | relative_url }}" alt="No image available" class="w-full h-full object-cover">
-                                </div>
-                                {% endif %}
-
-                                <div class="card-body">
-                                    <h3 class="card-title"><a href="{{ post.url | relative_url }}" class="text-gray-900 hover:text-purple-600 transition-colors">{{ post.title }}</a></h3>
-
-                                    <div class="card-meta flex flex-wrap gap-4 mb-3">
-                                        <time datetime="{{ post.date | date_to_xmlschema }}" class="text-gray-600 flex items-center gap-2">
-                                            <i data-lucide="calendar" style="width: 16px; height: 16px;"></i>
+                            <li class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 p-5 bg-gray-50 rounded-lg hover:bg-purple-50 hover:shadow-md transition border-l-4 border-purple-600">
+                                <div class="flex-1">
+                                    <a href="{{ post.url | relative_url }}" class="text-lg font-semibold text-gray-900 hover:text-purple-600 transition">{{ post.title }}</a>
+                                    <p class="text-gray-600 text-sm mt-2">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+                                    <div class="flex flex-wrap gap-4 mt-3 text-sm">
+                                        <time datetime="{{ post.date | date_to_xmlschema }}" class="text-gray-600 flex items-center gap-1">
+                                            <i data-lucide="calendar" style="width: 14px; height: 14px;"></i>
                                             {{ post.date | date: "%b %d, %Y" }}
                                         </time>
                                         {% if post.reading_time %}
-                                        <span class="text-gray-600 flex items-center gap-2">
-                                            <i data-lucide="clock" style="width: 16px; height: 16px;"></i>
+                                        <span class="text-gray-600 flex items-center gap-1">
+                                            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
                                             {{ post.reading_time }} min read
                                         </span>
                                         {% endif %}
                                     </div>
-
-                                    <p class="card-text">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-
-                                    <a href="{{ post.url | relative_url }}" class="text-purple-600 hover:text-purple-800 font-semibold text-sm transition-colors">Read More →</a>
                                 </div>
-                            </article>
+                            </li>
                             {% endif %}
                         {% endfor %}
-                    </div>
+                    </ul>
                 </section>
                 {% endif %}
             {% endfor %}
