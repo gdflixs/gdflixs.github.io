@@ -136,6 +136,7 @@
                     // Replace with placeholder
                     img.src = '{{ "/assets/images/placeholder.svg" | relative_url }}';
                     img.alt = 'No image available';
+                    img.classList.add('image-placeholder');
                 };
                 checkImage.src = img.src;
             });
