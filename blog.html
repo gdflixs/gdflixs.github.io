@@ -33,9 +33,12 @@ permalink: /blog/
                             <div>
                                 <h2 class="text-2xl font-bold mb-3"><a href="{{ post.url | relative_url }}" class="text-gray-900 hover:text-purple-600 transition-colors">{{ post.title }}</a></h2>
                                 <div class="card-meta mb-4 flex flex-wrap gap-4 text-gray-600">
-                                    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
-                                    {% if post.author %}<span>by {{ post.author }}</span>{% endif %}
-                                    {% if post.reading_time %}<span>{{ post.reading_time }} min read</span>{% endif %}
+                                    <time datetime="{{ post.date | date_to_xmlschema }}" class="flex items-center gap-2">
+                                        <i data-lucide="calendar" style="width: 16px; height: 16px;"></i>
+                                        {{ post.date | date: "%B %d, %Y" }}
+                                    </time>
+                                    {% if post.author %}<span class="flex items-center gap-2"><i data-lucide="user" style="width: 16px; height: 16px;"></i> by {{ post.author }}</span>{% endif %}
+                                    {% if post.reading_time %}<span class="flex items-center gap-2"><i data-lucide="clock" style="width: 16px; height: 16px;"></i> {{ post.reading_time }} min read</span>{% endif %}
                                 </div>
                                 <p class="card-text mb-4">{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
                                 {% if post.tags %}

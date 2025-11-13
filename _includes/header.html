@@ -7,26 +7,48 @@
 
         <!-- Desktop Menu -->
         <nav style="display: flex; gap: 40px; align-items: center;">
-            <a href="{{ '/' | relative_url }}" style="text-decoration: none; color: #333; font-weight: 500; font-size: 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#333';">Home</a>
-            <a href="{{ '/blog' | relative_url }}" style="text-decoration: none; color: #333; font-weight: 500; font-size: 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#333';">Blog</a>
-            <a href="{{ '/about' | relative_url }}" style="text-decoration: none; color: #333; font-weight: 500; font-size: 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#333';">About</a>
-            <a href="{{ '/contact' | relative_url }}" style="text-decoration: none; color: #333; font-weight: 500; font-size: 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#333';">Contact</a>
+            <a href="{{ '/' | relative_url }}" class="flex items-center gap-2 text-gray-700 hover:text-purple-600 font-medium transition-colors" style="text-decoration: none;">
+                <i data-lucide="home" style="width: 20px; height: 20px;"></i>
+                <span>Home</span>
+            </a>
+            <a href="{{ '/blog' | relative_url }}" class="flex items-center gap-2 text-gray-700 hover:text-purple-600 font-medium transition-colors" style="text-decoration: none;">
+                <i data-lucide="book-open" style="width: 20px; height: 20px;"></i>
+                <span>Blog</span>
+            </a>
+            <a href="{{ '/about' | relative_url }}" class="flex items-center gap-2 text-gray-700 hover:text-purple-600 font-medium transition-colors" style="text-decoration: none;">
+                <i data-lucide="user" style="width: 20px; height: 20px;"></i>
+                <span>About</span>
+            </a>
+            <a href="{{ '/contact' | relative_url }}" class="flex items-center gap-2 text-gray-700 hover:text-purple-600 font-medium transition-colors" style="text-decoration: none;">
+                <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
+                <span>Contact</span>
+            </a>
         </nav>
 
         <!-- Mobile Menu Button -->
-        <button id="menu-toggle" style="display: none; flex-direction: column; gap: 6px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001;">
-            <span style="width: 28px; height: 3px; background: #333; border-radius: 2px; transition: all 0.3s ease;"></span>
-            <span style="width: 28px; height: 3px; background: #333; border-radius: 2px; transition: all 0.3s ease;"></span>
-            <span style="width: 28px; height: 3px; background: #333; border-radius: 2px; transition: all 0.3s ease;"></span>
+        <button id="menu-toggle" style="display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001;">
+            <i data-lucide="menu" style="width: 28px; height: 28px; color: #333;"></i>
         </button>
     </div>
 
     <!-- Mobile Menu -->
     <nav class="mobile-menu" style="padding: 0;">
-        <a href="{{ '/' | relative_url }}" style="display: block; padding: 16px 30px; text-decoration: none; color: #333; font-weight: 500; border-bottom: 1px solid #f0f0f0; transition: background 0.3s ease;" onmouseover="this.style.background='#f8f9fa';" onmouseout="this.style.background='transparent';">Home</a>
-        <a href="{{ '/blog' | relative_url }}" style="display: block; padding: 16px 30px; text-decoration: none; color: #333; font-weight: 500; border-bottom: 1px solid #f0f0f0; transition: background 0.3s ease;" onmouseover="this.style.background='#f8f9fa';" onmouseout="this.style.background='transparent';">Blog</a>
-        <a href="{{ '/about' | relative_url }}" style="display: block; padding: 16px 30px; text-decoration: none; color: #333; font-weight: 500; border-bottom: 1px solid #f0f0f0; transition: background 0.3s ease;" onmouseover="this.style.background='#f8f9fa';" onmouseout="this.style.background='transparent';">About</a>
-        <a href="{{ '/contact' | relative_url }}" style="display: block; padding: 16px 30px; text-decoration: none; color: #333; font-weight: 500; border-bottom: 1px solid #f0f0f0; transition: background 0.3s ease;" onmouseover="this.style.background='#f8f9fa';" onmouseout="this.style.background='transparent';">Contact</a>
+        <a href="{{ '/' | relative_url }}" class="flex items-center gap-3 px-6 py-4 text-gray-700 hover:text-purple-600 font-medium border-b border-gray-100 hover:bg-gray-50 transition-all" style="text-decoration: none;">
+            <i data-lucide="home" style="width: 20px; height: 20px;"></i>
+            <span>Home</span>
+        </a>
+        <a href="{{ '/blog' | relative_url }}" class="flex items-center gap-3 px-6 py-4 text-gray-700 hover:text-purple-600 font-medium border-b border-gray-100 hover:bg-gray-50 transition-all" style="text-decoration: none;">
+            <i data-lucide="book-open" style="width: 20px; height: 20px;"></i>
+            <span>Blog</span>
+        </a>
+        <a href="{{ '/about' | relative_url }}" class="flex items-center gap-3 px-6 py-4 text-gray-700 hover:text-purple-600 font-medium border-b border-gray-100 hover:bg-gray-50 transition-all" style="text-decoration: none;">
+            <i data-lucide="user" style="width: 20px; height: 20px;"></i>
+            <span>About</span>
+        </a>
+        <a href="{{ '/contact' | relative_url }}" class="flex items-center gap-3 px-6 py-4 text-gray-700 hover:text-purple-600 font-medium border-b border-gray-100 hover:bg-gray-50 transition-all" style="text-decoration: none;">
+            <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
+            <span>Contact</span>
+        </a>
     </nav>
 </header>
 

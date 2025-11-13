@@ -42,11 +42,15 @@ permalink: /categories/
                                     <h3 class="card-title"><a href="{{ post.url | relative_url }}" class="text-gray-900 hover:text-purple-600 transition-colors">{{ post.title }}</a></h3>
 
                                     <div class="card-meta flex flex-wrap gap-4 mb-3">
-                                        <time datetime="{{ post.date | date_to_xmlschema }}" class="text-gray-600">
+                                        <time datetime="{{ post.date | date_to_xmlschema }}" class="text-gray-600 flex items-center gap-2">
+                                            <i data-lucide="calendar" style="width: 16px; height: 16px;"></i>
                                             {{ post.date | date: "%b %d, %Y" }}
                                         </time>
                                         {% if post.reading_time %}
-                                        <span class="text-gray-600">{{ post.reading_time }} min read</span>
+                                        <span class="text-gray-600 flex items-center gap-2">
+                                            <i data-lucide="clock" style="width: 16px; height: 16px;"></i>
+                                            {{ post.reading_time }} min read
+                                        </span>
                                         {% endif %}
                                     </div>
 

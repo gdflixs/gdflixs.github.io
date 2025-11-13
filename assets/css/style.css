@@ -31,7 +31,7 @@ body {
     left: 0;
     right: 0;
     background: white;
-    border-bottom: 1px solid #e0e0e0;
+    /* border-bottom: 1px solid #e0e0e0; */
     z-index: 999;
     max-height: 0;
     overflow: hidden;
@@ -201,6 +201,30 @@ a {
 
 a:hover {
     color: #764ba2;
+}
+
+/* ============================================
+   Icon Styling (Lucide Icons)
+   ============================================ */
+[data-lucide] {
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Icon animations */
+@keyframes icon-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+a:hover [data-lucide],
+button:hover [data-lucide] {
+    animation: icon-bounce 0.4s ease-in-out;
 }
 
 /* ============================================

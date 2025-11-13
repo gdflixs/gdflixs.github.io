@@ -39,8 +39,11 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}"
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -87,6 +90,11 @@
     {% endif %}
     
     <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
 
     <!-- Mobile Menu Toggle Script -->
     <script>

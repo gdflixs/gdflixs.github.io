@@ -8,16 +8,19 @@ layout: default
         <h1 class="text-5xl font-bold mb-4" itemprop="headline">{{ page.title }}</h1>
         <div class="flex flex-wrap gap-6 text-gray-100 text-sm">
             <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished" class="flex items-center gap-2">
-                📅 {{ page.date | date: "%B %d, %Y" }}
+                <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
+                {{ page.date | date: "%B %d, %Y" }}
             </time>
             {% if page.author %}
             <span itemprop="author" itemscope itemtype="https://schema.org/Person" class="flex items-center gap-2">
-                👤 <span itemprop="name">{{ page.author }}</span>
+                <i data-lucide="user" style="width: 18px; height: 18px;"></i>
+                <span itemprop="name">{{ page.author }}</span>
             </span>
             {% endif %}
             {% if page.reading_time %}
             <span class="flex items-center gap-2">
-                ⏱️ {{ page.reading_time }} min read
+                <i data-lucide="clock" style="width: 18px; height: 18px;"></i>
+                {{ page.reading_time }} min read
             </span>
             {% endif %}
         </div>

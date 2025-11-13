@@ -10,10 +10,10 @@
         <div>
             <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; color: white;">Quick Links</h3>
             <ul style="list-style: none;">
-                <li style="margin-bottom: 10px;"><a href="{{ '/' | relative_url }}" style="color: #aaa; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#aaa';">Home</a></li>
-                <li style="margin-bottom: 10px;"><a href="{{ '/blog' | relative_url }}" style="color: #aaa; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#aaa';">Blog</a></li>
-                <li style="margin-bottom: 10px;"><a href="{{ '/about' | relative_url }}" style="color: #aaa; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#aaa';">About</a></li>
-                <li style="margin-bottom: 10px;"><a href="{{ '/contact' | relative_url }}" style="color: #aaa; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#aaa';">Contact</a></li>
+                <li style="margin-bottom: 10px;"><a href="{{ '/' | relative_url }}" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors" style="text-decoration: none;"><i data-lucide="home" style="width: 16px; height: 16px;"></i> Home</a></li>
+                <li style="margin-bottom: 10px;"><a href="{{ '/blog' | relative_url }}" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors" style="text-decoration: none;"><i data-lucide="book-open" style="width: 16px; height: 16px;"></i> Blog</a></li>
+                <li style="margin-bottom: 10px;"><a href="{{ '/about' | relative_url }}" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors" style="text-decoration: none;"><i data-lucide="user" style="width: 16px; height: 16px;"></i> About</a></li>
+                <li style="margin-bottom: 10px;"><a href="{{ '/contact' | relative_url }}" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors" style="text-decoration: none;"><i data-lucide="mail" style="width: 16px; height: 16px;"></i> Contact</a></li>
             </ul>
         </div>
 
@@ -21,9 +21,9 @@
         <div>
             <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; color: white;">Categories</h3>
             <ul style="list-style: none;">
-                <li style="margin-bottom: 10px;"><a href="{{ '/tags' | relative_url }}" style="color: #aaa; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#aaa';">Tags</a></li>
-                <li style="margin-bottom: 10px;"><a href="{{ '/categories' | relative_url }}" style="color: #aaa; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#aaa';">Categories</a></li>
-                <li style="margin-bottom: 10px;"><a href="{{ '/feed.xml' | relative_url }}" style="color: #aaa; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#aaa';">RSS Feed</a></li>
+                <li style="margin-bottom: 10px;"><a href="{{ '/tags' | relative_url }}" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors" style="text-decoration: none;"><i data-lucide="tag" style="width: 16px; height: 16px;"></i> Tags</a></li>
+                <li style="margin-bottom: 10px;"><a href="{{ '/categories' | relative_url }}" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors" style="text-decoration: none;"><i data-lucide="folder" style="width: 16px; height: 16px;"></i> Categories</a></li>
+                <li style="margin-bottom: 10px;"><a href="{{ '/feed.xml' | relative_url }}" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors" style="text-decoration: none;"><i data-lucide="rss" style="width: 16px; height: 16px;"></i> RSS Feed</a></li>
             </ul>
         </div>
 
@@ -32,10 +32,10 @@
             <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; color: white;">Follow</h3>
             <ul style="list-style: none;">
                 {% if site.twitter_username %}
-                <li style="margin-bottom: 10px;"><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener noreferrer" style="color: #aaa; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#aaa';">Twitter</a></li>
+                <li style="margin-bottom: 10px;"><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors" style="text-decoration: none;"><i data-lucide="twitter" style="width: 16px; height: 16px;"></i> Twitter</a></li>
                 {% endif %}
                 {% if site.github_username %}
-                <li style="margin-bottom: 10px;"><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer" style="color: #aaa; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease;" onmouseover="this.style.color='#667eea';" onmouseout="this.style.color='#aaa';">GitHub</a></li>
+                <li style="margin-bottom: 10px;"><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors" style="text-decoration: none;"><i data-lucide="github" style="width: 16px; height: 16px;"></i> GitHub</a></li>
                 {% endif %}
             </ul>
         </div>

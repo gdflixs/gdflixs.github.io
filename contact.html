@@ -51,26 +51,38 @@ permalink: /contact/
                 <h2 class="text-3xl font-bold mb-8 text-gray-900">Other Ways to Reach Us</h2>
 
                 <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-                    <h3 class="text-lg font-bold mb-3 text-gray-900">📧 Email</h3>
+                    <div class="flex items-center gap-3 mb-3">
+                        <i data-lucide="mail" class="text-purple-600" style="width: 24px; height: 24px;"></i>
+                        <h3 class="text-lg font-bold text-gray-900">Email</h3>
+                    </div>
                     <p><a href="mailto:{{ site.email }}" class="text-purple-600 hover:text-purple-800 transition-colors">{{ site.email }}</a></p>
                 </div>
 
                 {% if site.twitter_username %}
                 <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-                    <h3 class="text-lg font-bold mb-3 text-gray-900">🐦 Twitter</h3>
+                    <div class="flex items-center gap-3 mb-3">
+                        <i data-lucide="twitter" class="text-purple-600" style="width: 24px; height: 24px;"></i>
+                        <h3 class="text-lg font-bold text-gray-900">Twitter</h3>
+                    </div>
                     <p><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener noreferrer" class="text-purple-600 hover:text-purple-800 transition-colors">@{{ site.twitter_username }}</a></p>
                 </div>
                 {% endif %}
 
                 {% if site.github_username %}
                 <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-                    <h3 class="text-lg font-bold mb-3 text-gray-900">🐙 GitHub</h3>
+                    <div class="flex items-center gap-3 mb-3">
+                        <i data-lucide="github" class="text-purple-600" style="width: 24px; height: 24px;"></i>
+                        <h3 class="text-lg font-bold text-gray-900">GitHub</h3>
+                    </div>
                     <p><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer" class="text-purple-600 hover:text-purple-800 transition-colors">{{ site.github_username }}</a></p>
                 </div>
                 {% endif %}
 
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-lg font-bold mb-3 text-gray-900">📰 Subscribe</h3>
+                    <div class="flex items-center gap-3 mb-3">
+                        <i data-lucide="rss" class="text-purple-600" style="width: 24px; height: 24px;"></i>
+                        <h3 class="text-lg font-bold text-gray-900">Subscribe</h3>
+                    </div>
                     <p><a href="{{ '/feed.xml' | relative_url }}" class="text-purple-600 hover:text-purple-800 transition-colors">RSS Feed</a></p>
                 </div>
             </div>

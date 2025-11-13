@@ -30,9 +30,12 @@ description: Welcome to GDFLIXs
                 <div class="card-body">
                     <h3 class="card-title"><a href="{{ post.url | relative_url }}" class="text-gray-900 hover:text-purple-600 transition-colors">{{ post.title }}</a></h3>
 
-                    <div class="card-meta">
-                        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
-                        {% if post.reading_time %}<span class="ml-4">{{ post.reading_time }} min read</span>{% endif %}
+                    <div class="card-meta flex flex-wrap gap-4 mb-3">
+                        <time datetime="{{ post.date | date_to_xmlschema }}" class="flex items-center gap-2 text-gray-600">
+                            <i data-lucide="calendar" style="width: 16px; height: 16px;"></i>
+                            {{ post.date | date: "%b %d, %Y" }}
+                        </time>
+                        {% if post.reading_time %}<span class="flex items-center gap-2 text-gray-600"><i data-lucide="clock" style="width: 16px; height: 16px;"></i> {{ post.reading_time }} min read</span>{% endif %}
                     </div>
 
                     <p class="card-text">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
@@ -60,11 +63,20 @@ description: Welcome to GDFLIXs
 <!-- CTA Section -->
 <section class="bg-gradient-to-r from-purple-600 to-purple-800 text-white py-20 w-full">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-4xl font-bold mb-4">Stay Updated</h2>
+        <div class="flex items-center justify-center gap-3 mb-4">
+            <i data-lucide="bell" style="width: 32px; height: 32px;"></i>
+            <h2 class="text-4xl font-bold">Stay Updated</h2>
+        </div>
         <p class="text-xl mb-8 opacity-95">Subscribe to get the latest posts delivered to your inbox</p>
         <form class="flex flex-col gap-4 w-full max-w-md mx-auto">
-            <input type="email" placeholder="Enter your email" class="px-4 py-3 rounded-lg text-gray-900 outline-none focus:ring-2 focus:ring-purple-300" required>
-            <button type="submit" class="btn btn-primary bg-white text-purple-600 hover:bg-gray-100">Subscribe Now</button>
+            <div class="flex items-center gap-2 bg-white rounded-lg px-4 py-3">
+                <i data-lucide="mail" class="text-purple-600" style="width: 20px; height: 20px;"></i>
+                <input type="email" placeholder="Enter your email" class="flex-1 text-gray-900 outline-none bg-transparent" required>
+            </div>
+            <button type="submit" class="btn btn-primary bg-white text-purple-600 hover:bg-gray-100 flex items-center justify-center gap-2">
+                <i data-lucide="send" style="width: 18px; height: 18px;"></i>
+                Subscribe Now
+            </button>
         </form>
     </div>
 </section>
