@@ -2,7 +2,7 @@
 layout: post
 title: "Welcome to My Blog"
 date: 2025-11-13 10:00:00 +0000
-author: "Your Name"
+author: "GDFLIXs"
 categories: [Welcome, Getting Started]
 tags: [jekyll, github-pages, blog]
 image: "/assets/images/posts/welcome.jpg"
@@ -39,7 +39,7 @@ To create a new blog post, simply:
 layout: post
 title: "Your Post Title"
 date: 2025-11-13 10:00:00 +0000
-author: "Your Name"
+author: "GDFLIXs"
 categories: [Category1, Category2]
 tags: [tag1, tag2, tag3]
 image: "/assets/images/posts/image.jpg"
