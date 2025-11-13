@@ -30,20 +30,22 @@ layout: default
         {% if page.tags %}
         <div class="flex flex-wrap gap-2">
             {% for tag in page.tags %}
-            <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm hover:bg-blue-200 transition">{{ tag }}</a>
+            <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" style="display: inline-block; background: #f0f0f0; color: #667eea; padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='#667eea'; this.style.color='white';" onmouseout="this.style.background='#f0f0f0'; this.style.color='#667eea';">{{ tag }}</a>
             {% endfor %}
         </div>
         {% endif %}
     </header>
 
-    {% if page.image %}
     <figure class="mb-8">
-        <img src="{{ page.image }}" alt="{{ page.title }}" class="w-full rounded-lg shadow-lg" itemprop="image">
+        {% if page.image %}
+        <img src="{{ page.image }}" alt="{{ page.title }}" class="w-full rounded-lg shadow-lg" itemprop="image" style="max-height: 400px; object-fit: cover;">
+        {% else %}
+        <img src="{{ '/assets/images/placeholder.svg' | relative_url }}" alt="No image available" class="w-full rounded-lg shadow-lg" style="max-height: 400px; object-fit: cover;">
+        {% endif %}
         {% if page.image_alt %}
         <figcaption class="text-center text-gray-600 text-sm mt-2">{{ page.image_alt }}</figcaption>
         {% endif %}
     </figure>
-    {% endif %}
 
     <div class="prose prose-lg max-w-none mb-8" itemprop="articleBody">
         {{ content }}
@@ -63,14 +65,14 @@ layout: default
 
     <!-- Related Posts -->
     {% if site.posts.size > 1 %}
-    <section class="bg-gray-50 p-6 rounded-lg mb-8">
-        <h3 class="text-xl font-bold mb-4">Related Posts</h3>
-        <ul class="space-y-2">
+    <section style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%); padding: 30px; border-radius: 8px; margin-bottom: 30px; border-left: 4px solid #667eea;">
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 20px; color: #333;">Related Posts</h3>
+        <ul style="list-style: none;">
             {% assign current_post = page %}
             {% for post in site.posts limit: 3 %}
                 {% unless post.url == current_post.url %}
-                <li>
-                    <a href="{{ post.url | relative_url }}" class="text-blue-600 hover:text-blue-800 transition">{{ post.title }}</a>
+                <li style="margin-bottom: 12px;">
+                    <a href="{{ post.url | relative_url }}" style="color: #667eea; text-decoration: none; font-weight: 500; transition: all 0.3s ease;" onmouseover="this.style.color='#764ba2'; this.style.textDecoration='underline';" onmouseout="this.style.color='#667eea'; this.style.textDecoration='none';">{{ post.title }}</a>
                 </li>
                 {% endunless %}
             {% endfor %}
