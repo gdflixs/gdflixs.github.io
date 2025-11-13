@@ -23,7 +23,8 @@ body {
 }
 
 .main {
-    top: 75px;
+    top: 70px;
+    position: relative;
 }
 
 /* ============================================
@@ -53,13 +54,17 @@ body {
     .mobile-menu {
         display: block;
     }
+
+    .main {
+        top: 75px;
+    }
 }
 
 /* ============================================
    Image Placeholder
    ============================================ */
 .image-placeholder {
-    object-fit: contain;
+    object-fit: contain !important;
     background: #EFF1F3;
 }
 
