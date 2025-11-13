@@ -1,0 +1,27 @@
+<header class="site-header" role="banner">
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <a href="{{ '/' | relative_url }}" class="site-title">
+                    {{ site.title }}
+                </a>
+                <p class="site-tagline">{{ site.description }}</p>
+            </div>
+            
+            <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="navbar-menu" id="navbar-menu">
+                <li><a href="{{ '/' | relative_url }}" class="nav-link">Home</a></li>
+                <li><a href="{{ '/blog/' | relative_url }}" class="nav-link">Blog</a></li>
+                <li><a href="{{ '/about.html' | relative_url }}" class="nav-link">About</a></li>
+                <li><a href="{{ '/contact.html' | relative_url }}" class="nav-link">Contact</a></li>
+                <li><a href="{{ '/feed.xml' | relative_url }}" class="nav-link" title="RSS Feed">RSS</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+

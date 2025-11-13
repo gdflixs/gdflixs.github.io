@@ -1,0 +1,90 @@
+---
+layout: default
+title: About Me
+description: Learn more about me and this blog
+permalink: /about/
+---
+
+<div class="page-header">
+    <h1>About Me</h1>
+    <p class="page-subtitle">Get to know the person behind this blog</p>
+</div>
+
+<div class="container">
+    <div class="about-content">
+        <div class="about-text">
+            <h2>Welcome! 👋</h2>
+            
+            <p>
+                Hi, I'm {{ site.author }}. I'm passionate about sharing knowledge and helping others 
+                learn new things. This blog is my space to write about topics I'm interested in and 
+                connect with like-minded people.
+            </p>
+            
+            <h3>What This Blog Is About</h3>
+            <p>
+                On this blog, you'll find articles about:
+            </p>
+            <ul>
+                <li>Web development and modern technologies</li>
+                <li>SEO and digital marketing</li>
+                <li>Personal growth and productivity</li>
+                <li>Technology trends and insights</li>
+            </ul>
+            
+            <h3>My Background</h3>
+            <p>
+                With over 10 years of experience in web development, I've worked with various 
+                technologies and frameworks. I'm always learning and exploring new ways to build 
+                better, faster, and more accessible web applications.
+            </p>
+            
+            <h3>Why I Started This Blog</h3>
+            <p>
+                I believe in the power of sharing knowledge. Through this blog, I want to:
+            </p>
+            <ul>
+                <li>Share my experiences and lessons learned</li>
+                <li>Help others solve problems they might be facing</li>
+                <li>Build a community of like-minded individuals</li>
+                <li>Document my journey and growth</li>
+            </ul>
+            
+            <h3>Let's Connect</h3>
+            <p>
+                I'd love to hear from you! Feel free to reach out through:
+            </p>
+            <ul class="social-links">
+                {% if site.twitter_username %}
+                <li><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+                {% endif %}
+                {% if site.github_username %}
+                <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                {% endif %}
+                <li><a href="mailto:{{ site.email }}">Email</a></li>
+            </ul>
+        </div>
+        
+        <aside class="about-sidebar">
+            <div class="about-card">
+                <h3>Quick Facts</h3>
+                <ul>
+                    <li><strong>Name:</strong> {{ site.author }}</li>
+                    <li><strong>Email:</strong> <a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+                    <li><strong>Location:</strong> Your City, Country</li>
+                    <li><strong>Interests:</strong> Web Dev, SEO, Tech</li>
+                </ul>
+            </div>
+            
+            <div class="about-card">
+                <h3>Blog Stats</h3>
+                <ul>
+                    <li><strong>Total Posts:</strong> {{ site.posts.size }}</li>
+                    <li><strong>Started:</strong> 2025</li>
+                    <li><strong>Updated:</strong> {{ site.time | date: "%B %Y" }}</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+</div>
+

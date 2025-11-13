@@ -1,0 +1,111 @@
+---
+layout: default
+title: Tags
+description: Browse posts by tags
+permalink: /tags/
+---
+
+<div class="page-header">
+    <h1>Tags</h1>
+    <p class="page-subtitle">Browse posts by topic</p>
+</div>
+
+<div class="container">
+    <div class="tags-page">
+        {% assign tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
+        
+        {% for tag in tags %}
+            {% if tag != "" %}
+            <section class="tag-section" id="{{ tag | slugify }}">
+                <h2>{{ tag }}</h2>
+                
+                <ul class="tag-posts">
+                    {% for post in site.posts %}
+                        {% if post.tags contains tag %}
+                        <li>
+                            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                            <time datetime="{{ post.date | date_to_xmlschema }}">
+                                {{ post.date | date: "%b %d, %Y" }}
+                            </time>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </section>
+            {% endif %}
+        {% endfor %}
+        
+        {% if tags.size == 0 %}
+        <p class="no-tags">No tags yet. Check back soon!</p>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+.tags-page {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 var(--spacing-unit);
+}
+
+.tag-section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tag-section:last-child {
+    border-bottom: none;
+}
+
+.tag-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.tag-posts {
+    list-style: none;
+}
+
+.tag-posts li {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.tag-posts a {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.tag-posts a:hover {
+    color: var(--primary-color);
+}
+
+.tag-posts time {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.no-tags {
+    text-align: center;
+    color: var(--text-light);
+    padding: 2rem;
+}
+
+@media (max-width: 768px) {
+    .tag-posts li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .tag-posts time {
+        white-space: normal;
+    }
+}
+</style>
+

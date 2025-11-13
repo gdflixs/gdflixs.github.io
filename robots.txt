@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /_site/
+Disallow: /.git/
+Disallow: /vendor/
+
+# Crawl delay (in seconds)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: {{ site.url }}/sitemap.xml
+
