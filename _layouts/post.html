@@ -52,7 +52,7 @@ layout: default
         </figure>
 
         <!-- Article Body -->
-        <div class="prose prose-lg max-w-4xl mb-12" itemprop="articleBody">
+        <div class="prose prose-lg max-w-none mb-12" itemprop="articleBody">
             {{ content }}
         </div>
 
@@ -71,14 +71,38 @@ layout: default
 
         <!-- Related Posts -->
         {% if site.posts.size > 1 %}
-        <section class="bg-gradient-to-r from-purple-50 to-purple-100 p-8 rounded-lg mb-12 border-l-4 border-purple-600">
-            <h3 class="text-2xl font-bold mb-6 text-gray-900">Related Posts</h3>
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-8">
+                <i data-lucide="link-2" class="text-purple-600" style="width: 32px; height: 32px;"></i>
+                <h3 class="text-3xl font-bold text-purple-600">Related Posts</h3>
+            </div>
             <ul class="space-y-4">
                 {% assign current_post = page %}
                 {% for post in site.posts limit: 3 %}
                     {% unless post.url == current_post.url %}
-                    <li>
-                        <a href="{{ post.url | relative_url }}" class="text-purple-600 hover:text-purple-800 font-semibold transition-colors hover:underline">{{ post.title }}</a>
+                    <li class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 p-5 bg-gray-50 rounded-lg hover:bg-purple-50 hover:shadow-md transition border-l-4 border-purple-600">
+                        <div class="flex-1">
+                            <a href="{{ post.url | relative_url }}" class="text-lg font-semibold text-gray-900 hover:text-purple-600 transition">{{ post.title }}</a>
+                            <p class="text-gray-600 text-sm mt-2">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+                            <div class="flex flex-wrap gap-4 mt-3 text-sm">
+                                <time datetime="{{ post.date | date_to_xmlschema }}" class="text-gray-600 flex items-center gap-1">
+                                    <i data-lucide="calendar" style="width: 14px; height: 14px;"></i>
+                                    {{ post.date | date: "%b %d, %Y" }}
+                                </time>
+                                {% if post.author %}
+                                <span class="text-gray-600 flex items-center gap-1">
+                                    <i data-lucide="user" style="width: 14px; height: 14px;"></i>
+                                    {{ post.author }}
+                                </span>
+                                {% endif %}
+                                {% if post.reading_time %}
+                                <span class="text-gray-600 flex items-center gap-1">
+                                    <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+                                    {{ post.reading_time }} min read
+                                </span>
+                                {% endif %}
+                            </div>
+                        </div>
                     </li>
                     {% endunless %}
                 {% endfor %}

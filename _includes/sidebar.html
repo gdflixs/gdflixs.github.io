@@ -1,0 +1,57 @@
+<!-- Right Sticky Sidebar -->
+<aside class="sidebar-sticky hidden lg:block">
+    <!-- Recent Posts Widget -->
+    <div class="sidebar-widget">
+        <div class="flex items-center gap-2 mb-4">
+            <i data-lucide="clock" class="text-purple-600" style="width: 24px; height: 24px;"></i>
+            <h3 class="text-xl font-bold text-gray-900">Recent Posts</h3>
+        </div>
+        <ul class="space-y-3">
+            {% for post in site.posts limit: 5 %}
+            <li>
+                <a href="{{ post.url | relative_url }}" class="block group">
+                    <p class="text-sm font-semibold text-gray-900 group-hover:text-purple-600 transition line-clamp-2">{{ post.title }}</p>
+                    <time datetime="{{ post.date | date_to_xmlschema }}" class="text-xs text-gray-500 group-hover:text-purple-500 transition">
+                        {{ post.date | date: "%b %d, %Y" }}
+                    </time>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Categories Widget -->
+    <div class="sidebar-widget">
+        <div class="flex items-center gap-2 mb-4">
+            <i data-lucide="folder" class="text-purple-600" style="width: 24px; height: 24px;"></i>
+            <h3 class="text-xl font-bold text-gray-900">Categories</h3>
+        </div>
+        <ul class="space-y-2">
+            {% assign categories = site.posts | map: 'categories' | join: ',' | split: ',' | uniq | sort %}
+            {% for category in categories %}
+                {% if category != "" %}
+                <li>
+                    <a href="{{ '/categories/' | relative_url }}{{ category | slugify }}/" class="inline-flex items-center gap-2 text-sm text-gray-700 hover:text-purple-600 transition">
+                        <span class="w-1.5 h-1.5 bg-purple-600 rounded-full"></span>
+                        {{ category }}
+                    </a>
+                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Subscribe Widget -->
+    <div class="sidebar-widget bg-gradient-to-br from-purple-600 to-purple-800 text-white">
+        <div class="flex items-center gap-2 mb-3">
+            <i data-lucide="bell" style="width: 24px; height: 24px;"></i>
+            <h3 class="text-lg font-bold">Stay Updated</h3>
+        </div>
+        <p class="text-sm opacity-90 mb-4">Get the latest posts delivered to your inbox</p>
+        <form class="flex flex-col gap-2">
+            <input type="email" placeholder="Your email" class="w-full px-3 py-2 rounded text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-purple-300" required>
+            <button type="submit" class="w-full bg-white text-purple-600 font-semibold py-2 rounded hover:bg-gray-100 transition text-sm">Subscribe</button>
+        </form>
+    </div>
+</aside>
+
