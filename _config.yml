@@ -1,24 +1,24 @@
-# Jekyll Site Configuration
+# GDFLIXs Site Configuration
 # SEO-Optimized Configuration
 
 # Site Settings
-title: "My Awesome Blog"
-description: "A modern, SEO-friendly Jekyll theme for GitHub Pages"
-author: "Your Name"
-email: "your.email@example.com"
-url: "https://yourusername.github.io"
+title: "GDFLIXs"
+description: "GDFLIXs - Your Ultimate Entertainment Hub"
+author: "GDFLIXs Team"
+email: "contact@gdflixs.github.io"
+url: "https://gdflixs.github.io"
 baseurl: ""
 
 # SEO & Social
-keywords: "blog, jekyll, github pages, seo"
-twitter_username: "@yourhandle"
-github_username: "yourusername"
+keywords: "entertainment, movies, shows, streaming, gdflixs"
+twitter_username: "@gdflixs"
+github_username: "gdflixs"
 social:
-  name: "Your Name"
+  name: "GDFLIXs"
   links:
-    - "https://twitter.com/yourhandle"
-    - "https://github.com/yourusername"
-    - "https://linkedin.com/in/yourprofile"
+    - "https://twitter.com/gdflixs"
+    - "https://github.com/gdflixs"
+    - "https://linkedin.com/company/gdflixs"
 
 # Build Settings
 markdown: kramdown

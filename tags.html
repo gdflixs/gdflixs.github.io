@@ -5,26 +5,30 @@ description: Browse posts by tags
 permalink: /tags/
 ---
 
-<div class="page-header">
-    <h1>Tags</h1>
-    <p class="page-subtitle">Browse posts by topic</p>
+<!-- Page Header -->
+<div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold mb-2">Tags</h1>
+        <p class="text-blue-100">Browse posts by topic</p>
+    </div>
 </div>
 
-<div class="container">
+<!-- Tags Content -->
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="tags-page">
         {% assign tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
-        
+
         {% for tag in tags %}
             {% if tag != "" %}
-            <section class="tag-section" id="{{ tag | slugify }}">
-                <h2>{{ tag }}</h2>
-                
-                <ul class="tag-posts">
+            <section class="mb-12 pb-8 border-b border-gray-200 last:border-b-0" id="{{ tag | slugify }}">
+                <h2 class="text-2xl font-bold mb-6 text-blue-600">{{ tag }}</h2>
+
+                <ul class="space-y-3">
                     {% for post in site.posts %}
                         {% if post.tags contains tag %}
-                        <li>
-                            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                            <time datetime="{{ post.date | date_to_xmlschema }}">
+                        <li class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                            <a href="{{ post.url | relative_url }}" class="text-gray-900 font-medium hover:text-blue-600 transition">{{ post.title }}</a>
+                            <time datetime="{{ post.date | date_to_xmlschema }}" class="text-gray-600 text-sm whitespace-nowrap">
                                 {{ post.date | date: "%b %d, %Y" }}
                             </time>
                         </li>
@@ -34,78 +38,10 @@ permalink: /tags/
             </section>
             {% endif %}
         {% endfor %}
-        
+
         {% if tags.size == 0 %}
-        <p class="no-tags">No tags yet. Check back soon!</p>
+        <p class="text-center text-gray-600 py-12">No tags yet. Check back soon!</p>
         {% endif %}
     </div>
 </div>
-
-<style>
-.tags-page {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 0 var(--spacing-unit);
-}
-
-.tag-section {
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.tag-section:last-child {
-    border-bottom: none;
-}
-
-.tag-section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-}
-
-.tag-posts {
-    list-style: none;
-}
-
-.tag-posts li {
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-}
-
-.tag-posts a {
-    color: var(--text-color);
-    font-weight: 500;
-}
-
-.tag-posts a:hover {
-    color: var(--primary-color);
-}
-
-.tag-posts time {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    white-space: nowrap;
-}
-
-.no-tags {
-    text-align: center;
-    color: var(--text-light);
-    padding: 2rem;
-}
-
-@media (max-width: 768px) {
-    .tag-posts li {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .tag-posts time {
-        white-space: normal;
-    }
-}
-</style>
 

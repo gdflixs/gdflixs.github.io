@@ -2,70 +2,75 @@
 layout: default
 ---
 
-<article class="post" itemscope itemtype="https://schema.org/BlogPosting">
-    <header class="post-header">
-        <h1 class="post-title" itemprop="headline">{{ page.title }}</h1>
-        
-        <div class="post-meta">
-            <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+<article class="max-w-3xl mx-auto" itemscope itemtype="https://schema.org/BlogPosting">
+    <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4" itemprop="headline">{{ page.title }}</h1>
+
+        <div class="flex flex-wrap gap-4 text-gray-600 text-sm mb-4">
+            <time class="flex items-center" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v2h16V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h12a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                 {{ page.date | date: "%B %d, %Y" }}
             </time>
-            
+
             {% if page.author %}
-            <span class="post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+            <span class="flex items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
                 <span itemprop="name">{{ page.author }}</span>
             </span>
             {% endif %}
-            
+
             {% if page.reading_time %}
-            <span class="reading-time">{{ page.reading_time }} min read</span>
+            <span class="flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5.951-1.488 5.951 1.488a1 1 0 001.169-1.409l-7-14z"></path></svg>
+                {{ page.reading_time }} min read
+            </span>
             {% endif %}
         </div>
-        
+
         {% if page.tags %}
-        <div class="post-tags">
+        <div class="flex flex-wrap gap-2">
             {% for tag in page.tags %}
-            <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
+            <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm hover:bg-blue-200 transition">{{ tag }}</a>
             {% endfor %}
         </div>
         {% endif %}
     </header>
-    
+
     {% if page.image %}
-    <figure class="post-image">
-        <img src="{{ page.image }}" alt="{{ page.title }}" itemprop="image">
+    <figure class="mb-8">
+        <img src="{{ page.image }}" alt="{{ page.title }}" class="w-full rounded-lg shadow-lg" itemprop="image">
         {% if page.image_alt %}
-        <figcaption>{{ page.image_alt }}</figcaption>
+        <figcaption class="text-center text-gray-600 text-sm mt-2">{{ page.image_alt }}</figcaption>
         {% endif %}
     </figure>
     {% endif %}
-    
-    <div class="post-content" itemprop="articleBody">
+
+    <div class="prose prose-lg max-w-none mb-8" itemprop="articleBody">
         {{ content }}
     </div>
-    
+
     {% if page.categories %}
-    <footer class="post-footer">
-        <div class="post-categories">
+    <footer class="border-t border-gray-200 pt-6 mb-8">
+        <div class="text-gray-700">
             <strong>Categories:</strong>
             {% for category in page.categories %}
-            <a href="{{ '/categories/' | relative_url }}#{{ category | slugify }}">{{ category }}</a>
+            <a href="{{ '/categories/' | relative_url }}#{{ category | slugify }}" class="text-blue-600 hover:text-blue-800 transition">{{ category }}</a>
             {% unless forloop.last %}, {% endunless %}
             {% endfor %}
         </div>
     </footer>
     {% endif %}
-    
+
     <!-- Related Posts -->
     {% if site.posts.size > 1 %}
-    <section class="related-posts">
-        <h3>Related Posts</h3>
-        <ul>
+    <section class="bg-gray-50 p-6 rounded-lg mb-8">
+        <h3 class="text-xl font-bold mb-4">Related Posts</h3>
+        <ul class="space-y-2">
             {% assign current_post = page %}
             {% for post in site.posts limit: 3 %}
                 {% unless post.url == current_post.url %}
                 <li>
-                    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                    <a href="{{ post.url | relative_url }}" class="text-blue-600 hover:text-blue-800 transition">{{ post.title }}</a>
                 </li>
                 {% endunless %}
             {% endfor %}
@@ -75,8 +80,8 @@ layout: default
 </article>
 
 <!-- Comments Section (optional) -->
-<section class="comments">
-    <h3>Comments</h3>
+<section class="max-w-3xl mx-auto mt-12 pt-8 border-t border-gray-200">
+    <h3 class="text-2xl font-bold mb-6">Comments</h3>
     <!-- Add Disqus, Utterances, or other comment system here -->
 </section>
 
