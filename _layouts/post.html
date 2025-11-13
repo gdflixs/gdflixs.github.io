@@ -30,13 +30,13 @@ layout: default
 <!-- Article Content Section -->
 <article class="py-12 w-full" itemscope itemtype="https://schema.org/BlogPosting" role="main" aria-label="Blog post content">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="sidebar-container">
-            <div class="flex-1">
+        <div class="flex gap-8 flex-wrap lg:flex-row flex-col">
+            <div class="flex-1 min-w-0">
         <!-- Tags -->
         {% if page.tags %}
         <div class="flex flex-wrap gap-3 mb-8">
             {% for tag in page.tags %}
-            <a href="{{ '/tags/' | relative_url }}{{ tag | slugify }}/" class="inline-block bg-gray-100 text-purple-600 px-4 py-2 rounded-full text-sm hover:bg-purple-600 hover:text-white transition-all">{{ tag }}</a>
+            <a href="{{ '/tags/' | relative_url }}{{ tag | slugify }}/" class="inline-block bg-purple-100 text-purple-600 px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-600 hover:text-white transition-all">{{ tag }}</a>
             {% endfor %}
         </div>
         {% endif %}

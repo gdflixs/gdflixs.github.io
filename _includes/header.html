@@ -1,66 +1,55 @@
-<header style="background: white; box-shadow: 0 2px 12px rgba(0,0,0,0.08); position: fixed; top: 0; z-index: 1000; width: 100%;">
-    <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; width: 100%;">
+<header class="bg-white shadow-sm fixed top-0 z-[1000] w-full">
+    <div class="flex justify-between items-center px-8 py-4 w-full">
         <!-- Logo -->
-        <a href="{{ '/' | relative_url }}" style="text-decoration: none; font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+        <a href="{{ '/' | relative_url }}" class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent no-underline">
             {{ site.title }}
         </a>
 
         <!-- Desktop Menu -->
-        <nav style="display: flex; gap: 40px; align-items: center;">
-            <a href="{{ '/' | relative_url }}" class="flex items-center gap-2 text-gray-700 hover:text-purple-600 font-medium transition-colors" style="text-decoration: none;">
+        <nav class="hidden md:flex gap-10 items-center">
+            <a href="{{ '/' | relative_url }}" class="flex items-center gap-2 text-gray-700 hover:text-purple-600 font-medium transition-colors no-underline">
                 <i data-lucide="home" style="width: 20px; height: 20px;"></i>
                 <span>Home</span>
             </a>
-            <a href="{{ '/blog' | relative_url }}" class="flex items-center gap-2 text-gray-700 hover:text-purple-600 font-medium transition-colors" style="text-decoration: none;">
+            <a href="{{ '/blog' | relative_url }}" class="flex items-center gap-2 text-gray-700 hover:text-purple-600 font-medium transition-colors no-underline">
                 <i data-lucide="book-open" style="width: 20px; height: 20px;"></i>
                 <span>Blog</span>
             </a>
-            <a href="{{ '/about' | relative_url }}" class="flex items-center gap-2 text-gray-700 hover:text-purple-600 font-medium transition-colors" style="text-decoration: none;">
+            <a href="{{ '/about' | relative_url }}" class="flex items-center gap-2 text-gray-700 hover:text-purple-600 font-medium transition-colors no-underline">
                 <i data-lucide="user" style="width: 20px; height: 20px;"></i>
                 <span>About</span>
             </a>
-            <a href="{{ '/contact' | relative_url }}" class="flex items-center gap-2 text-gray-700 hover:text-purple-600 font-medium transition-colors" style="text-decoration: none;">
+            <a href="{{ '/contact' | relative_url }}" class="flex items-center gap-2 text-gray-700 hover:text-purple-600 font-medium transition-colors no-underline">
                 <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
                 <span>Contact</span>
             </a>
         </nav>
 
         <!-- Mobile Menu Button -->
-        <button id="menu-toggle" style="display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001;">
+        <button id="menu-toggle" class="md:hidden bg-none border-none cursor-pointer p-2 z-[1001]">
             <i data-lucide="menu" style="width: 28px; height: 28px; color: #333;"></i>
         </button>
     </div>
 
     <!-- Mobile Menu -->
-    <nav class="mobile-menu" style="padding: 0;">
-        <a href="{{ '/' | relative_url }}" class="flex items-center gap-3 px-6 py-4 text-gray-700 hover:text-purple-600 font-medium border-b border-gray-100 hover:bg-gray-50 transition-all" style="text-decoration: none;">
+    <nav class="mobile-menu bg-white">
+        <a href="{{ '/' | relative_url }}" class="flex items-center gap-3 px-6 py-4 text-gray-700 hover:text-purple-600 font-medium border-b border-gray-100 hover:bg-gray-50 transition-all no-underline">
             <i data-lucide="home" style="width: 20px; height: 20px;"></i>
             <span>Home</span>
         </a>
-        <a href="{{ '/blog' | relative_url }}" class="flex items-center gap-3 px-6 py-4 text-gray-700 hover:text-purple-600 font-medium border-b border-gray-100 hover:bg-gray-50 transition-all" style="text-decoration: none;">
+        <a href="{{ '/blog' | relative_url }}" class="flex items-center gap-3 px-6 py-4 text-gray-700 hover:text-purple-600 font-medium border-b border-gray-100 hover:bg-gray-50 transition-all no-underline">
             <i data-lucide="book-open" style="width: 20px; height: 20px;"></i>
             <span>Blog</span>
         </a>
-        <a href="{{ '/about' | relative_url }}" class="flex items-center gap-3 px-6 py-4 text-gray-700 hover:text-purple-600 font-medium border-b border-gray-100 hover:bg-gray-50 transition-all" style="text-decoration: none;">
+        <a href="{{ '/about' | relative_url }}" class="flex items-center gap-3 px-6 py-4 text-gray-700 hover:text-purple-600 font-medium border-b border-gray-100 hover:bg-gray-50 transition-all no-underline">
             <i data-lucide="user" style="width: 20px; height: 20px;"></i>
             <span>About</span>
         </a>
-        <a href="{{ '/contact' | relative_url }}" class="flex items-center gap-3 px-6 py-4 text-gray-700 hover:text-purple-600 font-medium border-b border-gray-100 hover:bg-gray-50 transition-all" style="text-decoration: none;">
+        <a href="{{ '/contact' | relative_url }}" class="flex items-center gap-3 px-6 py-4 text-gray-700 hover:text-purple-600 font-medium border-b border-gray-100 hover:bg-gray-50 transition-all no-underline">
             <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
             <span>Contact</span>
         </a>
     </nav>
 </header>
 
-<style>
-    @media (max-width: 768px) {
-        header nav:not(.mobile-menu) {
-            display: none !important;
-        }
-
-        #menu-toggle {
-            display: flex !important;
-        }
-    }
-</style>
 

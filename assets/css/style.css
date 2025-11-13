@@ -1,16 +1,10 @@
 /* ============================================
    GDFLIXs Theme - Main Stylesheet
+   Optimized with Tailwind CSS
    ============================================ */
 
-/* Reset & Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 /* ============================================
-   Prose/Article Styling
+   Prose/Article Styling (ESSENTIAL - No Tailwind Alternative)
    ============================================ */
 .prose {
     color: #333;
@@ -177,88 +171,8 @@
 }
 
 /* ============================================
-   Sidebar Styles
+   Line Clamp Utility (ESSENTIAL - Webkit specific)
    ============================================ */
-.sidebar-container {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.sidebar-container > div:first-child {
-    flex: 1;
-    min-width: 0;
-}
-
-.sidebar {
-    width: 300px;
-    flex-shrink: 0;
-}
-
-.sidebar-widget {
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    border: 1px solid #f0f0f0;
-}
-
-.sidebar-widget h3 {
-    color: #1a1a1a;
-    margin-bottom: 1rem;
-}
-
-.sidebar-widget ul li a {
-    display: block;
-    padding: 0.75rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.sidebar-widget ul li a:hover {
-    background-color: #f5f5f5;
-}
-
-.sidebar-widget ul li a p {
-    margin: 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.sidebar-widget ul li a time {
-    display: block;
-    margin-top: 0.25rem;
-}
-
-.sidebar-widget.bg-gradient-to-br {
-    border: none;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
-}
-
-.sidebar-widget.bg-gradient-to-br input {
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    transition: all 0.3s ease;
-}
-
-.sidebar-widget.bg-gradient-to-br input:focus {
-    border-color: rgba(255, 255, 255, 0.6);
-    background-color: rgba(255, 255, 255, 0.95);
-}
-
-.sidebar-widget.bg-gradient-to-br button {
-    transition: all 0.3s ease;
-}
-
-.sidebar-widget.bg-gradient-to-br button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Line clamp utility */
 .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -267,29 +181,11 @@
     overflow: hidden;
 }
 
-/* Responsive sidebar */
-@media (max-width: 1024px) {
-    .sidebar-container {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        flex-shrink: 0;
-    }
-}
-
-html,
-body {
-    width: 100%;
-    height: 100%;
-}
-
+/* ============================================
+   Body & Main Styles
+   ============================================ */
 body {
     font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f8f9fa;
 }
 
 main {
@@ -298,7 +194,7 @@ main {
 }
 
 /* ============================================
-   Mobile Menu Styles
+   Mobile Menu Styles (ESSENTIAL - Custom Animation)
    ============================================ */
 .mobile-menu {
     display: none;
@@ -307,7 +203,6 @@ main {
     left: 0;
     right: 0;
     background: white;
-    /* border-bottom: 1px solid #e0e0e0; */
     z-index: 999;
     max-height: 0;
     overflow: hidden;
@@ -331,7 +226,7 @@ main {
 }
 
 /* ============================================
-   Active Menu Item Styles
+   Active Menu Item Styles (ESSENTIAL - Navigation)
    ============================================ */
 nav a.active {
     color: #667eea;
@@ -355,161 +250,17 @@ nav a.active [data-lucide] {
 }
 
 /* ============================================
-   Image Placeholder
+   Image Placeholder (ESSENTIAL - Fallback)
    ============================================ */
 .image-placeholder {
     object-fit: contain !important;
     background: #EFF1F3 !important;
 }
 
-/* ============================================
-   Transitions & Animations
-   ============================================ */
-a,
-button {
-    transition: all 0.3s ease;
-}
-
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0px) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(-20px) rotate(180deg);
-    }
-}
+/* All card, button, section, link, form, and responsive styles are now handled by Tailwind CSS utility classes */
 
 /* ============================================
-   Hero Section
-   ============================================ */
-.hero-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 80px 40px;
-    text-align: center;
-    width: 100%;
-}
-
-.hero-section h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-
-.hero-section p {
-    font-size: 1.3rem;
-    margin-bottom: 40px;
-    opacity: 0.95;
-}
-
-/* ============================================
-   Card Styles
-   ============================================ */
-.card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.card:hover {
-    box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
-    transform: translateY(-8px);
-}
-
-.card-image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.card-body {
-    padding: 25px;
-}
-
-.card-title {
-    font-size: 1.35rem;
-    font-weight: 600;
-    margin-bottom: 12px;
-    color: #333;
-}
-
-.card-text {
-    color: #666;
-    font-size: 0.95rem;
-    margin-bottom: 15px;
-    line-height: 1.6;
-}
-
-.card-meta {
-    font-size: 0.85rem;
-    color: #999;
-    margin-bottom: 15px;
-}
-
-/* ============================================
-   Button Styles
-   ============================================ */
-.btn {
-    display: inline-block;
-    padding: 12px 28px;
-    border-radius: 8px;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
-    transition: all 0.3s ease;
-    font-size: 1rem;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-}
-
-.btn-secondary {
-    background: #f0f0f0;
-    color: #333;
-}
-
-.btn-secondary:hover {
-    background: #e0e0e0;
-    transform: translateY(-2px);
-}
-
-/* ============================================
-   Section Styling
-   ============================================ */
-section {
-    position: relative;
-    overflow: hidden;
-}
-
-/* ============================================
-   Link Styling
-   ============================================ */
-a {
-    color: #667eea;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #764ba2;
-}
-
-/* ============================================
-   Icon Styling (Lucide Icons)
+   Icon Styling (Lucide Icons - ESSENTIAL)
    ============================================ */
 [data-lucide] {
     stroke: currentColor;
@@ -521,14 +272,12 @@ a:hover {
     vertical-align: middle;
 }
 
-/* Icon animations */
+/* Icon animations (ESSENTIAL) */
 @keyframes icon-bounce {
-
     0%,
     100% {
         transform: translateY(0);
     }
-
     50% {
         transform: translateY(-4px);
     }
@@ -537,55 +286,4 @@ a:hover {
 a:hover [data-lucide],
 button:hover [data-lucide] {
     animation: icon-bounce 0.4s ease-in-out;
-}
-
-/* ============================================
-   Form Styling
-   ============================================ */
-input,
-textarea,
-select {
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    padding: 10px 12px;
-    font-family: inherit;
-    transition: all 0.3s ease;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-    outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-}
-
-/* ============================================
-   Responsive Design
-   ============================================ */
-@media (max-width: 768px) {
-    .hero-section {
-        padding: 50px 20px;
-    }
-
-    .hero-section h1 {
-        font-size: 2.2rem;
-    }
-
-    .hero-section p {
-        font-size: 1.1rem;
-    }
-
-    .card {
-        margin-bottom: 20px;
-    }
-
-    .btn {
-        width: 100%;
-        text-align: center;
-    }
-
-    .card-image {
-        height: 200px;
-    }
 }
