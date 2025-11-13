@@ -22,7 +22,7 @@ body {
     background-color: #f8f9fa;
 }
 
-.main {
+main {
     top: 70px;
     position: relative;
 }
@@ -55,9 +55,35 @@ body {
         display: block;
     }
 
-    .main {
+    main {
         top: 75px;
     }
+}
+
+/* ============================================
+   Active Menu Item Styles
+   ============================================ */
+nav a.active {
+    color: #667eea;
+    font-weight: 700;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 2px;
+}
+
+nav a.active [data-lucide] {
+    color: #667eea;
+}
+
+.mobile-menu a.active {
+    background-color: #f0f0f0;
+    border-left: 4px solid #667eea;
+    padding-left: calc(1.5rem - 4px);
+    color: #667eea;
+    font-weight: 700;
+}
+
+.mobile-menu a.active [data-lucide] {
+    color: #667eea;
 }
 
 /* ============================================
