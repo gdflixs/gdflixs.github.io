@@ -8,7 +8,7 @@ layout: default
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center gap-3 mb-4">
             <i data-lucide="folder" style="width: 40px; height: 40px;"></i>
-            <h1 class="text-5xl font-bold" itemprop="name">{{ page.title }}</h1>
+            <h1 class="text-5xl font-bold" itemprop="name">{{ page.category_name | default: page.title }}</h1>
         </div>
         <p class="text-xl opacity-95">Posts in this category</p>
     </div>
@@ -21,7 +21,7 @@ layout: default
         <div class="flex gap-8 flex-wrap md:flex-row flex-col">
             <div class="flex-1 min-w-0">
                 <!-- Posts List -->
-                {% include post-list.html filter_by_category=page.title %}
+                {% include post-list.html filter_by_category=page.category_name %}
 
                 <!-- Back Link -->
                 <div class="mt-12 pt-8 border-t border-gray-200">
