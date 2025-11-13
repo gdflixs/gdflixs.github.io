@@ -1,10 +1,10 @@
 <!-- Post List Component -->
-{% if filter_by_category %}
-{% assign filtered_posts = posts | where_exp: "post", "post.categories contains filter_by_category" %}
-{% elsif filter_by_tag %}
-{% assign filtered_posts = posts | where_exp: "post", "post.tags contains filter_by_tag" %}
-{% else %}
 {% assign filtered_posts = posts %}
+
+{% if filter_by_category %}
+    {% assign filtered_posts = posts | where_exp: "post", "post.categories contains filter_by_category" %}
+{% elsif filter_by_tag %}
+    {% assign filtered_posts = posts | where_exp: "post", "post.tags contains filter_by_tag" %}
 {% endif %}
 
 {% if filtered_posts.size > 0 %}
