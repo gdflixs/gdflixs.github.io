@@ -8,5 +8,5 @@ Disallow: /vendor/
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: {{ site.url }}/sitemap.xml
+Sitemap: https://gdflixs.github.io/sitemap.xml
 
