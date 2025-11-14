@@ -230,25 +230,35 @@ main {
    ============================================ */
 nav a.active {
     background: linear-gradient(to right, #7e22ce, #4c1d95);
+    background-clip: text;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: transparent;
     font-weight: 700;
 }
 
 nav a.active [data-lucide] {
-    color: #667eea;
+    background: linear-gradient(to right, #7e22ce, #4c1d95);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 .mobile-menu a.active {
     background-color: #f0f0f0;
     border-left: 4px solid #667eea;
     padding-left: calc(1.5rem - 4px);
-    color: #667eea;
+    background: linear-gradient(to right, #7e22ce, #4c1d95);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
     font-weight: 700;
 }
 
 .mobile-menu a.active [data-lucide] {
-    color: #667eea;
+    background: linear-gradient(to right, #7e22ce, #4c1d95);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 /* ============================================
