@@ -3,48 +3,50 @@
 // ============================================
 
 // Mobile Navigation Toggle
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const navbarToggle = document.getElementById('navbar-toggle');
     const navbarMenu = document.getElementById('navbar-menu');
-    
+
     if (navbarToggle) {
-        navbarToggle.addEventListener('click', function() {
+        navbarToggle.addEventListener('click', function () {
             navbarMenu.classList.toggle('active');
         });
-        
+
         // Close menu when a link is clicked
         const navLinks = navbarMenu.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function () {
                 navbarMenu.classList.remove('active');
             });
         });
     }
 });
 
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href !== '#' && document.querySelector(href)) {
-            e.preventDefault();
-            document.querySelector(href).scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
+function smoothScroll() {
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href !== '#' && document.querySelector(href)) {
+                e.preventDefault();
+                document.querySelector(href).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
-});
+}
 
 // Reading time calculation
 function calculateReadingTime() {
     const postContent = document.querySelector('.post-content');
     if (!postContent) return;
-    
+
     const text = postContent.innerText;
     const wordsPerMinute = 200;
     const wordCount = text.split(/\s+/).length;
     const readingTime = Math.ceil(wordCount / wordsPerMinute);
-    
+
     // Update reading time if element exists
     const readingTimeElement = document.querySelector('.reading-time');
     if (readingTimeElement && !readingTimeElement.textContent) {
@@ -76,33 +78,33 @@ if ('IntersectionObserver' in window) {
 function generateTableOfContents() {
     const postContent = document.querySelector('.post-content');
     if (!postContent) return;
-    
+
     const headings = postContent.querySelectorAll('h2, h3');
     if (headings.length === 0) return;
-    
+
     const toc = document.createElement('nav');
     toc.className = 'table-of-contents';
     toc.innerHTML = '<h3>Table of Contents</h3><ul></ul>';
-    
+
     const list = toc.querySelector('ul');
-    
+
     headings.forEach((heading, index) => {
         if (!heading.id) {
             heading.id = `heading-${index}`;
         }
-        
+
         const li = document.createElement('li');
         const level = parseInt(heading.tagName[1]);
         li.style.marginLeft = `${(level - 2) * 1.5}rem`;
-        
+
         const a = document.createElement('a');
         a.href = `#${heading.id}`;
         a.textContent = heading.textContent;
-        
+
         li.appendChild(a);
         list.appendChild(li);
     });
-    
+
     if (list.children.length > 0) {
         postContent.insertBefore(toc, postContent.firstChild);
     }
@@ -115,11 +117,11 @@ function setupCodeBlocks() {
         button.className = 'copy-button';
         button.textContent = 'Copy';
         button.setAttribute('aria-label', 'Copy code');
-        
-        button.addEventListener('click', function() {
+
+        button.addEventListener('click', function () {
             const code = pre.querySelector('code');
             const text = code.innerText;
-            
+
             navigator.clipboard.writeText(text).then(() => {
                 button.textContent = 'Copied!';
                 setTimeout(() => {
@@ -127,7 +129,7 @@ function setupCodeBlocks() {
                 }, 2000);
             });
         });
-        
+
         pre.style.position = 'relative';
         pre.appendChild(button);
     });
@@ -137,24 +139,24 @@ function setupCodeBlocks() {
 function setupNewsletterForm() {
     const form = document.querySelector('.newsletter-form');
     if (!form) return;
-    
-    form.addEventListener('submit', function(e) {
+
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
-        
+
         const email = form.querySelector('input[type="email"]').value;
-        
+
         // Here you would typically send the email to your backend
         console.log('Newsletter signup:', email);
-        
+
         // Show success message
         const message = document.createElement('p');
         message.className = 'success-message';
         message.textContent = 'Thank you for subscribing!';
         form.appendChild(message);
-        
+
         // Reset form
         form.reset();
-        
+
         // Remove message after 3 seconds
         setTimeout(() => {
             message.remove();
@@ -166,8 +168,8 @@ function setupNewsletterForm() {
 function setupContactForm() {
     const form = document.querySelector('.contact-form');
     if (!form) return;
-    
-    form.addEventListener('submit', function(e) {
+
+    form.addEventListener('submit', function (e) {
         // Form will be submitted to Formspree
         // You can add additional validation here if needed
     });
@@ -180,7 +182,7 @@ function setupSearch() {
 
     let searchTimeout;
 
-    searchInput.addEventListener('input', function(e) {
+    searchInput.addEventListener('input', function (e) {
         clearTimeout(searchTimeout);
 
         searchTimeout = setTimeout(() => {
@@ -218,14 +220,14 @@ function setupScrollToTop() {
         ticking = false;
     }
 
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         if (!ticking) {
             window.requestAnimationFrame(updateScrollButton);
             ticking = true;
         }
     }, { passive: true });
 
-    scrollButton.addEventListener('click', function() {
+    scrollButton.addEventListener('click', function () {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
@@ -233,8 +235,25 @@ function setupScrollToTop() {
     });
 }
 
+function skipToMain() {
+    // Accessibility: Skip to main content
+    document.addEventListener('DOMContentLoaded', function () {
+        const skipLink = document.querySelector('.skip-to-main');
+        if (skipLink) {
+            skipLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                const main = document.querySelector('main');
+                if (main) {
+                    main.focus();
+                    main.scrollIntoView();
+                }
+            });
+        }
+    });
+}
+
 // Initialize all functions
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     calculateReadingTime();
     generateTableOfContents();
     setupCodeBlocks();
@@ -242,20 +261,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setupContactForm();
     setupSearch();
     setupScrollToTop();
+    smoothScroll();
+    skipToMain();
 });
-
-// Accessibility: Skip to main content
-document.addEventListener('DOMContentLoaded', function() {
-    const skipLink = document.querySelector('.skip-to-main');
-    if (skipLink) {
-        skipLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            const main = document.querySelector('main');
-            if (main) {
-                main.focus();
-                main.scrollIntoView();
-            }
-        });
-    }
-});
-
