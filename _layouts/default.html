@@ -56,8 +56,14 @@
     <!-- Lucide Icons - Defer loading to prevent render blocking -->
     <script defer src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <!-- Custom Styles - Inline critical styles, defer non-critical -->
+    <style>
+        /* Critical styles for above-the-fold content */
+        body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; }
+        header { background: #2d3748; color: white; }
+        main { min-height: 100vh; }
+    </style>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" media="print" onload="this.media='all'">
     
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -105,14 +111,29 @@
 
     {% include footer.html %}
 
-    <!-- Google Analytics - Deferred to prevent render blocking -->
+    <!-- Google Analytics - Lazy loaded after page interaction to prevent render blocking -->
     {% if site.google_analytics %}
-    <script defer src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-    <script defer>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '{{ site.google_analytics }}');
+    <script>
+        // Lazy load Google Analytics after user interaction
+        function loadGoogleAnalytics() {
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}';
+            document.head.appendChild(script);
+
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '{{ site.google_analytics }}');
+        }
+
+        // Load analytics on first user interaction
+        ['click', 'scroll', 'touchstart'].forEach(event => {
+            document.addEventListener(event, loadGoogleAnalytics, { once: true, passive: true });
+        });
+
+        // Also load after 5 seconds if no interaction
+        setTimeout(loadGoogleAnalytics, 2500);
     </script>
     {% endif %}
 
@@ -138,6 +159,9 @@
                 menuToggle.addEventListener('click', function(e) {
                     e.stopPropagation();
                     mobileMenu.classList.toggle('active');
+                    // Update aria-expanded for accessibility
+                    const isExpanded = mobileMenu.classList.contains('active');
+                    menuToggle.setAttribute('aria-expanded', isExpanded);
                 });
 
                 // Close menu when a link is clicked
@@ -145,6 +169,7 @@
                 menuLinks.forEach(link => {
                     link.addEventListener('click', function() {
                         mobileMenu.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
                     });
                 });
 
@@ -152,6 +177,7 @@
                 document.addEventListener('click', function(e) {
                     if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
                         mobileMenu.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
                     }
                 });
             }
