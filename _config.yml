@@ -109,9 +109,3 @@ compress_html:
   ignore:
     envs: []
 
-jekyll-minifier:
-  exclude: ['robots.txt']
-  compress_css: true
-  compress_javascript: true
-  compress_html: true
-  gzip: false
