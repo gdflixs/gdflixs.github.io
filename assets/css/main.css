@@ -278,12 +278,6 @@ img[data-src] {
     background: #f0f0f0;
 }
 
-/* All card, button, section, link, form, and responsive styles are now handled by Tailwind CSS utility classes */
-
-.hidden {
-    display: none;
-}
-
 /* ============================================
    Icon Styling (Lucide Icons - ESSENTIAL)
    ============================================ */
