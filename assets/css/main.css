@@ -1,7 +1,7 @@
-/* ============================================
-   GDFLIXs Theme - Main Stylesheet
-   Optimized with Tailwind CSS
-   ============================================ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 /* ============================================
    Prose/Article Styling (ESSENTIAL - No Tailwind Alternative)
