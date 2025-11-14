@@ -229,7 +229,9 @@ main {
    Active Menu Item Styles (ESSENTIAL - Navigation)
    ============================================ */
 nav a.active {
-    color: #667eea;
+    background: linear-gradient(to right, #7e22ce, #4c1d95);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-weight: 700;
 }
 
@@ -257,6 +259,21 @@ nav a.active [data-lucide] {
     background: #EFF1F3 !important;
 }
 
+/* ============================================
+   Image Layout Shift Prevention
+   ============================================ */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Reserve space for images with aspect ratio */
+img[data-src] {
+    aspect-ratio: 16 / 9;
+    background: #f0f0f0;
+}
+
 /* All card, button, section, link, form, and responsive styles are now handled by Tailwind CSS utility classes */
 
 .hidden {
@@ -278,10 +295,12 @@ nav a.active [data-lucide] {
 
 /* Icon animations (ESSENTIAL) */
 @keyframes icon-bounce {
+
     0%,
     100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-4px);
     }
