@@ -260,13 +260,6 @@ nav a.active [data-lucide] {
 /* All card, button, section, link, form, and responsive styles are now handled by Tailwind CSS utility classes */
 
 /* ============================================
-   Utility Classes (Performance Optimizations)
-   ============================================ */
-.hidden {
-    display: none !important;
-}
-
-/* ============================================
    Icon Styling (Lucide Icons - ESSENTIAL)
    ============================================ */
 [data-lucide] {
