@@ -88,7 +88,7 @@ timezone: UTC
 # ===============================================
 # 📊 Google Analytics (Optional)
 # ===============================================
-google_analytics: "UA-XXXXXXXXX-X"
+google_analytics: ""
 
 # ===============================================
 # 🚀 Performance & Caching (GitHub Pages)
