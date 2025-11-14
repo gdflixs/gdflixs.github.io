@@ -63,9 +63,6 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
     </noscript>
 
-    <!-- Lucide Icons - Defer loading to prevent render blocking -->
-    <script defer src="https://unpkg.com/lucide@latest"></script>
-
     <!-- Custom Styles - Inline critical styles, defer non-critical -->
     <style>
         /* Critical styles for above-the-fold content */
@@ -176,6 +173,9 @@
 
     {% include footer.html %}
 
+    <!-- Lucide Icons - Defer loading to prevent render blocking -->
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+
     <!-- Google Analytics - Lazy loaded after page interaction to prevent render blocking -->
     {% if site.google_analytics %}
     <script>
@@ -193,9 +193,9 @@
         }
 
         // Load analytics on first user interaction
-        ['click', 'scroll', 'touchstart'].forEach(event => {
-            document.addEventListener(event, loadGoogleAnalytics, { once: true, passive: true });
-        });
+        // ['click', 'scroll', 'touchstart'].forEach(event => {
+        //     document.addEventListener(event, loadGoogleAnalytics, { once: true, passive: true });
+        // });
 
         // Also load after 5 seconds if no interaction
         setTimeout(loadGoogleAnalytics, 2500);
