@@ -1,5 +1,6 @@
-# GDFLIXs Site Configuration
-# SEO-Optimized Configuration
+# ==================================================
+# 🧭 GDFLIXs Site Configuration (SEO Optimized)
+# ==================================================
 
 # Site Settings
 title: "GDFLIXs"
@@ -7,7 +8,7 @@ description: "GDFLIXs - Your Ultimate Entertainment Hub"
 author: "GDFLIXs Team"
 email: "contact@gdflixs.github.io"
 url: "https://gdflixs.github.io"
-baseurl: ""
+baseurl: ""   # Leave empty for root domain (e.g., gdflixs.github.io)
 
 # SEO & Social
 keywords: "entertainment, movies, shows, streaming, gdflixs"
@@ -20,20 +21,30 @@ social:
     - "https://github.com/gdflixs"
     - "https://linkedin.com/company/gdflixs"
 
-# Build Settings
+# ===============================================
+# 🔧 Build Settings
+# ===============================================
 markdown: kramdown
 highlighter: rouge
+
+# Permalink structure (SEO friendly)
+# → Automatically includes categories and title in the URL.
 permalink: /:categories/:title/
+
 paginate: 10
 paginate_path: "/blog/page:num/"
 
-# Collections
+# ===============================================
+# 📂 Collections
+# ===============================================
 collections:
   posts:
     output: true
-    permalink: /:title/
+    permalink: /:categories/:title/
 
-# Plugins
+# ===============================================
+# ⚙️ Plugins
+# ===============================================
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
@@ -42,12 +53,24 @@ plugins:
   - jekyll-archives
   - jekyll-reading-time
 
+# ===============================================
+# 🗂️ Jekyll Archives Configuration
+# ===============================================
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layout: archive
+  permalinks:
+    category: /categories/:name/
+    tag: /tags/:name/
 
-# Include directories
+# ===============================================
+# 📁 Include & Exclude Settings
+# ===============================================
 include:
   - _pages
 
-# Exclude from processing
 exclude:
   - .gitignore
   - README.md
@@ -55,11 +78,13 @@ exclude:
   - Gemfile.lock
   - node_modules
   - vendor
-  - CATEGORY_TAG_PAGES_GUIDE.md
 
-# Timezone
+# ===============================================
+# 🌍 Timezone
+# ===============================================
 timezone: UTC
 
-# Analytics (optional)
+# ===============================================
+# 📊 Google Analytics (Optional)
+# ===============================================
 google_analytics: "UA-XXXXXXXXX-X"
-
