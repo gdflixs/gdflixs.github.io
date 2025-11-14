@@ -199,7 +199,7 @@ main {
 .mobile-menu {
     display: none;
     position: fixed;
-    top: 75px;
+    top: 60px;
     left: 0;
     right: 0;
     background: white;
@@ -237,28 +237,19 @@ nav a.active {
 }
 
 nav a.active [data-lucide] {
-    background: linear-gradient(to right, #7e22ce, #4c1d95);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    color: #7e22ce;
 }
 
 .mobile-menu a.active {
     background-color: #f0f0f0;
-    border-left: 4px solid #667eea;
+    border-left: 4px solid #7e22ce;
     padding-left: calc(1.5rem - 4px);
-    background: linear-gradient(to right, #7e22ce, #4c1d95);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    color: #7e22ce;
     font-weight: 700;
 }
 
 .mobile-menu a.active [data-lucide] {
-    background: linear-gradient(to right, #7e22ce, #4c1d95);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    color: #7e22ce;
 }
 
 /* ============================================
