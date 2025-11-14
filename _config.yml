@@ -52,6 +52,7 @@ plugins:
   - jekyll-paginate
   - jekyll-archives
   - jekyll-reading-time
+  - jekyll-minifier
 
 # ===============================================
 # 🗂️ Jekyll Archives Configuration
@@ -107,3 +108,10 @@ compress_html:
   profile: false
   ignore:
     envs: []
+
+jekyll-minifier:
+  exclude: ['robots.txt']
+  compress_css: true
+  compress_javascript: true
+  compress_html: true
+  gzip: false
