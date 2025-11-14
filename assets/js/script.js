@@ -52,7 +52,7 @@ function calculateReadingTime() {
     }
 }
 
-// Lazy loading for images
+// Lazy loading for images - Optimized with rootMargin for better UX
 if ('IntersectionObserver' in window) {
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -63,8 +63,10 @@ if ('IntersectionObserver' in window) {
                 observer.unobserve(img);
             }
         });
+    }, {
+        rootMargin: '50px' // Start loading 50px before image enters viewport
     });
-    
+
     document.querySelectorAll('img[data-src]').forEach(img => {
         imageObserver.observe(img);
     });
@@ -171,41 +173,58 @@ function setupContactForm() {
     });
 }
 
-// Search functionality (if search is implemented)
+// Search functionality - Optimized with debouncing to prevent forced reflows
 function setupSearch() {
     const searchInput = document.querySelector('.search-input');
     if (!searchInput) return;
-    
+
+    let searchTimeout;
+
     searchInput.addEventListener('input', function(e) {
-        const query = e.target.value.toLowerCase();
-        const posts = document.querySelectorAll('.post-list-item');
-        
-        posts.forEach(post => {
-            const title = post.querySelector('h2').textContent.toLowerCase();
-            const excerpt = post.querySelector('.post-list-excerpt').textContent.toLowerCase();
-            
-            if (title.includes(query) || excerpt.includes(query)) {
-                post.style.display = 'block';
-            } else {
-                post.style.display = 'none';
-            }
-        });
+        clearTimeout(searchTimeout);
+
+        searchTimeout = setTimeout(() => {
+            const query = e.target.value.toLowerCase();
+            const posts = document.querySelectorAll('.post-list-item');
+
+            posts.forEach(post => {
+                const title = post.querySelector('h2').textContent.toLowerCase();
+                const excerpt = post.querySelector('.post-list-excerpt').textContent.toLowerCase();
+
+                if (title.includes(query) || excerpt.includes(query)) {
+                    post.classList.remove('hidden');
+                } else {
+                    post.classList.add('hidden');
+                }
+            });
+        }, 300); // Debounce search by 300ms
     });
 }
 
-// Scroll to top button
+// Scroll to top button - Optimized to prevent forced reflows
 function setupScrollToTop() {
     const scrollButton = document.querySelector('.scroll-to-top');
     if (!scrollButton) return;
-    
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            scrollButton.style.display = 'block';
-        } else {
-            scrollButton.style.display = 'none';
+
+    let isVisible = false;
+    let ticking = false;
+
+    function updateScrollButton() {
+        const shouldBeVisible = window.pageYOffset > 300;
+        if (shouldBeVisible !== isVisible) {
+            isVisible = shouldBeVisible;
+            scrollButton.classList.toggle('hidden', !isVisible);
         }
-    });
-    
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(updateScrollButton);
+            ticking = true;
+        }
+    }, { passive: true });
+
     scrollButton.addEventListener('click', function() {
         window.scrollTo({
             top: 0,

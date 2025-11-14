@@ -88,3 +88,22 @@ timezone: UTC
 # 📊 Google Analytics (Optional)
 # ===============================================
 google_analytics: "UA-XXXXXXXXX-X"
+
+# ===============================================
+# 🚀 Performance & Caching (GitHub Pages)
+# ===============================================
+# Note: GitHub Pages automatically handles caching
+# These settings optimize for GitHub Pages CDN
+sass:
+  style: compressed
+
+# Minify HTML output
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: all
+  blanklines: false
+  profile: false
+  ignore:
+    envs: []
