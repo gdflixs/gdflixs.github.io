@@ -199,16 +199,7 @@ function setupNewsletterForm() {
     });
 }
 
-// Contact form handling
-function setupContactForm() {
-    const form = document.querySelector('.contact-form');
-    if (!form) return;
 
-    form.addEventListener('submit', function (e) {
-        // Form will be submitted to Formspree
-        // You can add additional validation here if needed
-    });
-}
 
 // Search functionality - Optimized with debouncing to prevent forced reflows
 function setupSearch() {
@@ -293,7 +284,6 @@ document.addEventListener('DOMContentLoaded', function () {
     generateTableOfContents();
     setupCodeBlocks();
     setupNewsletterForm();
-    setupContactForm();
     setupSearch();
     setupScrollToTop();
     smoothScroll();
