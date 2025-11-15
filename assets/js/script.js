@@ -4,19 +4,54 @@
 
 // Mobile Navigation Toggle
 document.addEventListener('DOMContentLoaded', function () {
-    const navbarToggle = document.getElementById('navbar-toggle');
-    const navbarMenu = document.getElementById('navbar-menu');
+    // Main menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
 
-    if (navbarToggle) {
-        navbarToggle.addEventListener('click', function () {
-            navbarMenu.classList.toggle('active');
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
+            const isExpanded = !mobileMenu.classList.contains('hidden');
+            menuToggle.setAttribute('aria-expanded', isExpanded);
         });
 
-        // Close menu when a link is clicked
-        const navLinks = navbarMenu.querySelectorAll('.nav-link');
+        // Close menu when a regular link is clicked
+        const navLinks = mobileMenu.querySelectorAll('a:not(.mobile-legal-toggle)');
         navLinks.forEach(link => {
             link.addEventListener('click', function () {
-                navbarMenu.classList.remove('active');
+                mobileMenu.classList.add('hidden');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
+    // Mobile Legal submenu toggle
+    const legalToggle = document.querySelector('.mobile-legal-toggle');
+    const legalSubmenu = document.querySelector('.mobile-legal-submenu');
+    const legalChevron = document.querySelector('.mobile-legal-chevron');
+
+    if (legalToggle && legalSubmenu) {
+        legalToggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            const isOpen = legalSubmenu.style.maxHeight && legalSubmenu.style.maxHeight !== '0px';
+
+            if (isOpen) {
+                legalSubmenu.style.maxHeight = '0px';
+                if (legalChevron) legalChevron.style.transform = 'rotate(0deg)';
+            } else {
+                legalSubmenu.style.maxHeight = legalSubmenu.scrollHeight + 'px';
+                if (legalChevron) legalChevron.style.transform = 'rotate(180deg)';
+            }
+        });
+
+        // Close submenu when a legal link is clicked
+        const legalLinks = legalSubmenu.querySelectorAll('a');
+        legalLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                legalSubmenu.style.maxHeight = '0px';
+                if (legalChevron) legalChevron.style.transform = 'rotate(0deg)';
+                mobileMenu.classList.add('hidden');
+                menuToggle.setAttribute('aria-expanded', 'false');
             });
         });
     }

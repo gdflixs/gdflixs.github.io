@@ -1,8 +1,8 @@
 <header class="bg-white shadow-sm fixed top-0 z-[1000] w-full" style="min-height: 60px;">
     <div class="flex justify-between items-center container mx-auto px-6 py-2 md:py-4 w-full" style="min-height: 60px;">
         <!-- Logo -->
-        <a href="{{ '/' | relative_url }}" class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent no-underline">
-            {{ site.title }}
+        <a href="{{ '/' | relative_url }}" class="text-lg md:text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent no-underline truncate mr-4">
+            GDFLIXs
         </a>
 
         <!-- Desktop Menu -->
@@ -24,14 +24,35 @@
                 <span>Contact</span>
             </a>
             <div class="relative group">
-                <button class="flex items-center gap-2 text-gray-700 hover:text-purple-600 font-medium transition-colors">
+                <button class="flex items-center gap-2 text-gray-700 hover:text-purple-600 font-medium transition-colors py-2 px-3 rounded-lg hover:bg-purple-50">
                     <i data-lucide="shield" style="width: 20px; height: 20px;"></i>
                     <span>Legal</span>
+                    <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;" class="group-hover:rotate-180"></i>
                 </button>
-                <div class="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                    <a href="{{ '/privacy' | relative_url }}" class="block px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors first:rounded-t-lg">Privacy Policy</a>
-                    <a href="{{ '/terms' | relative_url }}" class="block px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors">Terms of Service</a>
-                    <a href="{{ '/disclaimer' | relative_url }}" class="block px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors last:rounded-b-lg">Disclaimer</a>
+                <div class="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
+                    <div class="py-2">
+                        <a href="{{ '/privacy' | relative_url }}" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors">
+                            <i data-lucide="lock" style="width: 18px; height: 18px;"></i>
+                            <div>
+                                <div class="font-medium">Privacy Policy</div>
+                                <div class="text-xs text-gray-500">How we handle your data</div>
+                            </div>
+                        </a>
+                        <a href="{{ '/terms' | relative_url }}" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors">
+                            <i data-lucide="file-text" style="width: 18px; height: 18px;"></i>
+                            <div>
+                                <div class="font-medium">Terms of Service</div>
+                                <div class="text-xs text-gray-500">Our terms and conditions</div>
+                            </div>
+                        </a>
+                        <a href="{{ '/disclaimer' | relative_url }}" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors">
+                            <i data-lucide="alert-circle" style="width: 18px; height: 18px;"></i>
+                            <div>
+                                <div class="font-medium">Disclaimer</div>
+                                <div class="text-xs text-gray-500">Important disclaimers</div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -61,20 +82,32 @@
             <span>Contact</span>
         </a>
         <div class="border-b border-gray-100">
-            <button id="legal-menu-toggle" class="w-full flex items-center gap-3 px-6 py-4 text-gray-700 hover:text-purple-600 font-medium hover:bg-gray-50 transition-all">
+            <button class="mobile-legal-toggle w-full flex items-center gap-3 px-6 py-4 text-gray-700 hover:text-purple-600 font-medium hover:bg-gray-50 transition-all">
                 <i data-lucide="shield" style="width: 20px; height: 20px;"></i>
                 <span>Legal</span>
-                <i data-lucide="chevron-down" style="width: 16px; height: 16px; margin-left: auto;" class="legal-chevron"></i>
+                <i data-lucide="chevron-down" style="width: 16px; height: 16px; margin-left: auto; transition: transform 0.3s ease;" class="mobile-legal-chevron"></i>
             </button>
-            <div id="legal-submenu" class="hidden bg-gray-50">
-                <a href="{{ '/privacy' | relative_url }}" class="flex items-center gap-3 px-10 py-3 text-gray-700 hover:text-purple-600 font-medium hover:bg-gray-100 transition-all no-underline">
-                    <span>Privacy Policy</span>
+            <div class="mobile-legal-submenu max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-gray-50">
+                <a href="{{ '/privacy' | relative_url }}" class="flex items-center gap-3 px-10 py-3 text-gray-700 hover:text-purple-600 font-medium hover:bg-gray-100 transition-all no-underline border-b border-gray-200">
+                    <i data-lucide="lock" style="width: 18px; height: 18px;"></i>
+                    <div>
+                        <div>Privacy Policy</div>
+                        <div class="text-xs text-gray-500 font-normal">How we handle your data</div>
+                    </div>
                 </a>
-                <a href="{{ '/terms' | relative_url }}" class="flex items-center gap-3 px-10 py-3 text-gray-700 hover:text-purple-600 font-medium hover:bg-gray-100 transition-all no-underline">
-                    <span>Terms of Service</span>
+                <a href="{{ '/terms' | relative_url }}" class="flex items-center gap-3 px-10 py-3 text-gray-700 hover:text-purple-600 font-medium hover:bg-gray-100 transition-all no-underline border-b border-gray-200">
+                    <i data-lucide="file-text" style="width: 18px; height: 18px;"></i>
+                    <div>
+                        <div>Terms of Service</div>
+                        <div class="text-xs text-gray-500 font-normal">Our terms and conditions</div>
+                    </div>
                 </a>
                 <a href="{{ '/disclaimer' | relative_url }}" class="flex items-center gap-3 px-10 py-3 text-gray-700 hover:text-purple-600 font-medium hover:bg-gray-100 transition-all no-underline">
-                    <span>Disclaimer</span>
+                    <i data-lucide="alert-circle" style="width: 18px; height: 18px;"></i>
+                    <div>
+                        <div>Disclaimer</div>
+                        <div class="text-xs text-gray-500 font-normal">Important disclaimers</div>
+                    </div>
                 </a>
             </div>
         </div>
