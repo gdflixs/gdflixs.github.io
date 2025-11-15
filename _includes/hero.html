@@ -1,16 +1,3 @@
-<!-- Reusable Hero Component
-     Usage: {% include hero.html title="Page Title" subtitle="Page subtitle" cta_text="Button Text" cta_url="/path" theme="dark" %}
-     
-     Parameters:
-     - title: Main heading (required)
-     - subtitle: Subheading text (optional)
-     - cta_text: Call-to-action button text (optional)
-     - cta_url: Call-to-action button URL (optional)
-     - theme: "dark" (black) or "purple" (gradient) - default: "purple"
-     - role: ARIA role - default: "banner"
-     - aria_label: ARIA label for accessibility (optional)
--->
-
 {% if include.theme == "dark" %}
     <!-- Dark Theme Hero -->
     <header class="bg-black border-b border-gray-900 text-white py-20 w-full" role="{{ include.role | default: 'banner' }}" {% if include.aria_label %}aria-label="{{ include.aria_label }}"{% endif %}>
