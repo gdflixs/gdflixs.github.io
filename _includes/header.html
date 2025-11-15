@@ -23,6 +23,17 @@
                 <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
                 <span>Contact</span>
             </a>
+            <div class="relative group">
+                <button class="flex items-center gap-2 text-gray-700 hover:text-purple-600 font-medium transition-colors">
+                    <i data-lucide="shield" style="width: 20px; height: 20px;"></i>
+                    <span>Legal</span>
+                </button>
+                <div class="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <a href="{{ '/privacy' | relative_url }}" class="block px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors first:rounded-t-lg">Privacy Policy</a>
+                    <a href="{{ '/terms' | relative_url }}" class="block px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors">Terms of Service</a>
+                    <a href="{{ '/disclaimer' | relative_url }}" class="block px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors last:rounded-b-lg">Disclaimer</a>
+                </div>
+            </div>
         </nav>
 
         <!-- Mobile Menu Button -->
@@ -49,6 +60,24 @@
             <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
             <span>Contact</span>
         </a>
+        <div class="border-b border-gray-100">
+            <button id="legal-menu-toggle" class="w-full flex items-center gap-3 px-6 py-4 text-gray-700 hover:text-purple-600 font-medium hover:bg-gray-50 transition-all">
+                <i data-lucide="shield" style="width: 20px; height: 20px;"></i>
+                <span>Legal</span>
+                <i data-lucide="chevron-down" style="width: 16px; height: 16px; margin-left: auto;" class="legal-chevron"></i>
+            </button>
+            <div id="legal-submenu" class="hidden bg-gray-50">
+                <a href="{{ '/privacy' | relative_url }}" class="flex items-center gap-3 px-10 py-3 text-gray-700 hover:text-purple-600 font-medium hover:bg-gray-100 transition-all no-underline">
+                    <span>Privacy Policy</span>
+                </a>
+                <a href="{{ '/terms' | relative_url }}" class="flex items-center gap-3 px-10 py-3 text-gray-700 hover:text-purple-600 font-medium hover:bg-gray-100 transition-all no-underline">
+                    <span>Terms of Service</span>
+                </a>
+                <a href="{{ '/disclaimer' | relative_url }}" class="flex items-center gap-3 px-10 py-3 text-gray-700 hover:text-purple-600 font-medium hover:bg-gray-100 transition-all no-underline">
+                    <span>Disclaimer</span>
+                </a>
+            </div>
+        </div>
     </nav>
 </header>
 

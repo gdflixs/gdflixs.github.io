@@ -3,15 +3,15 @@
 # ==================================================
 
 # Site Settings
-title: "GDFLIXs"
-description: "GDFLIXs - Your Ultimate Entertainment Hub"
+title: "GDFLIXs - Multi-Niche Content Platform"
+description: "GDFLIXs is a comprehensive content platform covering diverse niches including entertainment, technology, lifestyle, business, health, and more. Discover expert articles, insights, and guides across multiple categories."
 author: "GDFLIXs Team"
 email: "contact@gdflixs.github.io"
 url: "https://gdflixs.github.io"
 baseurl: ""   # Leave empty for root domain (e.g., gdflixs.github.io)
 
 # SEO & Social
-keywords: "entertainment, movies, shows, streaming, gdflixs"
+keywords: "multi-niche content, articles, entertainment, technology, lifestyle, business, health, guides, insights, blog platform"
 twitter_username: "@gdflixs"
 github_username: "gdflixs"
 social:
