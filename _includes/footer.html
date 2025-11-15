@@ -11,10 +11,10 @@
         <div>
             <h3 class="text-lg font-bold mb-4 text-white">Quick Links</h3>
             <ul class="list-none space-y-2.5">
-                <li><a href="{{ '/' | relative_url }}" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="home" style="width: 16px; height: 16px;"></i> Home</a></li>
-                <li><a href="{{ '/blog' | relative_url }}" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="book-open" style="width: 16px; height: 16px;"></i> Blog</a></li>
-                <li><a href="{{ '/about' | relative_url }}" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="user" style="width: 16px; height: 16px;"></i> About</a></li>
-                <li><a href="{{ '/contact' | relative_url }}" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="mail" style="width: 16px; height: 16px;"></i> Contact</a></li>
+                <li><a href="{{ '/' | relative_url }}" class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="home" style="width: 16px; height: 16px;"></i> Home</a></li>
+                <li><a href="{{ '/blog' | relative_url }}" class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="book-open" style="width: 16px; height: 16px;"></i> Blog</a></li>
+                <li><a href="{{ '/about' | relative_url }}" class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="user" style="width: 16px; height: 16px;"></i> About</a></li>
+                <li><a href="{{ '/contact' | relative_url }}" class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="mail" style="width: 16px; height: 16px;"></i> Contact</a></li>
             </ul>
         </div>
 
@@ -22,9 +22,9 @@
         <div>
             <h3 class="text-lg font-bold mb-4 text-white">Legal</h3>
             <ul class="list-none space-y-2.5">
-                <li><a href="{{ '/privacy' | relative_url }}" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="shield" style="width: 16px; height: 16px;"></i> Privacy</a></li>
-                <li><a href="{{ '/terms' | relative_url }}" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="file-text" style="width: 16px; height: 16px;"></i> Terms</a></li>
-                <li><a href="{{ '/disclaimer' | relative_url }}" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="alert-circle" style="width: 16px; height: 16px;"></i> Disclaimer</a></li>
+                <li><a href="{{ '/privacy' | relative_url }}" class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="shield" style="width: 16px; height: 16px;"></i> Privacy</a></li>
+                <li><a href="{{ '/terms' | relative_url }}" class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="file-text" style="width: 16px; height: 16px;"></i> Terms</a></li>
+                <li><a href="{{ '/disclaimer' | relative_url }}" class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="alert-circle" style="width: 16px; height: 16px;"></i> Disclaimer</a></li>
             </ul>
         </div>
 
@@ -32,13 +32,13 @@
         <div>
             <h3 class="text-lg font-bold mb-4 text-white">Content & Social</h3>
             <ul class="list-none space-y-2.5">
-                <li><a href="{{ '/tags' | relative_url }}" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="tag" style="width: 16px; height: 16px;"></i> Tags</a></li>
-                <li><a href="{{ '/categories' | relative_url }}" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="folder" style="width: 16px; height: 16px;"></i> Categories</a></li>
+                <li><a href="{{ '/tags' | relative_url }}" class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="tag" style="width: 16px; height: 16px;"></i> Tags</a></li>
+                <li><a href="{{ '/categories' | relative_url }}" class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="folder" style="width: 16px; height: 16px;"></i> Categories</a></li>
                 {% if site.twitter_username %}
-                <li><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="twitter" style="width: 16px; height: 16px;"></i> Twitter</a></li>
+                <li><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="twitter" style="width: 16px; height: 16px;"></i> Twitter</a></li>
                 {% endif %}
                 {% if site.github_username %}
-                <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="github" style="width: 16px; height: 16px;"></i> GitHub</a></li>
+                <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-colors no-underline"><i data-lucide="github" style="width: 16px; height: 16px;"></i> GitHub</a></li>
                 {% endif %}
             </ul>
         </div>
