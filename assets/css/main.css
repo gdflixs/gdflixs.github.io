@@ -232,10 +232,7 @@ main {
    Active Menu Item Styles (ESSENTIAL - Navigation)
    ============================================ */
 nav a.active {
-    background: linear-gradient(to right, #7e22ce, #4c1d95);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    color: #7e22ce;
     font-weight: 700;
 }
 
@@ -244,7 +241,6 @@ nav a.active [data-lucide] {
 }
 
 .mobile-menu a.active {
-    background-color: #f0f0f0;
     border-left: 4px solid #7e22ce;
     padding-left: calc(1.5rem - 4px);
     color: #7e22ce;
