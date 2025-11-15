@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (menuToggle && mobileMenu) {
         menuToggle.addEventListener('click', function () {
-            mobileMenu.classList.toggle('hidden');
-            const isExpanded = !mobileMenu.classList.contains('hidden');
+            mobileMenu.classList.toggle('active');
+            const isExpanded = mobileMenu.classList.contains('active');
             menuToggle.setAttribute('aria-expanded', isExpanded);
         });
 
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const navLinks = mobileMenu.querySelectorAll('a:not(.mobile-legal-toggle)');
         navLinks.forEach(link => {
             link.addEventListener('click', function () {
-                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('active');
                 menuToggle.setAttribute('aria-expanded', 'false');
             });
         });
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
             link.addEventListener('click', function () {
                 legalSubmenu.style.maxHeight = '0px';
                 if (legalChevron) legalChevron.style.transform = 'rotate(0deg)';
-                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('active');
                 menuToggle.setAttribute('aria-expanded', 'false');
             });
         });
