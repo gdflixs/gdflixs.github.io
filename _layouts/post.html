@@ -44,10 +44,12 @@ layout: default
                 </figure>
 
                 <!-- Table of Contents Include -->
-                {% capture raw_html %}
-                {{ content }}
-                {% endcapture %}
-                {% include table-of-contents.html content=raw_html %}
+                {% capture rendered_content %}
+  {{ content }}
+{% endcapture %}
+
+{% include table-of-contents.html content=rendered_content %}
+
 
                 <!-- Article Body -->
                 <div class="prose max-w-none mb-12 post-content" itemprop="articleBody">
