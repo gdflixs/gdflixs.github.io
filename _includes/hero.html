@@ -6,6 +6,27 @@
             {% if include.subtitle %}
             <p class="text-gray-300">{{ include.subtitle }}</p>
             {% endif %}
+
+            <!-- Visual Breadcrumb Navigation (not on homepage) -->
+            {% if include.breadcrumb and page.url != "/" %}
+            <nav class="mt-4 text-sm text-gray-400" aria-label="Breadcrumb">
+                {% assign breadcrumb_items = include.breadcrumb | split: '","item":"' %}
+                {% for item in breadcrumb_items %}
+                  {% if forloop.index > 1 %}
+                    <span class="mx-1">/</span>
+                  {% endif %}
+                  {% if item contains '"name":"' %}
+                    {% assign name_start = item | split: '"name":"' | last | split: '"' | first %}
+                    {% if forloop.last %}
+                      <span class="text-white font-medium">{{ name_start }}</span>
+                    {% else %}
+                      <a href="#" class="hover:text-white transition-colors">{{ name_start }}</a>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+            </nav>
+            {% endif %}
+
             {% if include.cta_text and include.cta_url %}
             <div class="mt-4">
                 <a href="{{ include.cta_url }}" class="inline-block bg-white text-black px-8 py-3 rounded-lg text-sm hover:bg-gray-100 transition-colors">
@@ -34,6 +55,27 @@
             {% if include.subtitle %}
             <p class="text-purple-100 opacity-95">{{ include.subtitle }}</p>
             {% endif %}
+
+            <!-- Visual Breadcrumb Navigation (not on homepage) -->
+            {% if include.breadcrumb and page.url != "/" %}
+            <nav class="mt-4 text-sm text-purple-200" aria-label="Breadcrumb">
+                {% assign breadcrumb_items = include.breadcrumb | split: '","item":"' %}
+                {% for item in breadcrumb_items %}
+                  {% if forloop.index > 1 %}
+                    <span class="mx-1">/</span>
+                  {% endif %}
+                  {% if item contains '"name":"' %}
+                    {% assign name_start = item | split: '"name":"' | last | split: '"' | first %}
+                    {% if forloop.last %}
+                      <span class="text-white font-medium">{{ name_start }}</span>
+                    {% else %}
+                      <a href="#" class="hover:text-white transition-colors">{{ name_start }}</a>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+            </nav>
+            {% endif %}
+
             {% if include.cta_text and include.cta_url %}
             <div class="mt-4">
                 <a href="{{ include.cta_url }}" class="inline-block bg-white text-purple-600 px-8 py-3 rounded-lg text-sm hover:bg-gray-100 transition-colors">
