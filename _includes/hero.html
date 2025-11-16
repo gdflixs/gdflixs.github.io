@@ -1,10 +1,40 @@
 {% if include.theme == "dark" %}
     <!-- Dark Theme Hero -->
-    <header class="bg-black border-b border-gray-900 text-white py-20 w-full" role="{{ include.role | default: 'banner' }}" {% if include.aria_label %}aria-label="{{ include.aria_label }}"{% endif %}>
+    <header class="bg-black border-b border-gray-900 text-white py-20 w-full" role="{{ include.role | default: 'banner' }}" {% if include.aria_label %}aria-label="{{ include.aria_label }}"{% endif %} {% if include.itemtype %}itemscope itemtype="{{ include.itemtype }}"{% endif %}>
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-5xl md:text-6xl font-bold mb-2">{{ include.title }}</h1>
+            <h1 class="text-5xl md:text-6xl font-bold mb-2" {% if include.itemprop_headline %}itemprop="{{ include.itemprop_headline }}"{% endif %}>{{ include.title }}</h1>
             {% if include.subtitle %}
             <p class="text-gray-300">{{ include.subtitle }}</p>
+            {% endif %}
+
+            <!-- Post Metadata (if provided) -->
+            {% if include.date or include.author or include.reading_time or include.last_modified_at %}
+            <div class="flex flex-wrap gap-6 text-gray-400 text-sm mt-4">
+                {% if include.date %}
+                <time datetime="{{ include.date | date_to_xmlschema }}" {% if include.itemprop_date %}itemprop="{{ include.itemprop_date }}"{% endif %} class="flex items-center gap-2">
+                    <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
+                    {{ include.date | date: "%B %d, %Y" }}
+                </time>
+                {% endif %}
+                {% if include.author %}
+                <span {% if include.itemprop_author %}itemprop="{{ include.itemprop_author }}" itemscope itemtype="https://schema.org/Person"{% endif %} class="flex items-center gap-2">
+                    <i data-lucide="user" style="width: 18px; height: 18px;"></i>
+                    <span {% if include.itemprop_author %}itemprop="name"{% endif %}>{{ include.author }}</span>
+                </span>
+                {% endif %}
+                {% if include.reading_time %}
+                <span class="flex items-center gap-2">
+                    <i data-lucide="clock" style="width: 18px; height: 18px;"></i>
+                    {{ include.reading_time }} min read
+                </span>
+                {% endif %}
+                {% if include.last_modified_at %}
+                <time datetime="{{ include.last_modified_at | date_to_xmlschema }}" {% if include.itemprop_modified %}itemprop="{{ include.itemprop_modified }}"{% endif %} class="flex items-center gap-2">
+                    <i data-lucide="refresh-cw" style="width: 18px; height: 18px;"></i>
+                    Updated: {{ include.last_modified_at | date: "%B %d, %Y" }}
+                </time>
+                {% endif %}
+            </div>
             {% endif %}
 
             <!-- Visual Breadcrumb Navigation (not on homepage) -->
@@ -53,11 +83,41 @@
     </header>
 {% else %}
     <!-- Purple Gradient Theme Hero (default) -->
-    <header class="bg-gradient-to-r from-purple-600 to-purple-800 text-white py-20 w-full" role="{{ include.role | default: 'banner' }}" {% if include.aria_label %}aria-label="{{ include.aria_label }}"{% endif %}>
+    <header class="bg-gradient-to-r from-purple-600 to-purple-800 text-white py-20 w-full" role="{{ include.role | default: 'banner' }}" {% if include.aria_label %}aria-label="{{ include.aria_label }}"{% endif %} {% if include.itemtype %}itemscope itemtype="{{ include.itemtype }}"{% endif %}>
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-5xl md:text-6xl font-bold mb-2">{{ include.title }}</h1>
+            <h1 class="text-5xl md:text-6xl font-bold mb-2" {% if include.itemprop_headline %}itemprop="{{ include.itemprop_headline }}"{% endif %}>{{ include.title }}</h1>
             {% if include.subtitle %}
             <p class="text-purple-100 opacity-95">{{ include.subtitle }}</p>
+            {% endif %}
+
+            <!-- Post Metadata (if provided) -->
+            {% if include.date or include.author or include.reading_time or include.last_modified_at %}
+            <div class="flex flex-wrap gap-6 text-purple-200 text-sm mt-4">
+                {% if include.date %}
+                <time datetime="{{ include.date | date_to_xmlschema }}" {% if include.itemprop_date %}itemprop="{{ include.itemprop_date }}"{% endif %} class="flex items-center gap-2">
+                    <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
+                    {{ include.date | date: "%B %d, %Y" }}
+                </time>
+                {% endif %}
+                {% if include.author %}
+                <span {% if include.itemprop_author %}itemprop="{{ include.itemprop_author }}" itemscope itemtype="https://schema.org/Person"{% endif %} class="flex items-center gap-2">
+                    <i data-lucide="user" style="width: 18px; height: 18px;"></i>
+                    <span {% if include.itemprop_author %}itemprop="name"{% endif %}>{{ include.author }}</span>
+                </span>
+                {% endif %}
+                {% if include.reading_time %}
+                <span class="flex items-center gap-2">
+                    <i data-lucide="clock" style="width: 18px; height: 18px;"></i>
+                    {{ include.reading_time }} min read
+                </span>
+                {% endif %}
+                {% if include.last_modified_at %}
+                <time datetime="{{ include.last_modified_at | date_to_xmlschema }}" {% if include.itemprop_modified %}itemprop="{{ include.itemprop_modified }}"{% endif %} class="flex items-center gap-2">
+                    <i data-lucide="refresh-cw" style="width: 18px; height: 18px;"></i>
+                    Updated: {{ include.last_modified_at | date: "%B %d, %Y" }}
+                </time>
+                {% endif %}
+            </div>
             {% endif %}
 
             <!-- Visual Breadcrumb Navigation (not on homepage) -->

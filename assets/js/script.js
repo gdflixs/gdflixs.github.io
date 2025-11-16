@@ -109,40 +109,67 @@ if ('IntersectionObserver' in window) {
     });
 }
 
-// Table of contents generation
+// Table of contents generation - Collapsible version
 function generateTableOfContents() {
     const postContent = document.querySelector('.post-content');
-    if (!postContent) return;
+    const tocList = document.querySelector('.toc-content ul');
+    const detailsElement = document.querySelector('details');
+    const chevron = document.querySelector('.toc-chevron');
 
+    if (!postContent || !tocList) return;
+
+    // Extract all headings (h2 and h3)
     const headings = postContent.querySelectorAll('h2, h3');
-    if (headings.length === 0) return;
 
-    const toc = document.createElement('nav');
-    toc.className = 'table-of-contents';
-    toc.innerHTML = '<h3>Table of Contents</h3><ul></ul>';
+    if (headings.length === 0) {
+        // Hide TOC if no headings found
+        if (detailsElement) detailsElement.style.display = 'none';
+        return;
+    }
 
-    const list = toc.querySelector('ul');
-
+    // Generate TOC items
     headings.forEach((heading, index) => {
+        // Add ID to heading if it doesn't have one
         if (!heading.id) {
             heading.id = `heading-${index}`;
         }
 
+        const level = heading.tagName === 'H2' ? 2 : 3;
         const li = document.createElement('li');
-        const level = parseInt(heading.tagName[1]);
-        li.style.marginLeft = `${(level - 2) * 1.5}rem`;
-
         const a = document.createElement('a');
+
         a.href = `#${heading.id}`;
         a.textContent = heading.textContent;
+        a.className = level === 2
+            ? 'text-purple-600 hover:text-purple-800 font-medium transition-colors'
+            : 'text-gray-600 hover:text-gray-900 transition-colors ml-4';
 
         li.appendChild(a);
-        list.appendChild(li);
+        tocList.appendChild(li);
     });
 
-    if (list.children.length > 0) {
-        postContent.insertBefore(toc, postContent.firstChild);
+    // Rotate chevron on toggle
+    if (detailsElement) {
+        detailsElement.addEventListener('toggle', function() {
+            if (this.open) {
+                if (chevron) chevron.style.transform = 'rotate(180deg)';
+            } else {
+                if (chevron) chevron.style.transform = 'rotate(0deg)';
+            }
+        });
     }
+
+    // Smooth scroll to heading
+    document.querySelectorAll('.toc-content a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
 }
 
 // Copy code block functionality
