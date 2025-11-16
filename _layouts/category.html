@@ -8,7 +8,8 @@ layout: default
 {% include breadcrumb.html page_url=page.url page_title=page.title %}
 
 <!-- Hero Section -->
-{% include hero.html title=current_category subtitle="Posts in this category" theme="dark" aria_label="Category: " | append: current_category breadcrumb=breadcrumb_array %}
+{% assign category_aria_label = "Category: " | append: current_category %}
+{% include hero.html title=current_category subtitle="Posts in this category" theme="dark" aria_label=category_aria_label breadcrumb=breadcrumb_array %}
 
 <!-- Category Content Section -->
 <section class="py-16 w-full" aria-label="Category posts listing" itemscope

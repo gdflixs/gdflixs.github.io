@@ -15,8 +15,8 @@ layout: default
 {% else %}
   {% assign archive_subtitle = "Posts in category " | append: archive_name %}
 {% endif %}
-
-{% include hero.html title=archive_name subtitle=archive_subtitle theme="dark" aria_label=archive_type | append: " page header" breadcrumb=breadcrumb_array %}
+{% assign archive_aria_label = archive_type | append: " page header" %}
+{% include hero.html title=archive_name subtitle=archive_subtitle theme="dark" aria_label=archive_aria_label breadcrumb=breadcrumb_array %}
 
 <!-- Archive Content Section -->
 <section class="py-16 w-full" aria-label="{{ archive_type | capitalize }} posts listing" itemscope
