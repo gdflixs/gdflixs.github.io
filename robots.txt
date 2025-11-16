@@ -4,9 +4,5 @@ Disallow: /_site/
 Disallow: /.git/
 Disallow: /vendor/
 
-# Crawl delay (in seconds)
-Crawl-delay: 1
-
-# Sitemap location
 Sitemap: https://gdflixs.github.io/sitemap.xml
 
