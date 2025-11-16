@@ -5,27 +5,24 @@ layout: default
 {% assign archive_type = page.type | default: page.layout %}
 {% assign archive_name = page.title | default: page.name | default: page.archive_title %}
 
-<!-- Page Header / Hero Section -->
-<header class="bg-gradient-to-r from-purple-600 to-purple-800 text-white py-16 w-full" role="banner"
-    aria-label="{{ archive_type | capitalize }} page header">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center gap-3 mb-4">
-            {% if archive_type == "tag" %}
-            <i data-lucide="tag" style="width: 40px; height: 40px;"></i>
-            {% else %}
-            <i data-lucide="folder" style="width: 40px; height: 40px;"></i>
-            {% endif %}
-            <h1 class="text-5xl font-bold" itemprop="name">{{ archive_name | capitalize }}</h1>
-        </div>
-        <p class="text-xl opacity-95">
-            {% if archive_type == "tag" %}
-            Posts tagged with <strong>{{ archive_name }}</strong>
-            {% else %}
-            Posts in category <strong>{{ archive_name }}</strong>
-            {% endif %}
-        </p>
-    </div>
-</header>
+<!-- Breadcrumb Schema -->
+{% include breadcrumb.html page_url=page.url page_title=page.title %}
+
+<!-- Hero Section -->
+{% assign archive_subtitle = "" %}
+{% if archive_type == "tag" %}
+  {% assign archive_subtitle = "Posts tagged with " | append: archive_name %}
+{% else %}
+  {% assign archive_subtitle = "Posts in category " | append: archive_name %}
+{% endif %}
+
+{% include hero.html
+    title=archive_name
+    subtitle=archive_subtitle
+    theme="dark"
+    aria_label="{{ archive_type | capitalize }} page header"
+    breadcrumb=breadcrumb_array
+%}
 
 <!-- Archive Content Section -->
 <section class="py-16 w-full" aria-label="{{ archive_type | capitalize }} posts listing" itemscope
