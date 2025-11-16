@@ -40,16 +40,15 @@
             <!-- Visual Breadcrumb Navigation (not on homepage) -->
             {% if include.breadcrumb and page.url != "/" %}
             <nav class="mt-2 flex items-center gap-1 flex-wrap justify-start text-sm text-gray-400" aria-label="Breadcrumb">
-                {% assign breadcrumb_json = include.breadcrumb | replace: '","item":"', '|ITEM_SEP|' | replace: '","name":"', '|NAME_SEP|' %}
-                {% assign breadcrumb_parts = breadcrumb_json | split: '|' %}
+                {% assign breadcrumb_items = include.breadcrumb | split: '","position":' %}
                 {% assign item_count = 0 %}
-                {% for part in breadcrumb_parts %}
-                  {% if part contains 'ListItem' %}
+                {% for item in breadcrumb_items %}
+                  {% if item contains '"name":"' %}
                     {% assign item_count = item_count | plus: 1 %}
-                    {% assign name = part | split: 'NAME_SEP' | last | split: '"' | first %}
-                    {% assign url = part | split: 'ITEM_SEP' | last | split: '"' | first %}
+                    {% assign name = item | split: '"name":"' | last | split: '"' | first %}
+                    {% assign url = item | split: '"item":"' | last | split: '"' | first %}
                     {% if item_count == 1 %}
-                      <a href="{{ url | replace: site.url, '' | default: '/' }}" class="hover:text-white transition-colors inline-flex items-center gap-1">
+                      <a href="/" class="hover:text-white transition-colors inline-flex items-center gap-1">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
                         <span>{{ name }}</span>
                       </a>
@@ -58,7 +57,8 @@
                       <span class="text-white font-medium">{{ name }}</span>
                     {% else %}
                       <span class="mx-1">/</span>
-                      <a href="{{ url | replace: site.url, '' }}" class="hover:text-white transition-colors">{{ name }}</a>
+                      {% assign breadcrumb_url = url | replace: site.url, '' %}
+                      <a href="{{ breadcrumb_url }}" class="hover:text-white transition-colors">{{ name }}</a>
                     {% endif %}
                   {% endif %}
                 {% endfor %}
@@ -127,16 +127,15 @@
             <!-- Visual Breadcrumb Navigation (not on homepage) -->
             {% if include.breadcrumb and page.url != "/" %}
             <nav class="mt-2 flex items-center gap-1 flex-wrap justify-start text-sm text-purple-200" aria-label="Breadcrumb">
-                {% assign breadcrumb_json = include.breadcrumb | replace: '","item":"', '|ITEM_SEP|' | replace: '","name":"', '|NAME_SEP|' %}
-                {% assign breadcrumb_parts = breadcrumb_json | split: '|' %}
+                {% assign breadcrumb_items = include.breadcrumb | split: '","position":' %}
                 {% assign item_count = 0 %}
-                {% for part in breadcrumb_parts %}
-                  {% if part contains 'ListItem' %}
+                {% for item in breadcrumb_items %}
+                  {% if item contains '"name":"' %}
                     {% assign item_count = item_count | plus: 1 %}
-                    {% assign name = part | split: 'NAME_SEP' | last | split: '"' | first %}
-                    {% assign url = part | split: 'ITEM_SEP' | last | split: '"' | first %}
+                    {% assign name = item | split: '"name":"' | last | split: '"' | first %}
+                    {% assign url = item | split: '"item":"' | last | split: '"' | first %}
                     {% if item_count == 1 %}
-                      <a href="{{ url | replace: site.url, '' | default: '/' }}" class="hover:text-white transition-colors inline-flex items-center gap-1">
+                      <a href="/" class="hover:text-white transition-colors inline-flex items-center gap-1">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
                         <span>{{ name }}</span>
                       </a>
@@ -145,7 +144,8 @@
                       <span class="text-white font-medium">{{ name }}</span>
                     {% else %}
                       <span class="mx-1">/</span>
-                      <a href="{{ url | replace: site.url, '' }}" class="hover:text-white transition-colors">{{ name }}</a>
+                      {% assign breadcrumb_url = url | replace: site.url, '' %}
+                      <a href="{{ breadcrumb_url }}" class="hover:text-white transition-colors">{{ name }}</a>
                     {% endif %}
                   {% endif %}
                 {% endfor %}
