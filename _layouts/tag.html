@@ -8,13 +8,7 @@ layout: default
 {% include breadcrumb.html page_url=page.url page_title=page.title %}
 
 <!-- Hero Section -->
-{% include hero.html
-    title=current_tag
-    subtitle="Posts tagged with this topic"
-    theme="dark"
-    aria_label="Tag: {{ current_tag }}"
-    breadcrumb=breadcrumb_array
-%}
+{% include hero.html title=current_tag subtitle="Posts tagged with this topic" theme="dark" aria_label="Tag: " | append: current_tag breadcrumb=breadcrumb_array %}
 
 <!-- Tag Content Section -->
 <section class="py-16 w-full" aria-label="Tag posts listing" itemscope itemtype="https://schema.org/CollectionPage">
