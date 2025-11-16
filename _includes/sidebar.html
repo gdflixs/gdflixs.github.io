@@ -9,16 +9,15 @@
         <ul class="space-y-3">
             {% for post in site.posts limit: 5 %}
             <li>
-                <a href="{{ post.url | relative_url }}" class="block group">
+                <a href="{{ post.url | relative_url }}" class="block flex gap-1 group items-center">
                     <p class="text-sm font-semibold text-gray-900 group-hover:text-purple-600 transition line-clamp-2">
                         <i data-lucide="file-text" class="text-purple-600" style="width: 14px; height: 14px;"></i>
                         {{ post.title }}
+                        <time datetime="{{ post.date | date_to_xmlschema }}"
+                            class="text-xs text-gray-500 group-hover:text-purple-500 transition ms-2">
+                            {{ post.date | date: "%b %d, %Y" }}
+                        </time>
                     </p>
-                    <time datetime="{{ post.date | date_to_xmlschema }}"
-                        class="text-xs text-gray-500 group-hover:text-purple-500 transition">
-                        <i data-lucide="calendar" class="text-purple-600" style="width: 12px; height: 12px;"></i>
-                        {{ post.date | date: "%b %d, %Y" }}
-                    </time>
                 </a>
             </li>
             {% endfor %}

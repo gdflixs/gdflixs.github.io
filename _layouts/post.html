@@ -59,7 +59,7 @@ layout: default
                 <div class="flex flex-wrap gap-3 mb-8">
                     {% for tag in page.tags %}
                     <a href="{{ '/tags/' | relative_url }}{{ tag | slugify }}/"
-                        class="inline-block bg-purple-100 text-purple-600 px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-600 hover:text-white transition-all">
+                        class="text-purple-600 text-sm transition-all flex items-center gap-1">
                         <i data-lucide="tag" style="width: 16px; height: 16px;"></i> {{ tag }}</a>
                     {% endfor %}
                 </div>
@@ -69,10 +69,10 @@ layout: default
                 {% if page.categories %}
                 <footer class="border-t-2 border-gray-200 pt-6 mb-12">
                     <div class="text-gray-700">
-                        <strong class="text-gray-900">Categories:</strong>
+                        <strong class="text-gray-900 text-sm">Categories:</strong>
                         {% for category in page.categories %}
                         <a href="{{ '/categories/' | relative_url }}{{ category | slugify }}/"
-                            class="text-purple-600 hover:text-purple-800 transition-colors ml-2">
+                            class="text-purple-600 hover:text-purple-800 transition-colors ml-2 flex items-center gap-1 text-sm">
                             <i data-lucide="folder" style="width: 16px; height: 16px;"></i>
                             {{ category }}</a>
                         {% unless forloop.last %}<span class="text-gray-400">,</span>{% endunless %}
