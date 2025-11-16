@@ -19,34 +19,27 @@ last_modified_at: 2025-11-16 15:32:09
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex gap-8 flex-wrap md:flex-row flex-col">
             <div class="flex-1 min-w-0">
-                <div class="categories-page">
+                <div class="categories-page grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {% assign categories = site.posts | map: 'categories' | join: ',' | split: ',' | uniq | sort %}
 
                     {% for category in categories %}
                     {% if category != "" %}
-                    <section class="mb-16 pb-12 border-b border-gray-200 last:border-b-0" id="{{ category | slugify }}">
-                        <div class="flex items-center justify-between mb-8">
-                            <div class="flex items-center gap-3">
-                                <i data-lucide="folder" class="text-purple-600" style="width: 32px; height: 32px;"></i>
-                                <a href="{{ '/categories/' | relative_url }}{{ category | slugify }}/"
-                                    class="text-3xl font-bold text-purple-600 hover:text-purple-800 transition">{{
-                                    category }}</a>
-                            </div>
-                            <a href="{{ '/categories/' | relative_url }}{{ category | slugify }}/"
-                                class="inline-flex items-center gap-2 text-purple-600 hover:text-purple-800 font-semibold transition">
-                                View All
-                                <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
-                            </a>
+                    {% assign category_posts = site.posts | where_exp: "post", "post.categories contains category" %}
+                    <a href="{{ '/categories/' | relative_url }}{{ category | slugify }}/" class="group">
+                        <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-all border border-gray-200 p-8 text-center h-full flex flex-col items-center justify-center">
+                            <i data-lucide="folder" class="text-purple-600 mb-4 group-hover:scale-110 transition-transform" style="width: 48px; height: 48px;"></i>
+                            <h3 class="text-2xl font-bold text-purple-600 group-hover:text-purple-800 transition mb-2">{{ category }}</h3>
+                            <p class="text-gray-600 text-lg">
+                                <span class="font-semibold text-purple-600">{{ category_posts.size }}</span>
+                                <span>{{ category_posts.size | pluralize: 'post', 'posts' }}</span>
+                            </p>
                         </div>
-
-                        {% assign category_posts = site.posts | where_exp: "post", "post.categories contains category" | sort: 'date' | reverse | limit: 5 %}
-                        {% include post-list.html posts=category_posts limit=5 %}
-                    </section>
+                    </a>
                     {% endif %}
                     {% endfor %}
 
                     {% if categories.size == 0 %}
-                    <p class="text-center text-gray-600 py-16">No categories yet. Check back soon!</p>
+                    <p class="text-center text-gray-600 py-16 col-span-full">No categories yet. Check back soon!</p>
                     {% endif %}
                 </div>
             </div>
