@@ -92,17 +92,6 @@
             </div>
             {% endif %}
         </div>
-
-        <!-- Breadcrumb LD+JSON Schema -->
-        {% if include.breadcrumb %}
-        <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": {{ include.breadcrumb }}
-        }
-        </script>
-        {% endif %}
     </header>
 {% endif %}
 

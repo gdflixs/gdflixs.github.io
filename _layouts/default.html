@@ -130,38 +130,99 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.time | relative_url }}" media="print"
         onload="this.media='all'">
 
-    <!-- JSON-LD Structured Data -->
+    {%- comment -%}
+    ==================================================
+    GLOBAL: WebSite Schema
+    ==================================================
+    {%- endcomment -%}
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "{% if page.layout == 'post' %}BlogPosting{% else %}WebSite{% endif %}",
+        "@type": "WebSite",
         "name": "{{ site.title }}",
-        "description": "{{ site.description }}",
         "url": "{{ site.url }}",
-        "image": "{{ '/assets/images/og-image.png' | absolute_url }}",
+        "description": "{{ site.description | escape }}",
+        "publisher": {
+            "@type": "Organization",
+            "name": "{{ site.title }}",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "{{ site.url }}/assets/images/favicon.png"
+            }
+        }
+    }
+    </script>
+
+
+
+    {%- comment -%}
+    ==================================================
+    WebPage Schema (for About, Contact, Terms, etc.)
+    ==================================================
+    {%- endcomment -%}
+    {% if page.layout == "page" or page.layout == "default" %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "{{ page.title | escape }}",
+        "url": "{{ site.url }}{{ page.url }}",
+        "description": "{{ page.description | default: site.description | escape }}",
+        "datePublished": "{{ page.date | default: site.time | date_to_xmlschema }}",
+        "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}"
+    }
+    </script>
+    {% endif %}
+
+
+
+    {%- comment -%}
+    ==================================================
+    BlogPosting Schema (posts only)
+    ==================================================
+    {%- endcomment -%}
+    {% if page.layout == "post" %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "{{ page.title | escape }}",
+        "description": "{{ page.description | escape }}",
+        "url": "{{ site.url }}{{ page.url }}",
+        "datePublished": "{{ page.date | date_to_xmlschema }}",
+        "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+        "image": "{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.url }}/assets/images/og-image.png{% endif %}",
         "author": {
             "@type": "Person",
-            "name": "{{ site.author }}",
-            "email": "{{ site.email }}"
+            "name": "{{ page.author | default: site.author | escape }}"
         },
         "publisher": {
             "@type": "Organization",
             "name": "{{ site.title }}",
             "logo": {
-                "@type": "ImageObject",
-                "url": "{{ '/assets/images/favicon.png' | absolute_url }}"
+            "@type": "ImageObject",
+            "url": "{{ site.url }}/assets/images/favicon.png"
             }
-        }
-        {% if page.layout == 'post' %},
-        "headline": "{{ page.title }}",
-        "datePublished": "{{ page.date | date_to_xmlschema }}",
-        "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
-        "image": "{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ '/assets/images/og-image.png' | absolute_url }}{% endif %}",
-        "articleBody": "{{ page.content | strip_html | truncatewords: 100 }}",
-        "keywords": "{% if page.tags %}{{ page.tags | join: ', ' }}{% endif %}"
-        {% endif %}
+        },
+        "articleBody": "{{ page.content | strip_html | normalize_whitespace | truncate: 500 }}"
     }
     </script>
+    {% endif %}
+
+    {%- comment -%}
+    ==================================================
+    Breadcrumb Schema (optional)
+    ==================================================
+    {%- endcomment -%}
+    {% if include.breadcrumb %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": {{ include.breadcrumb }}
+    }
+    </script>
+    {% endif %}
 
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
