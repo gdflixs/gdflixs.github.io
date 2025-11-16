@@ -10,22 +10,22 @@ layout: null
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
   {%- for page in site.pages -%}
-  {%- if page.sitemap != false -%}
+    {%- if page.sitemap != false and page.url != "/sitemap.xml" and page.url contains ".html" or page.url == "/" or page.url contains "/" and not page.url contains ".css" and not page.url contains ".js" -%}
   <url>
     <loc>{{ site.url }}{{ page.url }}</loc>
-    <lastmod>{{ page.last_modified_at | date_to_xmlschema }}</lastmod>
+    <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  {%- endif -%}
+    {%- endif -%}
   {%- endfor -%}
 
   {%- for post in site.posts -%}
   <url>
     <loc>{{ site.url }}{{ post.url }}</loc>
-    <lastmod>{{ post.last_modified_at | date_to_xmlschema }}</lastmod>
+    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
     <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <priority>0.8</priority>
   </url>
   {%- endfor -%}
 
