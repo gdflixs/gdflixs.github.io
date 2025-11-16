@@ -44,11 +44,12 @@ layout: default
                 </figure>
 
                 <!-- Table of Contents Include -->
-                {% capture rendered_content %}
-  {{ content }}
+{% capture html_content %}
+  {{ content | markdownify }}
 {% endcapture %}
 
-{% include table-of-contents.html content=rendered_content %}
+{% include table-of-contents.html content=html_content %}
+
 
 
                 <!-- Article Body -->
