@@ -123,48 +123,47 @@
     }
     </script>
     {% endif %}
-   <!-- Navigation LD+JSON Schema -->
-    <script type="application/ld+json">
+   <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "SiteNavigationElement",
         "name": "Main Navigation",
-        "url": "{{ site.url }}",
-        "potentialAction": [
+        "url": "{{ site.url }}/",
+        "hasPart": [
             {
-                "@type": "NavigateAction",
-                "target": "{{ site.url }}/",
-                "name": "Home"
+            "@type": "WebPage",
+            "name": "Home",
+            "url": "{{ site.url }}/"
             },
             {
-                "@type": "NavigateAction",
-                "target": "{{ site.url }}/blog/",
-                "name": "Blog"
+            "@type": "WebPage",
+            "name": "Blog",
+            "url": "{{ site.url }}/blog/"
             },
             {
-                "@type": "NavigateAction",
-                "target": "{{ site.url }}/about/",
-                "name": "About"
+            "@type": "WebPage",
+            "name": "About",
+            "url": "{{ site.url }}/about/"
             },
             {
-                "@type": "NavigateAction",
-                "target": "{{ site.url }}/contact/",
-                "name": "Contact"
+            "@type": "WebPage",
+            "name": "Contact",
+            "url": "{{ site.url }}/contact/"
             },
             {
-                "@type": "NavigateAction",
-                "target": "{{ site.url }}/privacy/",
-                "name": "Privacy Policy"
+            "@type": "WebPage",
+            "name": "Privacy Policy",
+            "url": "{{ site.url }}/privacy/"
             },
             {
-                "@type": "NavigateAction",
-                "target": "{{ site.url }}/terms/",
-                "name": "Terms of Service"
+            "@type": "WebPage",
+            "name": "Terms of Service",
+            "url": "{{ site.url }}/terms/"
             },
             {
-                "@type": "NavigateAction",
-                "target": "{{ site.url }}/disclaimer/",
-                "name": "Disclaimer"
+            "@type": "WebPage",
+            "name": "Disclaimer",
+            "url": "{{ site.url }}/disclaimer/"
             }
         ]
     }
