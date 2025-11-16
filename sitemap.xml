@@ -4,20 +4,17 @@ layout: null
 
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-                        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   {%- for page in site.pages -%}
-    {%- if page.sitemap != false and page.url != "/sitemap.xml" and page.url contains ".html" or page.url == "/" or page.url contains "/" and not page.url contains ".css" and not page.url contains ".js" -%}
+    {%- unless page.url contains ".css" or page.url contains ".js" or page.url contains ".xml" or page.sitemap == false -%}
   <url>
     <loc>{{ site.url }}{{ page.url }}</loc>
     <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-    {%- endif -%}
+    {%- endunless -%}
   {%- endfor -%}
 
   {%- for post in site.posts -%}
