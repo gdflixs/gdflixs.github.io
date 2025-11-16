@@ -44,8 +44,10 @@ layout: default
                 </figure>
 
                 <!-- Table of Contents Include -->
-                {% assign rendered = page.content | markdownify %}
-                {% include table-of-contents.html content=rendered %}
+                {% capture raw_html %}
+                {{ content }}
+                {% endcapture %}
+                {% include table-of-contents.html content=raw_html %}
 
                 <!-- Article Body -->
                 <div class="prose max-w-none mb-12 post-content" itemprop="articleBody">
