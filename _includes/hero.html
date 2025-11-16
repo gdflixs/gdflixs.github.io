@@ -9,7 +9,7 @@
 
             <!-- Visual Breadcrumb Navigation (not on homepage) -->
             {% if include.breadcrumb and page.url != "/" %}
-            <nav class="mt-4 text-sm text-gray-400" aria-label="Breadcrumb">
+            <nav class="mt-2 flex items-center gap-1 flex-wrap justify-start text-sm text-gray-400" aria-label="Breadcrumb">
                 {% assign breadcrumb_items = include.breadcrumb | split: '","item":"' %}
                 {% for item in breadcrumb_items %}
                   {% if item contains '"name":"' %}
@@ -62,7 +62,7 @@
 
             <!-- Visual Breadcrumb Navigation (not on homepage) -->
             {% if include.breadcrumb and page.url != "/" %}
-            <nav class="mt-4 text-sm text-purple-200" aria-label="Breadcrumb">
+            <nav class="mt-2 flex items-center gap-1 flex-wrap justify-start text-sm text-purple-200" aria-label="Breadcrumb">
                 {% assign breadcrumb_items = include.breadcrumb | split: '","item":"' %}
                 {% for item in breadcrumb_items %}
                   {% if item contains '"name":"' %}
