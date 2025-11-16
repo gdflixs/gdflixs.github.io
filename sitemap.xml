@@ -3,14 +3,16 @@ layout: null
 ---
 
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   {%- for page in site.pages -%}
     {%- unless page.url contains ".css" or page.url contains ".js" or page.url contains ".xml" or page.sitemap == false -%}
+
+      {%- assign lm = page.date | default: site.time -%}
+
   <url>
     <loc>{{ site.url }}{{ page.url }}</loc>
-    <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
+    <lastmod>{{ lm | date_to_xmlschema }}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -18,9 +20,10 @@ layout: null
   {%- endfor -%}
 
   {%- for post in site.posts -%}
+      {%- assign lm = post.date | default: site.time -%}
   <url>
     <loc>{{ site.url }}{{ post.url }}</loc>
-    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+    <lastmod>{{ lm | date_to_xmlschema }}</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
