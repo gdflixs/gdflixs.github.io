@@ -1,13 +1,29 @@
+{% comment %}
+====================================================
+TABLE OF CONTENTS (Full Working Version)
+====================================================
+IMPORTANT:
+You must pass rendered HTML:
+{% assign html = page.content | markdownify %}
+{% include table-of-content.html content=html %}
+====================================================
+{% endcomment %}
+
 {% if include.content %}
     {% assign html = include.content %}
-    {% assign h2_split = html | split: '<h2' %}
 
-    {%- comment -%} Check for at least one <h2> heading {%- endcomment -%}
+    {%- comment -%}
+    Get all H2 headings
+    {%- endcomment -%}
+    {% assign h2_blocks = html | split: '<h2 ' %}
+
+    {%- comment -%}
+    Detect if there is at least one H2
+    {%- endcomment -%}
     {% assign has_h2 = false %}
-    {% for block in h2_split %}
+    {% for block in h2_blocks %}
         {% if block contains '</h2>' %}
             {% assign has_h2 = true %}
-            {% break %}
         {% endif %}
     {% endfor %}
 
@@ -16,22 +32,26 @@
         <summary class="cursor-pointer px-6 py-4 font-semibold text-gray-900 hover:bg-gray-100 transition-colors flex items-center gap-2 select-none">
             <i data-lucide="list" style="width:20px;height:20px;color:#9333ea;"></i>
             <span>Table of Contents</span>
-            <i data-lucide="chevron-down" class="toc-chevron" style="width:20px;height:20px;color:#9333ea;margin-left:auto;transition:transform 0.3s ease;"></i>
+            <i data-lucide="chevron-down" style="width:20px;height:20px;color:#9333ea;margin-left:auto;transition:0.3s;" class="toc-chevron"></i>
         </summary>
 
         <nav class="px-6 py-4 border-t border-gray-200 toc-content">
             <ul class="space-y-2 text-sm">
 
-                {% for block in h2_split %}
+                {% for block in h2_blocks %}
                     {% if block contains '</h2>' %}
 
-                        {%- comment -%} Extract H2 ID {%- endcomment -%}
-                        {% assign h2_id_raw = block | split: 'id="' | last %}
-                        {% assign h2_id = h2_id_raw | split: '"' | first | strip %}
+                        {%- comment -%}
+                        Extract H2 id
+                        {%- endcomment -%}
+                        {% assign id_part = block | split: 'id="' | last %}
+                        {% assign h2_id   = id_part | split: '"' | first %}
 
-                        {%- comment -%} Extract H2 text {%- endcomment -%}
-                        {% assign h2_text_raw = block | split: '>' | last %}
-                        {% assign h2_text = h2_text_raw | split: '</h2>' | first | strip %}
+                        {%- comment -%}
+                        Extract H2 text
+                        {%- endcomment -%}
+                        {% assign text_part = block | split: '>' | last %}
+                        {% assign h2_text   = text_part | split: '</h2>' | first | strip %}
 
                         {% if h2_text != "" %}
                         <li>
@@ -39,16 +59,19 @@
                                 {{ h2_text }}
                             </a>
 
-                            {%- comment -%} Extract H3 under this H2 {%- endcomment -%}
-                            {% assign h3_split = block | split: '<h3' %}
-                            {% for h3 in h3_split %}
+                            {%- comment -%}
+                            Extract any H3 inside this H2 block
+                            {%- endcomment -%}
+
+                            {% assign h3_blocks = block | split: '<h3 ' %}
+                            {% for h3 in h3_blocks %}
                                 {% if h3 contains '</h3>' %}
 
-                                    {% assign h3_id_raw = h3 | split: 'id="' | last %}
-                                    {% assign h3_id = h3_id_raw | split: '"' | first | strip %}
+                                    {% assign h3_id_part = h3 | split: 'id="' | last %}
+                                    {% assign h3_id = h3_id_part | split: '"' | first %}
 
-                                    {% assign h3_text_raw = h3 | split: '>' | last %}
-                                    {% assign h3_text = h3_text_raw | split: '</h3>' | first | strip %}
+                                    {% assign h3_text_part = h3 | split: '>' | last %}
+                                    {% assign h3_text = h3_text_part | split: '</h3>' | first | strip %}
 
                                     {% if h3_text != "" %}
                                     <ul class="ml-4 mt-2 space-y-1">
@@ -59,12 +82,15 @@
                                         </li>
                                     </ul>
                                     {% endif %}
+
                                 {% endif %}
                             {% endfor %}
                         </li>
                         {% endif %}
+
                     {% endif %}
                 {% endfor %}
+
             </ul>
         </nav>
     </details>
