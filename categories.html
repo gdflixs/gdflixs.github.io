@@ -8,8 +8,11 @@ date: 2025-11-15 12:55:18
 last_modified_at: 2025-11-16 15:32:09
 ---
 
+<!-- Breadcrumb Schema -->
+{% include breadcrumb.html page_url="/categories/" %}
+
 <!-- Hero Section -->
-{% include hero.html title="Categories" subtitle="Browse posts by categories" theme="dark" aria_label="Categories page header" %}
+{% include hero.html title="Categories" subtitle="Browse posts by categories" theme="dark" aria_label="Categories page header" breadcrumb=breadcrumb_array %}
 
 <!-- Categories Content Section -->
 <section class="py-16 w-full" aria-label="Categories listing" itemscope itemtype="https://schema.org/CollectionPage">

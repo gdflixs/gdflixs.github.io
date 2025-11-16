@@ -7,8 +7,11 @@ date: 2025-11-15 09:50:25
 last_modified_at: 2025-11-16 14:12:47
 ---
 
+<!-- Breadcrumb Schema -->
+{% include breadcrumb.html page_url="/terms/" %}
+
 <!-- Hero Section -->
-{% include hero.html title="Terms of Service" subtitle="Please read these terms carefully" theme="dark" aria_label="Terms of service header" %}
+{% include hero.html title="Terms of Service" subtitle="Please read these terms carefully" theme="dark" aria_label="Terms of service header" breadcrumb=breadcrumb_array %}
 
 <!-- Terms of Service Content -->
 <section class="py-16 w-full" aria-label="Terms of service content">

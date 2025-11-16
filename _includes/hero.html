@@ -14,6 +14,17 @@
             </div>
             {% endif %}
         </div>
+
+        <!-- Breadcrumb LD+JSON Schema -->
+        {% if include.breadcrumb %}
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": {{ include.breadcrumb | jsonify }}
+        }
+        </script>
+        {% endif %}
     </header>
 {% else %}
     <!-- Purple Gradient Theme Hero (default) -->
@@ -31,6 +42,17 @@
             </div>
             {% endif %}
         </div>
+
+        <!-- Breadcrumb LD+JSON Schema -->
+        {% if include.breadcrumb %}
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": {{ include.breadcrumb | jsonify }}
+        }
+        </script>
+        {% endif %}
     </header>
 {% endif %}
 
