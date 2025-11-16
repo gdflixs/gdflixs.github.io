@@ -44,7 +44,7 @@ layout: default
                 </figure>
 
                 <!-- Table of Contents Include -->
-                {% include table-of-contents.html content=content %}
+                {% include table-of-contents.html content=page.content | markdownify %}
 
                 <!-- Article Body -->
                 <div class="prose max-w-none mb-12 post-content" itemprop="articleBody">
