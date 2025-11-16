@@ -8,7 +8,7 @@ layout: null
   {%- for page in site.pages -%}
     {%- unless page.url contains ".css" or page.url contains ".js" or page.url contains ".xml" or page.sitemap == false -%}
 
-      {%- assign lm = page.date | default: site.time -%}
+      {%- assign lm = page.last_modified_at | default: page.date | default: site.time -%}
 
   <url>
     <loc>{{ site.url }}{{ page.url }}</loc>
@@ -20,7 +20,7 @@ layout: null
   {%- endfor -%}
 
   {%- for post in site.posts -%}
-      {%- assign lm = post.date | default: site.time -%}
+      {%- assign lm = page.last_modified_at | default: post.date | default: site.time -%}
   <url>
     <loc>{{ site.url }}{{ post.url }}</loc>
     <lastmod>{{ lm | date_to_xmlschema }}</lastmod>
