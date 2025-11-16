@@ -1,10 +1,9 @@
-<!-- Table of Contents Include -->
 {% if include.content %}
-    {% assign headings = include.content | split: '<h2 id=' %}
+    {% assign headings = include.content | split: '<h2 id="' %}
     {% assign has_headings = false %}
 
-    {% for heading_block in headings %}
-        {% if heading_block contains '>' %}
+    {% for block in headings %}
+        {% if block contains '</h2>' %}
             {% assign has_headings = true %}
             {% break %}
         {% endif %}
@@ -15,37 +14,36 @@
         <summary class="cursor-pointer px-6 py-4 font-semibold text-gray-900 hover:bg-gray-100 transition-colors flex items-center gap-2 select-none">
             <i data-lucide="list" style="width: 20px; height: 20px; color: #9333ea;"></i>
             <span>Table of Contents</span>
-            <i data-lucide="chevron-down" style="width: 20px; height: 20px; color: #9333ea; margin-left: auto; transition: transform 0.3s ease;" class="toc-chevron"></i>
+            <i data-lucide="chevron-down" class="toc-chevron" style="width: 20px; height: 20px; color: #9333ea; margin-left: auto; transition: transform 0.3s ease;"></i>
         </summary>
+
         <nav class="px-6 py-4 border-t border-gray-200 toc-content">
             <ul class="space-y-2 text-sm">
-                <!-- Extract H2 headings with IDs -->
-                {% for heading_block in headings %}
-                    {% if heading_block contains '>' %}
-                        <!-- Extract ID from heading -->
-                        {% assign id_start = heading_block | split: '"' | first %}
 
-                        <!-- Extract text from heading -->
-                        {% assign text_start = heading_block | split: '>' | last | split: '<' | first %}
+                {% for block in headings %}
+                    {% if block contains '</h2>' %}
+                        {% assign h2_id = block | split: '"' | first %}
+                        {% assign h2_text = block | split: '>' | last | split: '</h2>' | first | strip %}
 
-                        {% if text_start != "" %}
+                        {% if h2_text != "" %}
                         <li>
-                            <a href="#{{ id_start }}" class="text-purple-600 hover:text-purple-800 font-medium transition-colors">{{ text_start }}</a>
+                            <a href="#{{ h2_id }}" class="text-purple-600 hover:text-purple-800 font-medium transition-colors">
+                                {{ h2_text }}
+                            </a>
 
-                            <!-- Extract H3 headings under this H2 -->
-                            {% assign h3_section = heading_block | split: '<h3 id=' %}
-                            {% for h3_block in h3_section %}
-                                {% if h3_block contains '>' %}
-                                    <!-- Extract H3 ID -->
-                                    {% assign h3_id = h3_block | split: '"' | first %}
-
-                                    <!-- Extract H3 text -->
-                                    {% assign h3_text = h3_block | split: '>' | last | split: '<' | first %}
+                            {# Extract H3 under this H2 #}
+                            {% assign h3_blocks = block | split: '<h3 id="' %}
+                            {% for h3 in h3_blocks %}
+                                {% if h3 contains '</h3>' %}
+                                    {% assign h3_id = h3 | split: '"' | first %}
+                                    {% assign h3_text = h3 | split: '>' | last | split: '</h3>' | first | strip %}
 
                                     {% if h3_text != "" %}
                                     <ul class="ml-4 mt-2 space-y-1">
                                         <li>
-                                            <a href="#{{ h3_id }}" class="text-gray-600 hover:text-gray-900 transition-colors">{{ h3_text }}</a>
+                                            <a href="#{{ h3_id }}" class="text-gray-600 hover:text-gray-900 transition-colors">
+                                                {{ h3_text }}
+                                            </a>
                                         </li>
                                     </ul>
                                     {% endif %}
@@ -60,4 +58,3 @@
     </details>
     {% endif %}
 {% endif %}
-
