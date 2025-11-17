@@ -8,7 +8,7 @@ layout: null
     {%- assign lm = post.last_modified_at | default: post.date | default: site.time -%}
   <url>
     <loc>{{ site.url }}{{ post.url }}</loc>
-    <lastmod>{{ lm | google_xmlschema }}</lastmod>
+    <lastmod>{{ lm | date_to_xmlschema | replace: ' ', '' }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

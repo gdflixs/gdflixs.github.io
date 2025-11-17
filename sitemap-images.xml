@@ -10,7 +10,7 @@ layout: null
       {%- assign lm = page.last_modified_at | default: page.date | default: site.time -%}
   <url>
     <loc>{{ site.url }}{{ page.url }}</loc>
-    <lastmod>{{ lm | google_xmlschema }}</lastmod>
+    <lastmod>{{ lm | date_to_xmlschema | replace: ' ', '' }}</lastmod>
     {%- if page.image -%}
     <image:image>
       <image:loc>{{ site.url }}{{ page.image }}</image:loc>
@@ -25,7 +25,7 @@ layout: null
     {%- assign lm = post.last_modified_at | default: post.date | default: site.time -%}
   <url>
     <loc>{{ site.url }}{{ post.url }}</loc>
-    <lastmod>{{ lm | google_xmlschema }}</lastmod>
+    <lastmod>{{ lm | date_to_xmlschema | replace: ' ', '' }}</lastmod>
     {%- if post.image -%}
     <image:image>
       <image:loc>{{ site.url }}{{ post.image }}</image:loc>
