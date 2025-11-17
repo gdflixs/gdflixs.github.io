@@ -231,23 +231,23 @@ main {
    Active Menu Item Styles (ESSENTIAL - Navigation)
    ============================================ */
 nav a.active {
-    color: #7e22ce;
+    color: #ffffff;
     font-weight: 700;
 }
 
 nav a.active [data-lucide] {
-    color: #7e22ce;
+    color: #ffffff;
 }
 
 .mobile-menu a.active {
-    border-left: 4px solid #7e22ce;
+    border-left: 4px solid #ffffff;
     padding-left: calc(1.5rem - 4px);
-    color: #7e22ce;
+    color: #ffffff;
     font-weight: 700;
 }
 
 .mobile-menu a.active [data-lucide] {
-    color: #7e22ce;
+    color: #ffffff;
 }
 
 /* ============================================

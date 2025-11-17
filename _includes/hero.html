@@ -9,7 +9,7 @@
 
             <!-- Post Metadata (if provided) -->
             {% if include.date or include.author or include.reading_time or include.last_modified_at %}
-            <div class="flex flex-wrap gap-6 text-gray-400 text-sm mt-4">
+            <div class="flex flex-wrap gap-2 text-gray-400 text-sm my-4">
                 {% if include.date %}
                 <time datetime="{{ include.date | date_to_xmlschema }}" {% if include.itemprop_date %}itemprop="{{ include.itemprop_date }}"{% endif %} class="flex items-center gap-2">
                     <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
