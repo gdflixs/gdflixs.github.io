@@ -38,7 +38,7 @@ lang: en
 10. [Thank You](#thank-you)
 11. [Get in Touch](#get-in-touch)
 
-## 🎉 Welcome to GDFLIXs!
+## Welcome to GDFLIXs!
 
 We're thrilled to launch **GDFLIXs**, a revolutionary multi-niche content platform designed to bring you diverse, high-quality content across multiple categories and interests. Whether you're passionate about entertainment, technology, lifestyle, business, health, or anything in between, GDFLIXs has something for everyone.
 
