@@ -242,6 +242,18 @@ function skipToMain() {
     });
 }
 
+// Table of Contents Collapsible
+function setupTableOfContents() {
+    const tocHeading = document.getElementById('table-of-contents');
+
+    if (tocHeading) {
+        tocHeading.addEventListener('click', function (e) {
+            e.preventDefault();
+            tocHeading.classList.toggle('expanded');
+        });
+    }
+}
+
 // Initialize all functions
 document.addEventListener('DOMContentLoaded', function () {
     calculateReadingTime();
@@ -251,4 +263,5 @@ document.addEventListener('DOMContentLoaded', function () {
     setupScrollToTop();
     smoothScroll();
     skipToMain();
+    setupTableOfContents();
 });
