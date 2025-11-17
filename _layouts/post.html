@@ -43,15 +43,6 @@ layout: default
                     {% endif %}
                 </figure>
 
-                <!-- Table of Contents Include -->
-{% capture html_content %}
-  {{ content | markdownify }}
-{% endcapture %}
-
-{% include table-of-contents.html content=html_content %}
-
-
-
                 <!-- Article Body -->
                 <div class="prose max-w-none mb-12 post-content" itemprop="articleBody">
                     {{ content | reading_time }}

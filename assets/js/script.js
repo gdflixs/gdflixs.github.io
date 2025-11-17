@@ -109,35 +109,6 @@ if ('IntersectionObserver' in window) {
     });
 }
 
-// Table of contents smooth scroll - for include-generated TOC
-function setupTableOfContents() {
-    // Smooth scroll for TOC links
-    document.querySelectorAll('.toc-content a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-
-    // Rotate chevron on toggle
-    const detailsElement = document.querySelector('details');
-    const chevron = document.querySelector('.toc-chevron');
-
-    if (detailsElement) {
-        detailsElement.addEventListener('toggle', function() {
-            if (this.open) {
-                if (chevron) chevron.style.transform = 'rotate(180deg)';
-            } else {
-                if (chevron) chevron.style.transform = 'rotate(0deg)';
-            }
-        });
-    }
-}
-
 // Copy code block functionality
 function setupCodeBlocks() {
     document.querySelectorAll('pre').forEach(pre => {
@@ -274,7 +245,6 @@ function skipToMain() {
 // Initialize all functions
 document.addEventListener('DOMContentLoaded', function () {
     calculateReadingTime();
-    setupTableOfContents();
     setupCodeBlocks();
     setupNewsletterForm();
     setupSearch();

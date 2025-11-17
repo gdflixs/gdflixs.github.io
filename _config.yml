@@ -26,9 +26,6 @@ social:
 # ===============================================
 markdown: kramdown
 highlighter: rouge
-kramdown:
-  auto_ids: true
-  auto_id_prefix: ''
 
 # Permalink structure (SEO friendly)
 # → Uses only the post title in the URL (no categories)
@@ -86,7 +83,7 @@ exclude:
 # ===============================================
 # 🌍 Timezone
 # ===============================================
-timezone: UTC
+timezone: Asia/Kolkata
 
 # ===============================================
 # 📊 Google Analytics (Optional)
