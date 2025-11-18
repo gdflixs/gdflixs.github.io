@@ -9,7 +9,7 @@ layout: null
     {%- assign lm = tags_page.last_modified_at | default: tags_page.date | default: site.time -%}
   <url>
     <loc>{{ site.url }}/tags/</loc>
-    <lastmod>{{ lm | date_to_xmlschema | replace: ' ', '' | replace: '+05:30', '+0530' }}</lastmod>
+    <lastmod>{{ lm | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -24,7 +24,7 @@ layout: null
         {%- assign lm = latest_post.last_modified_at | default: latest_post.date | default: site.time -%}
   <url>
     <loc>{{ site.url }}/tags/{{ tag | slugify }}/</loc>
-    <lastmod>{{ lm | date_to_xmlschema | replace: ' ', '' | replace: '+05:30', '+0530' }}</lastmod>
+    <lastmod>{{ lm | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
