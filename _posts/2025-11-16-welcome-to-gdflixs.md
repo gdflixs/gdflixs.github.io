@@ -1,6 +1,6 @@
 ---
 title: Welcome to GDFLIXs - Your Multi-Niche Content Hub
-date: 2025-11-16 17:51:17 +0000
+date: 2025-11-16T17:51:00+00:00
 layout: post
 status: published
 categories:
@@ -16,7 +16,7 @@ tags:
 description: Discover GDFLIXs, a comprehensive platform for diverse, high-quality content across entertainment, technology, lifestyle, business, health, and more.
 author: GDFLIXs Team
 lang: en
-last_modified_at: 2025-11-18 17:51:17 +0000
+last_modified_at: 2025-11-18T19:04:15+00:00
 ---
 
 ## Table of Contents
