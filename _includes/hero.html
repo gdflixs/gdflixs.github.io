@@ -87,16 +87,16 @@
     </header>
 {% else %}
     <!-- Purple Gradient Theme Hero (default) -->
-    <header class="bg-gradient-to-r from-purple-600 to-purple-800 text-white py-20 w-full" role="{{ include.role | default: 'banner' }}" {% if include.aria_label %}aria-label="{{ include.aria_label }}"{% endif %} {% if include.itemtype %}itemscope itemtype="{{ include.itemtype }}"{% endif %}>
+    <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 w-full" role="{{ include.role | default: 'banner' }}" {% if include.aria_label %}aria-label="{{ include.aria_label }}"{% endif %} {% if include.itemtype %}itemscope itemtype="{{ include.itemtype }}"{% endif %}>
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <h1 class="text-5xl md:text-6xl font-bold mb-2" {% if include.itemprop_headline %}itemprop="{{ include.itemprop_headline }}"{% endif %}>{{ include.title }}</h1>
             {% if include.subtitle %}
-            <p class="text-purple-100 opacity-95">{{ include.subtitle }}</p>
+            <p class="text-blue-100 opacity-95">{{ include.subtitle }}</p>
             {% endif %}
 
             <!-- Post Metadata (if provided) -->
             {% if include.date or include.author or include.reading_time or include.last_modified_at %}
-            <div class="flex flex-wrap gap-6 text-purple-200 text-sm mt-4">
+            <div class="flex flex-wrap gap-6 text-blue-200 text-sm mt-4">
                 {% if include.date %}
                 <time datetime="{{ include.date | date_to_xmlschema }}" {% if include.itemprop_date %}itemprop="{{ include.itemprop_date }}"{% endif %} class="flex items-center gap-2">
                     <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
@@ -126,7 +126,7 @@
 
             <!-- Visual Breadcrumb Navigation (not on homepage) -->
             {% if include.breadcrumb and page.url != "/" %}
-            <nav class="mt-2 flex items-center gap-1 flex-wrap justify-start text-sm text-purple-200" aria-label="Breadcrumb">
+            <nav class="mt-2 flex items-center gap-1 flex-wrap justify-start text-sm text-blue-200" aria-label="Breadcrumb">
                 {% assign breadcrumb_items = include.breadcrumb | split: '","position":' %}
                 {% assign item_count = 0 %}
                 {% for item in breadcrumb_items %}
@@ -154,7 +154,7 @@
 
             {% if include.cta_text and include.cta_url %}
             <div class="mt-4">
-                <a href="{{ include.cta_url }}" class="inline-block bg-white text-purple-600 px-8 py-3 rounded-lg text-sm hover:bg-gray-100 transition-colors">
+                <a href="{{ include.cta_url }}" class="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg text-sm hover:bg-gray-100 transition-colors">
                     {{ include.cta_text }}
                 </a>
             </div>
